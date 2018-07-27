@@ -1,21 +1,197 @@
 /**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 17px 0;
+    position: fixed;
+    /* background: #f37737; */
+    /* border-bottom: 1px solid #333; */
+}
+/* ==== 布局说明 ====
+ * 1、卡片区和按钮区在一个弹性盒中，主轴是竖直方向
+ * 2、按钮区占 129px 固定高度，剩下的留给卡片区
+ * ==== 布局说明 ==== 
+ */
+/* ==== 卡片部分 ==== */
+.card-container {
+    position: relative;
+    flex: 1;
 }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.card {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    box-shadow: 1px 1px 15px #d8d8d8;
+    text-align: center;
+    transition: .5s;
+    background: #fff;
 }
 
-.userinfo-nickname {
-  color: #aaa;
+/* 第二和第三张卡缩小 */
+.card:nth-last-of-type(2) {
+    transform: scale(0.9, 1);
+    top: 5px;
 }
 
-.usermotto {
-  margin-top: 200px;
+.card:nth-last-of-type(3) {
+    transform: scale(0.8, 1);
+    top: 10px;
+}
+
+/* 第三张卡后的卡片隐藏不渲染 */
+.card:nth-last-of-type(n + 4) {
+    display: none;
+}
+
+.card-place-holder {
+    position: static;
+    color: #d8d8d8;
+    line-height: 10em;
+}
+
+.card .img-container {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    background: #999;
+    color: #fff;
+}
+
+.card .img-container .img {
+    width: 100%;
+    height: 100%;
+}
+
+.card .img-container .img-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 2px 10px;
+    border-radius: 5px;
+    line-height: 28px;
+    font-weight: 600;
+    background: rgba(120, 120, 120, .3);
+}
+.card .img-container .img-tag::before {
+    margin-right: 5px;
+    font-size: 28px;
+    font-weight: 400;
+    float: left;
+}
+
+.card .img-container .user-info-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    /* background: #999; */
+}
+
+.card .img-container .user-info-container .name {
+    font-size: 32px;
+    line-height: 1em;
+    font-weight: 700;
+    text-align: center;
+}
+
+.card .img-container .user-info-container .info {
+    border-radius: 5px;
+    background: rgba(120, 120, 120, .5);
+    display: inline-block;
+    font-size: 20px;
+    line-height: 1em;
+    padding: 4px 10px;
+    margin: 10px 0 20px;
+}
+/* :nth-of-type(n + 2) */
+.card .img-container .user-info-container .info span {
+    display: inline-block;
+}
+.card .img-container .user-info-container .info span:nth-of-type(n + 2)::before {
+    content: "\200B";
+    display: inline-block;
+    height: 0.15em;
+    width: 1px;
+    border-bottom: 0.7em solid #fff;
+    margin: 0 0.5em;
+}
+
+.card .text-container {
+    flex: 0 0 140px;
+    overflow: hidden;
+}
+
+.card .text-container {
+    padding: 30px 44px 24px;
+}
+
+.card .text-container .sub {
+    color: #999;
+    font-size: 14px;
+    line-height: 1em;
+}
+
+.card .text-container .title {
+    color: #000;
+    font-weight: 700;
+    font-size: 22px;
+    margin: 11px 0 5px;
+}
+
+.card .text-container .content {
+    color: #555;
+    font-size: 16px;
+    line-height: 28px;
+}
+
+/* ==== 按钮部分 ==== */
+.btn-container {
+    /* background: #48e76b; */
+    flex: 0 0 129px;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    flex-direction: row;
+    padding-top: 24px;
+    position: relative;
+    bottom: -10px;
+}
+
+.btn-container .btn {
+    display: inline-flex;
+    justify-content: center;
+    box-sizing: content-box;
+    width: 85px;
+    height: 85px;
+    border: 0.5px solid #e4e4e6;
+    border-radius: 85px;
+    background: #f1f1f1;
+}
+
+.btn-container .btn::before {
+    align-self: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 64px;
+    background: #fff;
+    text-align: center;
+    line-height: 64px;
+    box-shadow: 1px 1px 5px #d8d8d8;
+}
+
+.icon-close {
+    margin-right: 85px;
+    font-size: 30px;
+    color: #e1e1e1;
+}
+
+.icon-handshake {
+    font-size: 40px;
+    color: #f37737;
 }

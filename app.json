@@ -1,12 +1,39 @@
 {
-  "pages":[
-    "pages/index/index",
-    "pages/logs/logs"
-  ],
-  "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
-  }
+    "pages": [
+        "pages/index/index",
+        "pages/mine/mine",
+        "pages/matched/matched",
+        "pages/logs/logs"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#f77738",
+        "navigationBarTitleText": "知识换换",
+        "navigationBarTextStyle": "#fff"
+    },
+    "tabBar": {
+        "backgroundColor": "#fff",
+        "color": "#555",
+        "selectedColor": "#f77738",
+        "borderStyle": "white",
+        "list": [{
+                "pagePath": "pages/index/index",
+                "iconPath": "images/home.png",
+                "selectedIconPath": "images/home-selected.png",
+                "text": "首页"
+            },
+            {
+                "pagePath": "pages/mine/mine",
+                "iconPath": "images/mine.png",
+                "selectedIconPath": "images/mine-selected.png",
+                "text": "我的"
+            },
+            {
+                "pagePath": "pages/matched/matched",
+                "iconPath": "images/us.png",
+                "selectedIconPath": "images/us-selected.png",
+                "text": "匹配"
+            }
+        ]
+    }
 }
