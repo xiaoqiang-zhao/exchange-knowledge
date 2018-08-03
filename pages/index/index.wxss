@@ -153,12 +153,12 @@
 /* ==== 按钮部分 ==== */
 .btn-container {
     /* background: #48e76b; */
-    flex: 0 0 129px;
+    flex: 0 0 125px;
     justify-content: center;
     text-align: center;
     overflow: hidden;
     flex-direction: row;
-    padding-top: 24px;
+    padding-top: 20px;
     position: relative;
     bottom: -10px;
 }
