@@ -2,6 +2,6 @@
 <div class="container">
     我的页: {{str}}
     <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
-        获取手机号
+        获取手233
     </button>
 </div>

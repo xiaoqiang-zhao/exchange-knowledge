@@ -1,33 +1,27 @@
 //app.js
 App({
     onLaunch() {
+        // wx.getStorage({
+        //     key: 'code',
+        //     // 已经获取过登录码
+        //     success() {
+        //         // console.log(res.data);
+        //     },
+        //     // 未获取登录码
+        //     fail() {
+        //     }
+        // });
+
         // 微信登录
         wx.login({
             success: function(res) {
                 if (res.code) {
-                    // 用微信登录返回的加密数据换取解密后的数据
-                    // wx.request({
-                    //     method: 'POST',
-                    //     url: 'https://www.liuliuke.com/huanhuan/login',
-                    //     data: {
-                    //         code: res.code
-                    //     },
-                    //     success(res) {
-                    //         console.log(res);
-                    //     }
-                    // });
-
-                    // wx.showToast({
-                    //     title: '登录成功',
-                    //     icon: 'success',
-                    //     duration: 2000
-                    // });
-                    console.log('loginCode:' + res.code);
                     wx.setStorage({
                         key: 'code',
                         data: res.code
                     });
-                } else {
+                }
+                else {
                     wx.showToast({
                         title: '登录失败',
                         icon: 'success',

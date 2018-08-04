@@ -12,6 +12,7 @@ Page({
         console.log(e.detail.errMsg);
         console.log(e.detail.iv);
         console.log(e.detail.encryptedData);
+        const me = this;
         wx.getStorage({
             key: 'code',
             success(res) {
@@ -22,13 +23,18 @@ Page({
                     iv: e.detail.iv,
                     encryptedData: e.detail.encryptedData
                 };
-                console.log(data);
+
+                console.log('getPhoneNumber:' + data);
+
                 wx.request({
-                    method: 'POST',
+                    method: 'GET',
                     url: 'https://www.liuliuke.com/huanhuan/authMobile',
                     data,
                     success(res) {
                         console.log(res);
+                        me.setData({
+                            str: res.data.msg.mobile
+                        });
                     }
                 });
             },

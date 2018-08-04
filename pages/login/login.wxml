@@ -1,0 +1,10 @@
+<!--index.wxml-->
+<div class="container login">
+    <image class="logo" mode="aspectFill" src="https://mmbiz.qpic.cn/mmbiz_png/oZLZe4SBN0fWqtFibPyUFaZMImrppy42B4w7096OxIWfwj1l3LfKiaMu0vXlSjNpogzrWOCeniboRLrF2jHicJY0Jg/0?wx_fmt=png"></image>
+    <text class="title">知识换换</text>
+    <text class="text-title">登录后开发者将获得以下权限</text>
+    <text class="text-content">以微信绑定手机号登录</text>
+    <button class="login-btn" open-type="getPhoneNumber" bindgetphonenumber="getCellPhoneNumber">
+        确认登录
+    </button>
+</div>
