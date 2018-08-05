@@ -1,32 +1,32 @@
 /**
- * @file 实名认证
+ * @file 个人信息
  * @author 小强赵
  */
 
-let name = '';
-let idcard = '';
+let career = '';
+let wxaccount = '';
 
 Page({
     data: {
         disabled: true,
-        name: '',
-        idcard: ''
+        career: '',
+        wxaccount: ''
     },
     onLoad() {
         // debugger
         // getApp().globalData.code
     },
-    nameInput(e) {
-        name = e.detail.value;
+    careerInput(e) {
+        career = e.detail.value;
         this.validate();
     },
-    idcardInput(e) {
-        idcard = e.detail.value;
+    wxaccountInput(e) {
+        wxaccount = e.detail.value;
         this.validate();
     },
     validate() {
         let disabled;
-        if (idcard.length === 18 && name.length > 1) {
+        if (wxaccount.length === 18 && career.length > 1) {
             disabled = false;
         }
         else {
@@ -39,8 +39,8 @@ Page({
     submit() {
         // console.log({
         //     token: getApp().globalData.code,
-        //     name,
-        //     idcard
+        //     career,
+        //     wxaccount
         // });
         wx.request({
             method: 'POST',

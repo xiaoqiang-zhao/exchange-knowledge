@@ -1,32 +1,38 @@
 /**
- * @file 实名认证
+ * @file 我的知识
  * @author 小强赵
  */
 
-let name = '';
-let idcard = '';
+let title = '';
+let content = '';
 
 Page({
     data: {
         disabled: true,
-        name: '',
-        idcard: ''
+        career: '',
+        wxaccount: '',
+        content: '',
+        count: 0
     },
     onLoad() {
         // debugger
         // getApp().globalData.code
     },
-    nameInput(e) {
-        name = e.detail.value;
+    titleInput(e) {
+        title = e.detail.value;
         this.validate();
     },
-    idcardInput(e) {
-        idcard = e.detail.value;
+    contentInput(e) {
+        content = e.detail.value;
+        this.setData({
+            count: e.detail.value.length,
+            content: e.detail.value
+        });
         this.validate();
     },
     validate() {
         let disabled;
-        if (idcard.length === 18 && name.length > 1) {
+        if (content.length === 18 && title.length > 1) {
             disabled = false;
         }
         else {
@@ -39,9 +45,10 @@ Page({
     submit() {
         // console.log({
         //     token: getApp().globalData.code,
-        //     name,
-        //     idcard
+        //     career,
+        //     wxaccount
         // });
+        const me = this;
         wx.request({
             method: 'POST',
             header: {
@@ -50,8 +57,8 @@ Page({
             url: 'https://www.liuliuke.com/huanhuan/realname',
             data: {
                 token: getApp().globalData.code,
-                name,
-                idcard
+                title,
+                content
             },
             success(res) {
                 wx.setStorage({

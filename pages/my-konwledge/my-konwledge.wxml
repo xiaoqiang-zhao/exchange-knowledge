@@ -1,0 +1,21 @@
+<!-- 我的知识 -->
+<div class="container real-name">
+    <text class="title">我的知识</text>
+    <text class="content">更好的推荐适合你的知识</text>
+    <input class="input"
+        placeholder="标题"
+        bindinput="titleInput"
+        value="{{title}}"
+        auto-focus/>
+    <div class="textarea-container">
+        <textarea class="textarea content" bindinput="contentInput" placeholder="想成为哪方面过来人，写出你的经历"/>
+        <span class="count">{{count}}/200</span>
+    </div>
+    <button
+        class="submit-btn"
+        bindgetphonenumber="submit"
+        disabled="{{disabled}}"
+        bindtap="submit">
+        下一步
+    </button>
+</div>

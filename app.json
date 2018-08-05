@@ -1,5 +1,7 @@
 {
     "pages": [
+        "pages/my-konwledge/my-konwledge",
+        "pages/personal-info/personal-info",
         "pages/login/login",
         "pages/real-name/real-name",
         "pages/index/index",

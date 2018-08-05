@@ -1,0 +1,23 @@
+<!-- 个人信息 -->
+<div class="container real-name">
+    <text class="title">完善个人信息</text>
+    <text class="content">更好的推荐适合你的知识</text>
+    <input class="input"
+        placeholder="公司职业"
+        bindinput="professionName"
+        value="{{wxaccount}}"
+        auto-focus/>
+    <input
+        class="input"
+        placeholder="微信号"
+        type="idcard"
+        bindinput="wxaccountInput"
+        value="{{wxaccount}}"/>
+    <button
+        class="submit-btn"
+        bindgetphonenumber="submit"
+        disabled="{{disabled}}"
+        bindtap="submit">
+        下一步
+    </button>
+</div>
