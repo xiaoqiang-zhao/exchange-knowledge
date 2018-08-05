@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<div class="container my-profile">
+<div class="container real-name">
     <text class="title">实名认证</text>
     <text class="content">更好的推荐适合你的知识</text>
     <input class="input"

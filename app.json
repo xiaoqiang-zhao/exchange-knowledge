@@ -1,7 +1,7 @@
 {
     "pages": [
         "pages/login/login",
-        "pages/my-profile/my-profile",
+        "pages/real-name/real-name",
         "pages/index/index",
         "pages/mine/mine",
         "pages/matched/matched",

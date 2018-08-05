@@ -1,5 +1,5 @@
-/**index.wxss**/
-.my-profile {
+/** 实名认证 **/
+.real-name {
     background: #fff;
     text-align: center;
 }

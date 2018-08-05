@@ -66,7 +66,7 @@ Page({
     },
     navigateTo() {
         wx.navigateTo({
-            url: '/pages/my-profile/my-profile'
+            url: '/pages/real-name/real-name'
         });
     }
 });
