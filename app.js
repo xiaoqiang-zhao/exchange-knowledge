@@ -20,6 +20,8 @@ App({
                         key: 'code',
                         data: res.code
                     });
+                    getApp().globalData.code = res.code;
+                    // console.log('wxLogin:', res);
                 }
                 else {
                     wx.showToast({
@@ -32,6 +34,6 @@ App({
         });
     },
     globalData: {
-        userInfo: null
+        code: ''
     }
 });

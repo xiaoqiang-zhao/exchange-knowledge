@@ -1,51 +1,36 @@
 /**index.wxss**/
-.login {
+.my-profile {
     background: #fff;
     text-align: center;
 }
-.logo {
-    width: 90px;
-    height: 90px;
-    margin-top: 80px;
-    border-radius: 10px;
-}
 .title {
     display: block;
-    border-bottom: .3px solid #e8e7e7;
-    padding-bottom: 30px;
-    font-size: 30px;
-    font-weight: 600;
-    text-align: center;
-    margin: 0 45px;
+    padding: 42px 0 18px;
+    font-size: 24px;
+    line-height: 1em;
 }
-.text-title {
+.content {
     display: block;
-    text-align: left;
-    padding: 25px 45px 10px;
-    font-size: 18px;
-    color: #333;
-    font-weight: 400;
-}
-.text-content {
-    display: block;
-    padding: 0 45px;
-    text-align: left;
+    padding: 0 45px 55px;
     font-size: 16px;
     line-height: 16px;
-    color: #666565;
+    color: #999;
 }
-.text-content::before {
-    content: "\200B";
-    display: inline-block;
-    width: 5px;
-    height: 5px;
-    border-radius: 5px;
-    margin-right: 15px;
-    margin-top: 5px;
-    background: #969595;
-    vertical-align: top;
+.input {
+    padding-bottom: 14px;
+    margin: 0 50px 24px;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: left;
+    /* background: #51a938; */
 }
-.login-btn {
+.input-placeholder {
+    text-align: left;
+    color: #999;
+    font-size: 18px;
+    line-height: 1em;
+    /* background: #999; */
+}
+.submit-btn {
     margin: 45px;
     color: #fff;
     border: 0;

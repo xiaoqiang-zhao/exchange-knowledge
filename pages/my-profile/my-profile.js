@@ -1,55 +1,65 @@
 /**
- * @file 我的
+ * @file 实名认证
  * @author 小强赵
  */
 
+let name = '';
+let idcard = '';
+
 Page({
     data: {
-        str: ''
+        disabled: true,
+        name: '',
+        idcard: ''
     },
     onLoad() {
-        wx.getStorage({
-            key: 'code',
-            success(res) {
-                // console.log('code:', res.data);
-                // 跳转到下一页
-            }
+        // debugger
+        // getApp().globalData.code
+    },
+    nameInput(e) {
+        name = e.detail.value;
+        this.validate();
+    },
+    idcardInput(e) {
+        idcard = e.detail.value;
+        this.validate();
+    },
+    validate() {
+        let disabled;
+        if (idcard.length === 18 && name.length > 1) {
+            disabled = false;
+        }
+        else {
+            disabled = true;
+        }
+        this.setData({
+            disabled
         });
     },
-    getPhoneNumber(e) {
-        const me = this;
-        wx.getStorage({
-            key: 'code',
-            success(res) {
-                // 换真数据
-                // 用微信登录返回的加密数据换取解密后的数据
-                const data = {
-                    code: res.data,
-                    iv: e.detail.iv,
-                    encryptedData: e.detail.encryptedData
-                };
-
-                me.dd(data);
-            }
+    submit() {
+        console.log({
+            token: getApp().globalData.code,
+            name,
+            idcard
         });
-    },
-    dd(data) {
-        const me = this;
         wx.request({
-            method: 'GET',
-            url: 'https://www.liuliuke.com/huanhuan/authMobile',
-            data,
+            method: 'POST',
+            header: {
+                'content-type': 'application/x-www-form-urlencoded'
+            },
+            url: 'https://www.liuliuke.com/huanhuan/realname',
+            data: {
+                token: getApp().globalData.code,
+                name,
+                idcard
+            },
             success(res) {
-                console.log(res);
-                me.setData({
-                    str: res.data.msg.mobile
+                wx.setStorage({
+                    key: 'mobile',
+                    data: res.data.mobile
                 });
+                me.navigateTo();
             }
-        });
-    },
-    navigateTo() {
-        wx.navigateTo({
-            url: '/pages/your-profile/your-profile'
         });
     }
 });

@@ -1,5 +1,5 @@
 /**
- * @file 我的
+ * @file 登录页面
  * @author 小强赵
  */
 
@@ -59,6 +59,7 @@ Page({
                     key: 'mobile',
                     data: res.data.mobile
                 });
+                // console.log('decodeCellPhoneNumber:', res);
                 me.navigateTo();
             }
         });
