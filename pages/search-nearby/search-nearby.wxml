@@ -1,0 +1,11 @@
+<!-- 搜索附近 -->
+<div class="container search-nearby">
+    搜索附近
+    <button
+        class="submit-btn"
+        bindgetphonenumber="submit"
+        disabled="{{disabled}}"
+        bindtap="submit">
+        下一步
+    </button>
+</div>

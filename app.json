@@ -1,8 +1,10 @@
 {
     "pages": [
+        "pages/pre-page/pre-page",
+        "pages/login/login",
+        "pages/search-nearby/search-nearby",
         "pages/personal-info/personal-info",
         "pages/my-konwledge/my-konwledge",
-        "pages/login/login",
         "pages/real-name/real-name",
         "pages/index/index",
         "pages/mine/mine",

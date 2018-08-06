@@ -5,17 +5,7 @@
 
 Page({
     data: {},
-    onLoad() {
-        const me = this;
-        wx.getStorage({
-            key: 'mobile',
-            success(res) {
-                // console.log('code:', res.data);
-                // 跳转到下一页
-                me.navigateTo();
-            }
-        });
-    },
+    onLoad() {},
 
     /**
      * 获取手机号
@@ -24,13 +14,14 @@ Page({
      */
     getCellPhoneNumber(e) {
         const me = this;
-        wx.getStorage({
-            key: 'code',
+        // 获取微信 code
+        // 一个 code 只能用一次，登录的 code 不可以再使用
+        wx.login({
             success(res) {
                 // 换真数据
                 // 用微信登录返回的加密数据换取解密后的数据
                 const data = {
-                    code: res.data,
+                    code: res.code,
                     iv: e.detail.iv,
                     encryptedData: e.detail.encryptedData
                 };
@@ -59,14 +50,14 @@ Page({
                     key: 'mobile',
                     data: res.data.mobile
                 });
-                // console.log('decodeCellPhoneNumber:', res);
                 me.navigateTo();
+                // console.log('decodeCellPhoneNumber:', res);
             }
         });
     },
     navigateTo() {
         wx.navigateTo({
-            url: '/pages/real-name/real-name'
+            url: '/pages/search-nearby/search-nearby'
         });
     }
 });

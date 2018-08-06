@@ -1,39 +1,67 @@
-//app.js
+// app.js
 App({
     onLaunch() {
-        // wx.getStorage({
-        //     key: 'code',
-        //     // 已经获取过登录码
-        //     success() {
-        //         // console.log(res.data);
-        //     },
-        //     // 未获取登录码
-        //     fail() {
-        //     }
-        // });
-
-        // 微信登录
-        wx.login({
-            success: function(res) {
-                if (res.code) {
-                    wx.setStorage({
-                        key: 'code',
-                        data: res.code
-                    });
-                    getApp().globalData.code = res.code;
-                    // console.log('wxLogin:', res);
-                }
-                else {
-                    wx.showToast({
-                        title: '登录失败',
-                        icon: 'success',
-                        duration: 2000
-                    });
-                }
+        wx.getStorage({
+            key: 'mobile',
+            // 已验证手机 -> 搜附近的人
+            success() {
+                // console.log(res.data);
+                // 没找到怎么不闪一下的情况下 根据逻辑进入不同页面的方法
+                // wx.navigateTo({
+                //     url: '/pages/search-nearby/search-nearby'
+                // });
+            },
+            // 未验证手机 -> 登录注册
+            fail() {
+                xwLogin();
             }
         });
+
+        // 微信登录
+        function xwLogin() {
+            wx.login({
+                success(res) {
+                    if (res.code) {
+                        thirdLogin(res.code);
+                        // console.log('wxLogin res:', res);
+                    }
+                    else {
+                        wx.showToast({
+                            title: '登录失败',
+                            icon: 'success',
+                            duration: 2000
+                        });
+                    }
+                }
+            });
+        }
+
+        /**
+         * 第三方登录(我们自己的服务器登录)
+         * @param {string} code code码
+         */
+        function thirdLogin(code) {
+            wx.request({
+                method: 'POST',
+                header: {
+                    'content-type': 'application/x-www-form-urlencoded'
+                },
+                url: 'https://www.liuliuke.com/huanhuan/login',
+                data: {
+                    code: code
+                },
+                success(res) {
+                    wx.setStorage({
+                        key: 'token',
+                        data: res.data.data.token
+                    });
+                    // console.log('our login:', res);
+                    // console.log('our login token:', res.data.data.token);
+                }
+            });
+        }
     },
     globalData: {
-        code: ''
+        token: ''
     }
 });
