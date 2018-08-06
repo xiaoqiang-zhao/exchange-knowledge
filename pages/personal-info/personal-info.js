@@ -10,11 +10,44 @@ Page({
     data: {
         disabled: true,
         career: '',
-        wxaccount: ''
+        wxaccount: '',
+        headerImgSrc: ''
+        // headerImgSrc: 'https://mmbiz.qpic.cn/mmbiz_png/wDK6CibcOhhMfM2uRLLRDHh52vA6hGkxByib4ucNMjcNmdbiavTznr0r5VY76Y8AdH69uuE5ktRZMCP6XlnwSVSXw/0?wx_fmt=png'
     },
     onLoad() {
         // debugger
         // getApp().globalData.code
+        console.log('headerImgSrc:', this.data.headerImgSrc !== '');
+    },
+    chooseImageTap() {
+        let me = this;
+        wx.showActionSheet({
+            itemList: ['从相册中选择', '拍照'],
+            itemColor: '#f7982a',
+            success(res) {
+                if (!res.cancel) {
+                    if (res.tapIndex === 0) {
+                        me.chooseWxImage('album');
+                    }
+                    else if (res.tapIndex === 1) {
+                        me.chooseWxImage('camera');
+                    }
+                }
+            }
+        });
+    },
+    chooseWxImage(type) {
+        let _this = this;
+        wx.chooseImage({
+            sizeType: ['original', 'compressed'],
+            sourceType: [type],
+            success(res) {
+                console.log(res);
+                _this.setData({
+                    headImg: res.tempFilePaths[0]
+                });
+            }
+        });
     },
     careerInput(e) {
         career = e.detail.value;

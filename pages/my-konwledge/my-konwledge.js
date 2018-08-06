@@ -18,6 +18,36 @@ Page({
         // debugger
         // getApp().globalData.code
     },
+    chooseImageTap() {
+        let me = this;
+        wx.showActionSheet({
+            itemList: ['从相册中选择', '拍照'],
+            itemColor: '#f7982a',
+            success(res) {
+                if (!res.cancel) {
+                    if (res.tapIndex === 0) {
+                        me.chooseWxImage('album');
+                    }
+                    else if (res.tapIndex === 1) {
+                        me.chooseWxImage('camera');
+                    }
+                }
+            }
+        });
+    },
+    chooseWxImage(type) {
+        let _this = this;
+        wx.chooseImage({
+            sizeType: ['original', 'compressed'],
+            sourceType: [type],
+            success(res) {
+                console.log(res);
+                _this.setData({
+                    headImg: res.tempFilePaths[0]
+                });
+            }
+        });
+    },
     titleInput(e) {
         title = e.detail.value;
         this.validate();

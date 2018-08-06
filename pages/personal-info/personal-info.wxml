@@ -2,11 +2,20 @@
 <div class="container real-name">
     <text class="title">完善个人信息</text>
     <text class="content">更好的推荐适合你的知识</text>
+    <div class="head-img-placeholder iconfont icon-camera"
+        wx:if="{{headerImgSrc === ''}}"
+        catchtap="chooseImageTap">
+    </div>
+    <image
+        wx:else
+        class="head-img"
+        catchtap="chooseImageTap"
+        src="{{headerImgSrc}}">
+    </image>
     <input class="input"
         placeholder="公司职业"
         bindinput="professionName"
-        value="{{wxaccount}}"
-        auto-focus/>
+        value="{{wxaccount}}"/>
     <input
         class="input"
         placeholder="微信号"
