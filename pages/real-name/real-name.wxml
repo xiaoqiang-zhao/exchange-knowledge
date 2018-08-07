@@ -5,7 +5,7 @@
     <input class="input"
         placeholder="输入你的姓名"
         bindinput="nameInput"
-        value="{{name}}"
+        value="{{realname}}"
         auto-focus/>
     <input
         class="input"
@@ -13,6 +13,7 @@
         type="idcard"
         bindinput="idcardInput"
         value="{{idcard}}"/>
+    <text class="error" wx:if="{{isShow}}">请填写真实信息</text>
     <button
         class="submit-btn"
         bindgetphonenumber="submit"

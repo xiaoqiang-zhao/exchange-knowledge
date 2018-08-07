@@ -18,12 +18,9 @@
     padding-bottom: 100%;
     border-radius: 2000px;
     background-image: url(https://mmbiz.qpic.cn/mmbiz_png/oZLZe4SBN0eS0M4VNPvtIAanmwp2fyNSlaOkmLYzdwglRugWthiaxemziaVYb1CyD9dMl8HLiaCNsCmNJHcANIugg/0?wx_fmt=png);
-    /* background-image: url(https://mmbiz.qpic.cn/mmbiz_png/oZLZe4SBN0eS0M4VNPvtIAanmwp2fyNSeYARURAmALvtLgDBJIkX89lwjN95j8Pt8NqGwAiabUhgJa8ynzTjQyA/0?wx_fmt=png); */
 }
 .content {
     display: block;
-    
-    /* padding: 0 5px; */
     font-size: 16px;
     line-height: 1.5em;
     color: #999;

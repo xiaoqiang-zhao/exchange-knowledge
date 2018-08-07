@@ -44,7 +44,7 @@ Page({
             success(res) {
                 console.log(res);
                 _this.setData({
-                    headImg: res.tempFilePaths[0]
+                    headerImgSrc: res.tempFilePaths[0]
                 });
             }
         });
@@ -59,7 +59,7 @@ Page({
     },
     validate() {
         let disabled;
-        if (wxaccount.length === 18 && career.length > 1) {
+        if (wxaccount.length > 1 && career.length > 1) {
             disabled = false;
         }
         else {
@@ -70,11 +70,16 @@ Page({
         });
     },
     submit() {
-        // console.log({
-        //     token: getApp().globalData.code,
-        //     career,
-        //     wxaccount
-        // });
+        const me = this;
+        wx.getStorage({
+            key: 'token',
+            success(res) {
+                me.request(res.data);
+            }
+        });
+    },
+    request(token) {
+        const me = this;
         wx.request({
             method: 'POST',
             header: {
@@ -82,17 +87,22 @@ Page({
             },
             url: 'https://www.liuliuke.com/huanhuan/realname',
             data: {
-                token: getApp().globalData.code,
-                name,
-                idcard
+                token,
+                career,
+                wxaccount
             },
             success(res) {
                 wx.setStorage({
-                    key: 'mobile',
-                    data: res.data.mobile
+                    key: 'career',
+                    data: career
                 });
                 me.navigateTo();
             }
+        });
+    },
+    navigateTo() {
+        wx.navigateTo({
+            url: '/pages/my-konwledge/my-konwledge'
         });
     }
 });

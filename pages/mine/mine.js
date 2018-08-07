@@ -7,11 +7,37 @@ Page({
     data: {
         str: ''
     },
-    onLoad() {},
+    onLoad() {
+        // 如果未实名认证到实名认证页
+        wx.getStorage({
+            key: 'realName',
+            success(res) {
+                // console.log('realName:', res.data);
+            },
+            // 到实名认证页
+            fail() {
+                wx.navigateTo({
+                    url: '/pages/real-name/real-name'
+                });
+            }
+        });
+        wx.getStorage({
+            key: 'career',
+            success(res) {
+                // console.log('realName:', res.data);
+            },
+            // 到实名认证页
+            fail() {
+                wx.navigateTo({
+                    url: '/pages/personal-info/personal-info'
+                });
+            }
+        });
+    },
     getPhoneNumber(e) {
-        console.log(e.detail.errMsg);
-        console.log(e.detail.iv);
-        console.log(e.detail.encryptedData);
+        // console.log(e.detail.errMsg);
+        // console.log(e.detail.iv);
+        // console.log(e.detail.encryptedData);
         const me = this;
         wx.getStorage({
             key: 'code',
@@ -24,7 +50,7 @@ Page({
                     encryptedData: e.detail.encryptedData
                 };
 
-                console.log('getPhoneNumber:' + data);
+                // console.log('getPhoneNumber:' + data);
 
                 wx.request({
                     method: 'GET',

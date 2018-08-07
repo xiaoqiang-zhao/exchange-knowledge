@@ -3,21 +3,22 @@
  * @author 小强赵
  */
 
-let name = '';
+let realname = '';
 let idcard = '';
 
 Page({
     data: {
         disabled: true,
-        name: '',
-        idcard: ''
+        realname: '',
+        idcard: '',
+        isShow: false
     },
     onLoad() {
         // debugger
         // getApp().globalData.code
     },
     nameInput(e) {
-        name = e.detail.value;
+        realname = e.detail.value;
         this.validate();
     },
     idcardInput(e) {
@@ -26,7 +27,7 @@ Page({
     },
     validate() {
         let disabled;
-        if (idcard.length === 18 && name.length > 1) {
+        if (idcard.length === 18 && realname.length > 1) {
             disabled = false;
         }
         else {
@@ -37,28 +38,49 @@ Page({
         });
     },
     submit() {
-        // console.log({
-        //     token: getApp().globalData.code,
-        //     name,
-        //     idcard
-        // });
+        const me = this;
+        wx.getStorage({
+            key: 'token',
+            success(res) {
+                me.request(res.data);
+            }
+        });
+
+    },
+    request(token) {
         wx.request({
-            method: 'POST',
-            header: {
-                'content-type': 'application/x-www-form-urlencoded'
-            },
+            method: 'GET',
             url: 'https://www.liuliuke.com/huanhuan/realname',
             data: {
-                token: getApp().globalData.code,
-                name,
+                token,
+                realname,
                 idcard
             },
             success(res) {
                 wx.setStorage({
-                    key: 'mobile',
-                    data: res.data.mobile
+                    key: 'realName',
+                    data: realname
                 });
-                me.navigateTo();
+                wx.navigateTo({
+                    url: '/pages/personal-info/personal-info'
+                });
+                // let isShow;
+                // if (res.data.data.code === 0) {
+                //     wx.setStorage({
+                //         key: 'realName',
+                //         data: realname
+                //     });
+                //     isShow = true;
+                //     wx.navigateTo({
+                //         url: '/pages/personal-info/personal-info'
+                //     });
+                // }
+                // else {
+                //     isShow = false;
+                // }
+                // me.setData({
+                //     isShow
+                // });
             }
         });
     }

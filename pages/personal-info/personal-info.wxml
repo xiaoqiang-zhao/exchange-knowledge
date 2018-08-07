@@ -14,7 +14,7 @@
     </image>
     <input class="input"
         placeholder="公司职业"
-        bindinput="professionName"
+        bindinput="careerInput"
         value="{{wxaccount}}"/>
     <input
         class="input"
