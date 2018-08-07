@@ -9,15 +9,26 @@
     font-size: 24px;
     line-height: 1em;
 }
+.map {
+    margin: 20px 5px 15px;
+    height: 0;
+    line-height: 0;
+    overflow: hidden;
+    padding-bottom: 100%;
+    border-radius: 2000px;
+    background-image: url(https://mmbiz.qpic.cn/mmbiz_png/oZLZe4SBN0eS0M4VNPvtIAanmwp2fyNSlaOkmLYzdwglRugWthiaxemziaVYb1CyD9dMl8HLiaCNsCmNJHcANIugg/0?wx_fmt=png);
+    /* background-image: url(https://mmbiz.qpic.cn/mmbiz_png/oZLZe4SBN0eS0M4VNPvtIAanmwp2fyNSeYARURAmALvtLgDBJIkX89lwjN95j8Pt8NqGwAiabUhgJa8ynzTjQyA/0?wx_fmt=png); */
+}
 .content {
     display: block;
+    margin-top: 20px;
     padding: 0 45px 55px;
     font-size: 16px;
     line-height: 16px;
     color: #999;
 }
 .submit-btn {
-    margin: 45px;
+    margin: 20px 45px;
     color: #fff;
     border: 0;
     background: #51a938;
