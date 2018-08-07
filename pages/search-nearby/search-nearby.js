@@ -5,14 +5,14 @@
 
 Page({
     data: {
-        disabled: true,
-        name: '',
-        idcard: ''
+        status: 0,
+        content: '正在查找附近的人...'
     },
     onLoad() {
         this.getLocation();
     },
     getLocation() {
+        const me = this;
         wx.getLocation({
             success(res) {
                 wx.setStorage({
@@ -22,6 +22,22 @@ Page({
                 // console.log(res);
                 // longitude 经度
                 // latitude 维度
+                me.setData({
+                    content: '正在查找附近的人...',
+                    status: 1
+                });
+                setTimeout(() => {
+                    // 到首页
+                    wx.switchTab({
+                        url: '/pages/index/index'
+                    });
+                }, 1500);
+            },
+            fail() {
+                me.setData({
+                    content: '地理位置授权遭拒绝',
+                    status: 2
+                });
             }
         });
     }

@@ -3,11 +3,16 @@
     <view class="map">
         
     </view>
-    <text class="content">正在查找附近的人...</text>
-    <button
+    <text wx:if="{{status === 1}}" class="content">正在查找附近的人...</text>
+    <text wx:if="{{status === 2}}" class="content">
+        地理位置授权遭拒绝
+    </text>
+    <text wx:if="{{status === 2}}" class="content">
+        重新开启方式：右上角三个点的图标/关于知识换换/右上角三个点的图标/设置/开启
+    </text>
+    <!-- <button
         class="submit-btn"
-        bindgetphonenumber="submit"
-        bindtap="submit">
+        open-type="openSetting">
         授权地理位置
-    </button>
+    </button> -->
 </div>
