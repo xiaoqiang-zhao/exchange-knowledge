@@ -8,11 +8,16 @@ Page({
         str: ''
     },
     onLoad() {
-        // 如果未实名认证到实名认证页
+        this.checkRealName();
+    },
+    // 如果未实名认证到实名认证页
+    checkRealName() {
+        const me = this;
         wx.getStorage({
             key: 'realName',
             success(res) {
                 // console.log('realName:', res.data);
+                me.checkCareer();
             },
             // 到实名认证页
             fail() {
@@ -21,10 +26,13 @@ Page({
                 });
             }
         });
+    },
+    checkCareer() {
         wx.getStorage({
             key: 'career',
             success(res) {
                 // console.log('realName:', res.data);
+                me.checkMyKonwledge();
             },
             // 到实名认证页
             fail() {
@@ -34,10 +42,21 @@ Page({
             }
         });
     },
+    checkMyKonwledge() {
+        wx.getStorage({
+            key: 'title',
+            success(res) {
+                // console.log('realName:', res.data);
+            },
+            // 到实名认证页
+            fail() {
+                wx.navigateTo({
+                    url: '/pages/my-konwledge/my-konwledge'
+                });
+            }
+        });
+    },
     getPhoneNumber(e) {
-        // console.log(e.detail.errMsg);
-        // console.log(e.detail.iv);
-        // console.log(e.detail.encryptedData);
         const me = this;
         wx.getStorage({
             key: 'code',

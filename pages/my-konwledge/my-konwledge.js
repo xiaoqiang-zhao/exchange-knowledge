@@ -18,36 +18,6 @@ Page({
         // debugger
         // getApp().globalData.code
     },
-    chooseImageTap() {
-        let me = this;
-        wx.showActionSheet({
-            itemList: ['从相册中选择', '拍照'],
-            itemColor: '#f7982a',
-            success(res) {
-                if (!res.cancel) {
-                    if (res.tapIndex === 0) {
-                        me.chooseWxImage('album');
-                    }
-                    else if (res.tapIndex === 1) {
-                        me.chooseWxImage('camera');
-                    }
-                }
-            }
-        });
-    },
-    chooseWxImage(type) {
-        let _this = this;
-        wx.chooseImage({
-            sizeType: ['original', 'compressed'],
-            sourceType: [type],
-            success(res) {
-                console.log(res);
-                _this.setData({
-                    headImg: res.tempFilePaths[0]
-                });
-            }
-        });
-    },
     titleInput(e) {
         title = e.detail.value;
         this.validate();
@@ -62,7 +32,7 @@ Page({
     },
     validate() {
         let disabled;
-        if (content.length === 18 && title.length > 1) {
+        if (content.length > 1 && title.length > 1) {
             disabled = false;
         }
         else {
@@ -73,29 +43,31 @@ Page({
         });
     },
     submit() {
-        // console.log({
-        //     token: getApp().globalData.code,
-        //     career,
-        //     wxaccount
-        // });
         const me = this;
+        wx.getStorage({
+            key: 'token',
+            success(res) {
+                me.request(res.data);
+            }
+        });
+    },
+    request(token) {
         wx.request({
-            method: 'POST',
-            header: {
-                'content-type': 'application/x-www-form-urlencoded'
-            },
-            url: 'https://www.liuliuke.com/huanhuan/realname',
+            method: 'GET',
+            url: 'https://www.liuliuke.com/huanhuan/submitknow',
             data: {
-                token: getApp().globalData.code,
-                title,
-                content
+                token,
+                content,
+                title
             },
             success(res) {
                 wx.setStorage({
-                    key: 'mobile',
-                    data: res.data.mobile
+                    key: 'title',
+                    data: title
                 });
-                me.navigateTo();
+                wx.navigateTo({
+                    url: '/pages/index/index'
+                });
             }
         });
     }

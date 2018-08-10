@@ -12,12 +12,11 @@ Page({
         career: '',
         wxaccount: '',
         headerImgSrc: ''
-        // headerImgSrc: 'https://mmbiz.qpic.cn/mmbiz_png/wDK6CibcOhhMfM2uRLLRDHh52vA6hGkxByib4ucNMjcNmdbiavTznr0r5VY76Y8AdH69uuE5ktRZMCP6XlnwSVSXw/0?wx_fmt=png'
     },
     onLoad() {
         // debugger
         // getApp().globalData.code
-        console.log('headerImgSrc:', this.data.headerImgSrc !== '');
+        // console.log('headerImgSrc:', this.data.headerImgSrc !== '');
     },
     chooseImageTap() {
         let me = this;
@@ -37,15 +36,15 @@ Page({
         });
     },
     chooseWxImage(type) {
-        let _this = this;
+        const me = this;
         wx.chooseImage({
             sizeType: ['original', 'compressed'],
             sourceType: [type],
             success(res) {
-                console.log(res);
-                _this.setData({
+                me.setData({
                     headerImgSrc: res.tempFilePaths[0]
                 });
+                me.validate();
             }
         });
     },
@@ -59,7 +58,10 @@ Page({
     },
     validate() {
         let disabled;
-        if (wxaccount.length > 1 && career.length > 1) {
+        if (
+            wxaccount.length > 1
+            && career.length > 1
+            && this.data.headerImgSrc.length > 1) {
             disabled = false;
         }
         else {
@@ -80,18 +82,20 @@ Page({
     },
     request(token) {
         const me = this;
-        wx.request({
-            method: 'POST',
+        wx.uploadFile({
+            url: 'https://www.liuliuke.com/huanhuan/submitdetail',
+            filePath: this.data.headerImgSrc,
+            name: 'headerImgSrc',
             header: {
-                'content-type': 'application/x-www-form-urlencoded'
+                'content-type': 'multipart/form-data'
             },
-            url: 'https://www.liuliuke.com/huanhuan/realname',
-            data: {
+            // HTTP 请求中其他额外的 form data
+            formData: {
                 token,
-                career,
-                wxaccount
+                wxaccount,
+                career
             },
-            success(res) {
+            success() {
                 wx.setStorage({
                     key: 'career',
                     data: career
