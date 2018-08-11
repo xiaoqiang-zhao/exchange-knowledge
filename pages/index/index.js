@@ -31,7 +31,46 @@ Page({
         ],
         slideStardEvent: {}
     },
-    onLoad() {},
+    onLoad() {
+        const me = this;
+        // 获取地理位置
+        wx.getStorage({
+            key: 'location',
+            success(location) {
+                wx.getStorage({
+                    key: 'token',
+                    success(res) {
+                        me.loadList({
+                            token: res.data,
+                            longitude: location.data.longitude,
+                            latitude: location.data.latitude
+                        });
+                    }
+                });
+            }
+        });
+    },
+
+    loadList(data) {
+        const me = this;
+        wx.request({
+            method: 'GET',
+            url: 'https://www.liuliuke.com/huanhuan/getNearUserList',
+            data,
+            success(res) {
+                me.setData({
+                    slideList: res.data.data.cardList
+                });
+                // wx.setStorage({
+                //     key: 'title',
+                //     data: title
+                // });
+                // wx.navigateTo({
+                //     url: '/pages/index/index'
+                // });
+            }
+        });
+    },
 
     /**
      * 滑动开始
@@ -69,6 +108,7 @@ Page({
      * 滑动结束
      *
      * @param {Object} e 事件对象
+     * @param {Object} trans 【可选参数】位置偏移对象
      */
     touchend(e, trans) {
         const translate = trans || this.getTranslate(e);

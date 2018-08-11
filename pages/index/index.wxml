@@ -13,20 +13,20 @@
             bindtouchend="touchend"
             bindtouchstart="touchstart">
             <header class="img-container">
-                <image class="img" mode="aspectFill" src="https://mmbiz.qpic.cn/mmbiz_png/wDK6CibcOhhMfM2uRLLRDHh52vA6hGkxByib4ucNMjcNmdbiavTznr0r5VY76Y8AdH69uuE5ktRZMCP6XlnwSVSXw/0?wx_fmt=png"></image>
-                <span class="img-tag iconfont icon-img">3</span>
+                <image class="img" mode="aspectFill" src="{{item.avatar}}"></image>
+                <span class="img-tag iconfont icon-img">1</span>
                 <div class="user-info-container">
                     <div class="name">{{item.text}}</div>
                     <div class="info">
-                        <span>百度交互设计师</span>
-                        <span>1km</span>
+                        <span>{{item.career}}</span>
+                        <span>{{item.distance}}</span>
                     </div>
                 </div>
             </header>
             <footer class="text-container">
                 <div class="sub">我的知识</div>
-                <div class="title ellipsis">撒旦法大商股份</div>
-                <div class="content line-clamp">内容设定好三个地方，大沙发发奋，昂的发送到爱的色放，阿斯顿噶撒旦法，是点击发撒旦规范，啊设定好集阿什顿规范就按第三方</div>
+                <div class="title ellipsis">{{item.title}}</div>
+                <div class="content line-clamp">{{item.content}}</div>
             </footer>
         </article>
     </section>
