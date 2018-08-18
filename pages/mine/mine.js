@@ -28,6 +28,7 @@ Page({
         });
     },
     checkCareer() {
+        const me = this;
         wx.getStorage({
             key: 'career',
             success(res) {
@@ -69,8 +70,6 @@ Page({
                     encryptedData: e.detail.encryptedData
                 };
 
-                // console.log('getPhoneNumber:' + data);
-
                 wx.request({
                     method: 'GET',
                     url: 'https://www.liuliuke.com/huanhuan/authMobile',
@@ -87,8 +86,5 @@ Page({
                 console.log(res);
             }
         });
-        // this.setData({
-        //     str: 'iv:' + e.detail.iv
-        // });
     }
 });

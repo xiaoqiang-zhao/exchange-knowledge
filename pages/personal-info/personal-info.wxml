@@ -19,7 +19,6 @@
     <input
         class="input"
         placeholder="微信号"
-        type="idcard"
         bindinput="wxaccountInput"
         value="{{wxaccount}}"/>
     <button

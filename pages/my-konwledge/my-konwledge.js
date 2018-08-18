@@ -65,7 +65,7 @@ Page({
                     key: 'title',
                     data: title
                 });
-                wx.navigateTo({
+                wx.switchTab({
                     url: '/pages/index/index'
                 });
             }
