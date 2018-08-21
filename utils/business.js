@@ -1,5 +1,5 @@
 /**
- * @file 公共函数
+ * @file 业务相关公共函数
  */
 
 export default {
@@ -46,7 +46,8 @@ export default {
                 success(res) {
                     map.some(item => {
                         if (res.keys.indexOf(item.keys[0]) === -1) {
-                            return resolve(item);
+                            resolve(item);
+                            return true;
                         }
                     });
                 },

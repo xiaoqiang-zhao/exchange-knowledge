@@ -5,6 +5,7 @@
 
 let animation;
 import businessUtil from '../../utils/business';
+import commonUtil from '../../utils/common';
 Page({
     data: {
         slideList: [
@@ -16,31 +17,28 @@ Page({
             //     animationData: {}
             // }
         ],
-        slideStardEvent: {}
+        slideStardEvent: {},
+        // 是否完成了必要的输入
+        isFinishedInput: true,
+        inputStep: null
     },
     onLoad() {
-        const me = this;
-        // 获取地理位置
-        wx.getStorage({
-            key: 'location',
-            success(location) {
-                wx.getStorage({
-                    key: 'token',
-                    success(res) {
-                        me.loadList({
-                            token: res.data,
-                            longitude: location.data.longitude,
-                            latitude: location.data.latitude
-                        });
-                    }
-                });
-            }
+        commonUtil.getStorageData('location', 'token').then(res => {
+            this.loadList({
+                token: res.token,
+                longitude: res.location.longitude,
+                latitude: res.location.latitude
+            });
         });
 
         // 判断是否完成了信息填写
         businessUtil.getCurrentInputStep().then(res => {
             if (!res.isEnd) {
                 wx.hideTabBar();
+                this.setData({
+                    isFinishedInput: false,
+                    inputStep: res
+                });
             }
         });
     },
@@ -95,9 +93,13 @@ Page({
      * 滑动结束
      *
      * @param {Object} e 事件对象
-     * @param {Object} trans 【可选参数】位置偏移对象
+     * @param {Object} trans 【可选参数】位置偏移对象,
+     *                 trans.type 0 滑动幅度很小
+     *                 trans.type 1 左滑
+     *                 trans.type 2 右滑
      */
     touchend(e, trans) {
+        const me = this;
         const translate = trans || this.getTranslate(e);
         let rotate;
         if (!translate.type) {
@@ -124,6 +126,20 @@ Page({
         this.setData({
             [`slideList[${this.data.slideList.length - 1}].animationData`]: animation.export()
         });
+        
+        if (!this.data.isFinishedInput) {
+            wx.showModal({
+                title: '需要您输入一些信息',
+                content: '方便与TA人匹配',
+                showCancel: false,
+                confirmText: '去输入',
+                success() {
+                    wx.redirectTo({
+                        url: me.data.inputStep.path
+                    });
+                }
+            });
+        }
     },
 
     /**

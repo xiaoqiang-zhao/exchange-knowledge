@@ -95,10 +95,18 @@ Page({
                 wxaccount,
                 career
             },
-            success() {
+            success(res) {
                 me.navigateTo();
 
                 // 存储信息
+                wx.setStorage({
+                    key: 'headerImgSrc',
+                    data: res.data.data.showpics.headerImgSrc
+                });
+                wx.setStorage({
+                    key: 'wxaccount',
+                    data: wxaccount
+                });
                 wx.setStorage({
                     key: 'career',
                     data: career
