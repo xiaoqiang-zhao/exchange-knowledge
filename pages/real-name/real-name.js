@@ -57,30 +57,19 @@ Page({
                 idcard
             },
             success(res) {
+                wx.navigateTo({
+                    url: '/pages/personal-info/personal-info'
+                });
+
+                // 存储信息
                 wx.setStorage({
                     key: 'realName',
                     data: realname
                 });
-                wx.navigateTo({
-                    url: '/pages/personal-info/personal-info'
+                wx.setStorage({
+                    key: 'idcard',
+                    data: idcard
                 });
-                // let isShow;
-                // if (res.data.data.code === 0) {
-                //     wx.setStorage({
-                //         key: 'realName',
-                //         data: realname
-                //     });
-                //     isShow = true;
-                //     wx.navigateTo({
-                //         url: '/pages/personal-info/personal-info'
-                //     });
-                // }
-                // else {
-                //     isShow = false;
-                // }
-                // me.setData({
-                //     isShow
-                // });
             }
         });
     }

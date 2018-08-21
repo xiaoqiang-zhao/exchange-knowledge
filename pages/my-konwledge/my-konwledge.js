@@ -61,12 +61,18 @@ Page({
                 title
             },
             success(res) {
+                wx.switchTab({
+                    url: '/pages/index/index'
+                });
+
+                // 存储信息
                 wx.setStorage({
                     key: 'title',
                     data: title
                 });
-                wx.switchTab({
-                    url: '/pages/index/index'
+                wx.setStorage({
+                    key: 'content',
+                    data: content
                 });
             }
         });

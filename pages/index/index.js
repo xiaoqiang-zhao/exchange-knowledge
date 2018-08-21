@@ -4,30 +4,17 @@
  */
 
 let animation;
+import businessUtil from '../../utils/business';
 Page({
     data: {
         slideList: [
-            {
-                id: 'aa11',
-                text: '卡片一',
-                // 为动画预留
-                animationData: {}
-            },
-            {
-                id: 'bb22',
-                text: '卡片二',
-                animationData: {}
-            },
-            {
-                id: 'cc33',
-                text: '卡片三',
-                animationData: {}
-            },
-            {
-                id: 'dd44',
-                text: '卡片四',
-                animationData: {}
-            }
+            // 示例卡片
+            // {
+            //     id: 'aa11',
+            //     text: '卡片一',
+            //     // 为动画预留
+            //     animationData: {}
+            // }
         ],
         slideStardEvent: {}
     },
@@ -49,6 +36,13 @@ Page({
                 });
             }
         });
+
+        // 判断是否完成了信息填写
+        businessUtil.getCurrentInputStep().then(res => {
+            if (!res.isEnd) {
+                wx.hideTabBar();
+            }
+        });
     },
 
     loadList(data) {
@@ -61,13 +55,6 @@ Page({
                 me.setData({
                     slideList: res.data.data.cardList
                 });
-                // wx.setStorage({
-                //     key: 'title',
-                //     data: title
-                // });
-                // wx.navigateTo({
-                //     url: '/pages/index/index'
-                // });
             }
         });
     },

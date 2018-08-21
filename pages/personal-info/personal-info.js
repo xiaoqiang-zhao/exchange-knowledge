@@ -96,11 +96,13 @@ Page({
                 career
             },
             success() {
+                me.navigateTo();
+
+                // 存储信息
                 wx.setStorage({
                     key: 'career',
                     data: career
                 });
-                me.navigateTo();
             }
         });
     },

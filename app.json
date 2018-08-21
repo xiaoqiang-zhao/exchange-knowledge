@@ -8,8 +8,7 @@
         "pages/real-name/real-name",
         "pages/index/index",
         "pages/mine/mine",
-        "pages/matched/matched",
-        "pages/logs/logs"
+        "pages/matched/matched"
     ],
     "window": {
         "backgroundTextStyle": "light",

@@ -15,13 +15,6 @@ Page({
         const me = this;
         wx.getLocation({
             success(res) {
-                wx.setStorage({
-                    key: 'location',
-                    data: res
-                });
-                // console.log(res);
-                // longitude 经度
-                // latitude 维度
                 me.setData({
                     content: '正在查找附近的人...',
                     status: 1
@@ -31,7 +24,14 @@ Page({
                     wx.switchTab({
                         url: '/pages/index/index'
                     });
-                }, 1500);
+                }, 500);
+
+                wx.setStorage({
+                    key: 'location',
+                    data: res
+                });
+                // longitude 经度
+                // latitude 维度
             },
             fail() {
                 me.setData({
