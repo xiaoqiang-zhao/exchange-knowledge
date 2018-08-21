@@ -30,7 +30,7 @@ export default {
             {
                 name: '我的知识',
                 keys: ['title', 'content'],
-                path: '/pages/my-konwledge/my-konwledge'
+                path: '/pages/my-knowledge/my-knowledge'
             },
             {
                 name: '授权地理位置 / 查找附近的人',

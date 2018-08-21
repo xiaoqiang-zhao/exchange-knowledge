@@ -2,6 +2,7 @@
  * @file 我的知识
  * @author 小强赵
  */
+import commonUtil from '../../utils/common';
 
 let title = '';
 let content = '';
@@ -15,8 +16,16 @@ Page({
         count: 0
     },
     onLoad() {
-        // debugger
-        // getApp().globalData.code
+        // 从本地获取
+        commonUtil.getStorageData('title', 'content').then(res => {
+            title = res.title || '';
+            content = res.content || '';
+            this.setData({
+                title,
+                content
+            });
+            this.validate();
+        });
     },
     titleInput(e) {
         title = e.detail.value;
