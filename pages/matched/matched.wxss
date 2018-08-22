@@ -1,1 +1,35 @@
 /**index.wxss**/
+.matched {
+
+}
+
+.item {
+    display: flex;
+    margin: 0 15px;
+    padding: 20px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.avatar {
+    flex: 0 0 54px;
+    width: 54px;
+    height: 54px;
+    border-radius: 54px;
+    border: 1 px #a4a4a4;     
+}
+
+.text-container {
+    flex: 1;
+    padding-left: 14px;
+}
+
+.text-container header {
+    font-size: 16px;
+    color: #000;
+    line-height: 1.75em;
+}
+
+.text-container footer {
+    font-size: 14px;
+    color: #999;
+}

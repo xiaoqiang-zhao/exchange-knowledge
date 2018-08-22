@@ -1,4 +1,15 @@
 <!--index.wxml-->
-<div class="container">
-    匹配页
+<div class="container matched">
+    <article
+        class="item"
+        wx:for="{{list}}"
+        wx:key="{{item.token}}"
+        bindtap="setClipboard"
+        data-wxaccount="{{item.wxaccount}}">
+        <image class="avatar" src="{{item.avatar}}"/>
+        <section class="text-container">
+            <header>{{item.nick}} {{item.career}}</header>
+            <footer>匹配于 {{item.date}}</footer>
+        </section>
+    </article>
 </div>
