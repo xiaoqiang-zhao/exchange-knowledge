@@ -11,6 +11,7 @@
             animation="{{item.animationData}}"
             bindtouchmove="touchmove"
             bindtouchend="touchend"
+            data-token="{{item.token}}"
             bindtouchstart="touchstart">
             <header class="img-container">
                 <image class="img" mode="aspectFill" src="{{item.avatar}}"></image>
@@ -30,7 +31,7 @@
             </footer>
         </article>
     </section>
-    <section class="btn-container">
+    <section wx:if="{{slideList.length > 0}}" class="btn-container">
         <div class="btn iconfont icon-close" bindtap="slideLeft"></div>
         <div class="btn iconfont icon-handshake" bindtap="slideRight"></div>
     </section>

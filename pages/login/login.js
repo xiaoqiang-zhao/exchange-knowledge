@@ -51,7 +51,6 @@ Page({
                     data: res.data.mobile
                 });
                 me.navigateTo();
-                // console.log('decodeCellPhoneNumber:', res);
             }
         });
     },

@@ -2,6 +2,7 @@
  * @file 实名认证
  * @author 小强赵
  */
+import commonUtil from '../../utils/common';
 
 let realname = '';
 let idcard = '';
@@ -14,8 +15,16 @@ Page({
         isShow: false
     },
     onLoad() {
-        // debugger
-        // getApp().globalData.code
+        // 从本地获取
+        commonUtil.getStorageData('realName', 'idcard').then(res => {
+            realname = res.realName || '';
+            idcard = res.idcard || '';
+            this.setData({
+                realname,
+                idcard
+            });
+            this.validate();
+        });
     },
     nameInput(e) {
         realname = e.detail.value;

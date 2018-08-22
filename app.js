@@ -60,8 +60,5 @@ App({
                 }
             });
         }
-    },
-    globalData: {
-        token: ''
     }
 });

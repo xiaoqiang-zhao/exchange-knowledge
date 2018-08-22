@@ -3,9 +3,11 @@
  * @author 小强赵
  */
 
-let animation;
 import businessUtil from '../../utils/business';
 import commonUtil from '../../utils/common';
+
+let animation;
+let token;
 Page({
     data: {
         slideList: [
@@ -24,6 +26,7 @@ Page({
     },
     onLoad() {
         commonUtil.getStorageData('location', 'token').then(res => {
+            token = res.token;
             this.loadList({
                 token: res.token,
                 longitude: res.location.longitude,
@@ -50,9 +53,24 @@ Page({
             url: 'https://www.liuliuke.com/huanhuan/getNearUserList',
             data,
             success(res) {
+                if (!res.data.data) {
+                    res.data = {
+                        data: {
+                            cardList: []
+                        }
+                    };
+                }
                 me.setData({
                     slideList: res.data.data.cardList
                 });
+
+
+                // 冷启动入口
+                if (res.data.data.cardList.length === 0) {
+                    wx.redirectTo({
+                        url: '/pages/real-name/real-name'
+                    });
+                }
             }
         });
     },
@@ -102,10 +120,12 @@ Page({
         const me = this;
         const translate = trans || this.getTranslate(e);
         let rotate;
+        // 滑动幅度太小
         if (!translate.type) {
             translate.y = 0;
             rotate = 0;
         }
+        // 左滑右滑
         else {
             rotate = translate.x * 0.09;
             translate.x = 400;
@@ -117,6 +137,24 @@ Page({
                     slideList: this.data.slideList
                 });
             }, 280);
+
+            const url = translate.type === 1 ? 'unfollow' : 'follow';
+            if (translate) {
+                const token = this.data.slideList[this.data.slideList.length - 1].token;
+                wx.request({
+                    method: 'GET',
+                    url: 'https://www.liuliuke.com/huanhuan/' + url,
+                    data: {
+                        token,
+                        user: token
+                    },
+                    success(res) {
+                        // me.setData({
+                        //     slideList: res.data.data.cardList
+                        // });
+                    }
+                });
+            }
         }
         translate.x = [0, -400, 400][translate.type];
         animation.rotate(rotate).translate(translate.x, translate.y).step({
@@ -126,7 +164,8 @@ Page({
         this.setData({
             [`slideList[${this.data.slideList.length - 1}].animationData`]: animation.export()
         });
-        
+
+        // 信息不完整需要填写
         if (!this.data.isFinishedInput) {
             wx.showModal({
                 title: '需要您输入一些信息',

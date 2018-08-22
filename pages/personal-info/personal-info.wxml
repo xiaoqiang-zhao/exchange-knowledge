@@ -15,7 +15,7 @@
     <input class="input"
         placeholder="公司职业"
         bindinput="careerInput"
-        value="{{wxaccount}}"/>
+        value="{{career}}"/>
     <input
         class="input"
         placeholder="微信号"

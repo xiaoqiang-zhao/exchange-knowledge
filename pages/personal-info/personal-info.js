@@ -2,6 +2,7 @@
  * @file 个人信息
  * @author 小强赵
  */
+import commonUtil from '../../utils/common';
 
 let career = '';
 let wxaccount = '';
@@ -14,9 +15,17 @@ Page({
         headerImgSrc: ''
     },
     onLoad() {
-        // debugger
-        // getApp().globalData.code
-        // console.log('headerImgSrc:', this.data.headerImgSrc !== '');
+        // 从本地获取
+        commonUtil.getStorageData('career', 'wxaccount', 'headerImgSrc').then(res => {
+            career = res.career || '';
+            wxaccount = res.wxaccount || '';
+            this.setData({
+                career,
+                wxaccount,
+                headerImgSrc: res.headerImgSrc || ''
+            });
+            this.validate();
+        });
     },
     chooseImageTap() {
         let me = this;
@@ -98,6 +107,10 @@ Page({
             success(res) {
                 me.navigateTo();
 
+                if (typeof res.data === 'string') {
+                    res.data = JSON.parse(res.data);
+                }
+
                 // 存储信息
                 wx.setStorage({
                     key: 'headerImgSrc',
@@ -116,7 +129,7 @@ Page({
     },
     navigateTo() {
         wx.navigateTo({
-            url: '/pages/my-konwledge/my-konwledge'
+            url: '/pages/my-knowledge/my-knowledge'
         });
     }
 });
