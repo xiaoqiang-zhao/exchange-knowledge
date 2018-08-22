@@ -1,7 +1,46 @@
 <!--index.wxml-->
-<div class="container">
-    我的页: {{str}}
-    <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
-        获取手233
-    </button>
+<div class="container mine">
+    <image class="image" mode="widthFix" src="{{userInfo.headerImgSrc}}" bindtap="navigateToPersonalInfo"></image>
+    
+    <section class="card-section content-section" bindtap="navigateToRealName">
+        <div class="title">
+            实名认证
+        </div>
+        <div class="content">
+            <label>姓名</label>
+            {{userInfo.realName}}
+        </div>
+        <div class="content">
+            <label>身份证号</label>
+            {{userInfo.idcard}}
+        </div>
+    </section>
+
+    <section class="card-section content-section" bindtap="navigateToPersonalInfo">
+        <div class="title">
+            个人信息
+        </div>
+        <div class="content">
+            <label>职业</label>
+            {{userInfo.career}}
+        </div>
+        <div class="content">
+            <label>微信号</label>
+            {{userInfo.wxaccount}}
+        </div>
+    </section>
+
+    <section class="card-section content-section"  bindtap="navigateToMyKnowledge">
+        <div class="title">
+            我的知识
+        </div>
+        <div class="content">
+            <label>标题</label>
+            {{userInfo.title}}
+        </div>
+        <div class="content">
+            <label>内容</label>
+            {{userInfo.content}}
+        </div>
+    </section>
 </div>

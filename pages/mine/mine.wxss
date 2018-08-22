@@ -1,1 +1,44 @@
 /**index.wxss**/
+.mine {
+    padding-bottom: 10px;
+}
+.image {
+    width: 100%;
+}
+
+/* 卡片 */
+.card-section {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 10px 0 0 0;
+    padding-bottom: 5px;
+    background: #fff;
+}
+  
+/* 卡片标题 */
+.card-section .title {
+    font-size: 18px;
+    line-height: 1em;
+    padding: 20px 17px;
+    /* border-bottom: 1px solid #f0f0f0; */
+}
+
+.card-section .content {
+    font-size: 16px;
+    color: #555555;
+    line-height: 1.5em;
+    margin: 0 17px;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.card-section .content:last-of-type {
+    border-bottom: none;
+}
+
+.card-section .content label {
+    display: inline-block;
+    min-width: 30px;
+    color: #999;
+}
