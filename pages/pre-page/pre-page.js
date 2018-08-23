@@ -13,13 +13,13 @@ Page({
             // 已验证手机 -> 搜附近的人
             success() {
                 // console.log(res.data);
-                wx.navigateTo({
+                wx.redirectTo({
                     url: '/pages/search-nearby/search-nearby'
                 });
             },
             // 未验证手机 -> 登录注册
             fail() {
-                wx.navigateTo({
+                wx.redirectTo({
                     url: '/pages/login/login'
                 });
             }

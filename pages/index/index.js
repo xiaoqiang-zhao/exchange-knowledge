@@ -64,13 +64,12 @@ Page({
                     slideList: res.data.data.cardList
                 });
 
-
                 // 冷启动入口
-                if (res.data.data.cardList.length === 0) {
-                    wx.redirectTo({
-                        url: '/pages/real-name/real-name'
-                    });
-                }
+                // if (res.data.data.cardList.length === 0) {
+                //     wx.redirectTo({
+                //         url: '/pages/real-name/real-name'
+                //     });
+                // }
             }
         });
     },

@@ -3,7 +3,7 @@
     <text class="title">实名认证</text>
     <text class="content">更好的推荐适合你的知识</text>
     <input class="input"
-        placeholder="输入你的姓名"
+        placeholder="输入你的真实姓名"
         bindinput="nameInput"
         value="{{realname}}"
         auto-focus/>
