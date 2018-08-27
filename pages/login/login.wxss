@@ -13,7 +13,7 @@
     display: block;
     border-bottom: .3px solid #e8e7e7;
     padding-bottom: 30px;
-    font-size: 30px;
+    font-size: 22px;
     font-weight: 600;
     text-align: center;
     margin: 0 45px;
