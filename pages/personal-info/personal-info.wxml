@@ -13,6 +13,11 @@
         src="{{headerImgSrc}}">
     </image>
     <input class="input"
+        placeholder="输入你的真实姓名"
+        bindinput="nameInput"
+        value="{{realname}}"
+        auto-focus/>
+    <input class="input"
         placeholder="公司职业"
         bindinput="careerInput"
         value="{{career}}"/>

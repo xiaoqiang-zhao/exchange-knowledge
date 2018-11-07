@@ -9,20 +9,25 @@
     font-size: 24px;
     line-height: 1em;
 }
+map {
+  width: 1000px;
+  height: 1000px;
+}
 .map {
-    margin: 20px 5px 15px;
+    margin: 20px 5px 0 5px;
     height: 0;
     line-height: 0;
-    margin-bottom: 20px;
     overflow: hidden;
     padding-bottom: 100%;
+    background-size: 100%;
+    background-repeat: no-repeat;
     border-radius: 2000px;
-    background-image: url(https://mmbiz.qpic.cn/mmbiz_png/oZLZe4SBN0eS0M4VNPvtIAanmwp2fyNSlaOkmLYzdwglRugWthiaxemziaVYb1CyD9dMl8HLiaCNsCmNJHcANIugg/0?wx_fmt=png);
+    background-image: url(https://mmbiz.qpic.cn/mmbiz_png/PYuPblARCpeEFuKPVtg3ickQmIw6eMlZQxRooNqxrDrv3EfSZPGZTertVKBUB2IRSVfgRtVTOBNGfZzO7T2yN2A/0?wx_fmt=png);
 }
 .content {
     display: block;
     font-size: 16px;
-    line-height: 1.5em;
+    line-height: 1;
     color: #999;
 }
 .submit-btn {
@@ -30,4 +35,8 @@
     color: #fff;
     border: 0;
     background: #51a938;
+}
+.fail-btn {
+  font-size: 20px;
+  color: #d00000
 }

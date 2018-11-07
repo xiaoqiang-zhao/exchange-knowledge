@@ -100,7 +100,6 @@ Page({
 
         // 左右滑动时给点倾斜角度
         animation.rotate(translate.x * 0.09).translate(translate.x, translate.y).step();
-
         this.setData({
             [`slideList[${this.data.slideList.length - 1}].animationData`]: animation.export()
         });
@@ -148,9 +147,9 @@ Page({
                         user: token
                     },
                     success(res) {
-                        // me.setData({
-                        //     slideList: res.data.data.cardList
-                        // });
+                        me.setData({
+                            slideList: res.data.data.cardList
+                        });
                     }
                 });
             }
@@ -167,13 +166,14 @@ Page({
         // 信息不完整需要填写
         if (!this.data.isFinishedInput) {
             wx.showModal({
-                title: '需要您输入一些信息',
-                content: '方便与TA人匹配',
+                title: '请完善个人信息',
+                content: '没有个人信息，无法和别人交换知识',
                 showCancel: false,
-                confirmText: '去输入',
+                confirmText: '完善信息',
                 success() {
                     wx.redirectTo({
-                        url: me.data.inputStep.path
+                      // 此处先暂时写这样，后续RES 返回
+                      url: '/pages/personal-info/personal-info'
                     });
                 }
             });

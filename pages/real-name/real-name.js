@@ -56,30 +56,30 @@ Page({
         });
 
     },
-    request(token) {
-        wx.request({
-            method: 'GET',
-            url: 'https://www.liuliuke.com/huanhuan/realname',
-            data: {
-                token,
-                realname,
-                idcard
-            },
-            success(res) {
-                wx.navigateTo({
-                    url: '/pages/personal-info/personal-info'
-                });
-
-                // 存储信息
-                wx.setStorage({
-                    key: 'realName',
-                    data: realname
-                });
-                wx.setStorage({
-                    key: 'idcard',
-                    data: idcard
-                });
-            }
+  request(token) {
+    wx.request({
+      method: 'GET',
+      url: 'https://www.liuliuke.com/huanhuan/realname',
+      data: {
+        token,
+        realname,
+        idcard
+      },
+      success(res) {
+        wx.navigateTo({
+          url: '/pages/personal-info/personal-info'
         });
-    }
+
+        // 存储信息
+        wx.setStorage({
+          key: 'realName',
+          data: realname
+        });
+        wx.setStorage({
+          key: 'idcard',
+          data: idcard
+        });
+      }
+    });
+  }
 });

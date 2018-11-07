@@ -6,21 +6,26 @@ import commonUtil from '../../utils/common';
 
 let career = '';
 let wxaccount = '';
+let realname = '';
+let headerImgSrc = '';
 
 Page({
     data: {
         disabled: true,
         career: '',
         wxaccount: '',
-        headerImgSrc: ''
+        headerImgSrc: '',
+        realname: ''
     },
     onLoad() {
         // 从本地获取
-        commonUtil.getStorageData('career', 'wxaccount', 'headerImgSrc').then(res => {
+      commonUtil.getStorageData('realname', 'career', 'wxaccount', 'headerImgSrc').then(res => {
             career = res.career || '';
+            realname = res.realname || '';
             wxaccount = res.wxaccount || '';
             this.setData({
                 career,
+                realname,
                 wxaccount,
                 headerImgSrc: res.headerImgSrc || ''
             });
@@ -57,6 +62,11 @@ Page({
             }
         });
     },
+
+    nameInput(e) {
+      realname = e.detail.value;
+      this.validate();
+    },
     careerInput(e) {
         career = e.detail.value;
         this.validate();
@@ -68,7 +78,8 @@ Page({
     validate() {
         let disabled;
         if (
-            wxaccount.length > 1
+            realname.length > 1
+            && wxaccount.length > 1
             && career.length > 1
             && this.data.headerImgSrc.length > 1) {
             disabled = false;
@@ -102,7 +113,8 @@ Page({
             formData: {
                 token,
                 wxaccount,
-                career
+                career,
+                realname,
             },
             success(res) {
                 me.navigateTo();
@@ -112,6 +124,10 @@ Page({
                 }
 
                 // 存储信息
+                wx.setStorage({
+                    key: 'realname',
+                    data: realname
+                });
                 wx.setStorage({
                     key: 'headerImgSrc',
                     data: res.data.data.showpics.headerImgSrc

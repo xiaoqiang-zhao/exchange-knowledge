@@ -1,18 +1,16 @@
 <!-- 搜索附近 -->
 <div class="container search-nearby">
+   <text class="title">与附近的人配对交换知识</text>
+    <text class="content">互相学习，交个朋友</text>
     <view class="map">
-        
     </view>
     <text wx:if="{{status === 1}}" class="content">正在查找附近的人...</text>
-    <text wx:if="{{status === 2}}" class="content">
-        地理位置授权遭拒绝
+    <text wx:if="{{status === 2}}" class="content fail-btn">
+        定位授权未成功
     </text>
-    <text wx:if="{{status === 2}}" class="content">
-        重新开启方式：右上角三个点的图标/关于知识换换/右上角三个点的图标/设置/开启
-    </text>
-    <!-- <button
+    <button wx:if="{{status === 2}}"
         class="submit-btn"
         open-type="openSetting">
         授权地理位置
-    </button> -->
+    </button>
 </div>

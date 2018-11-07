@@ -14,6 +14,7 @@ Page({
     getLocation() {
         const me = this;
         wx.getLocation({
+            type: 'gcj02',
             success(res) {
                 me.setData({
                     content: '正在查找附近的人...',

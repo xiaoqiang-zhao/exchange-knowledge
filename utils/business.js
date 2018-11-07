@@ -18,11 +18,6 @@ export default {
 
             },
             {
-                name: '实名认证',
-                keys: ['realName', 'idcard'],
-                path: '/pages/real-name/real-name'
-            },
-            {
                 name: '个人信息',
                 keys: ['headerImgSrc', 'career', 'wxaccount'],
                 path: '/pages/personal-info/personal-info'

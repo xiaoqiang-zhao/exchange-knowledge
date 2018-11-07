@@ -15,11 +15,11 @@
             bindtouchstart="touchstart">
             <header class="img-container">
                 <image class="img" mode="aspectFill" src="{{item.avatar}}"></image>
-                <span class="img-tag iconfont icon-img">1</span>
+               <!--  <span class="img-tag iconfont icon-img">1</span> -->
                 <div class="user-info-container">
                     <div class="name">{{item.nick}}</div>
                     <div class="info">
-                        <span>{{item.career}}</span>
+                        <span class="name">{{item.career}}</span>
                         <span>{{item.distance}}</span>
                     </div>
                 </div>
