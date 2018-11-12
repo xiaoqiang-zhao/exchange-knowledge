@@ -51,15 +51,16 @@
             <footer class="text-container">
                 <div class="sub">我的知识</div>
                 <div class="title ellipsis">{{item.title}}</div>
-                <div class="content line-clamp">{{item.content}}</div>
+                <div class="content line-clamp">{{item.content}} {{isFinishedInput}}</div>
             </footer>
         </article>
     </section>
     <section wx:if="{{slideList.length > 0}}" class="btn-container">
-        <div class="btn iconfont icon-close2" id="clickLeft" bindtap="slideLeft"></div>
-        <div class="btn iconfont icon-handshake" id="clickRight" bindtap="slideRight">
-        </div>
-        <div class="btn icon-tip"  bindtap="slideRight">愿意见面交换知识</div>
+        <block wx:if="{{!isFinishedInput}}">
+            <div class="btn iconfont icon-close2" id="clickLeft" bindtap="slideLeft"></div>
+            <div class="btn iconfont icon-handshake icon-tip"  bindtap="slideRight">愿意交流经验</div>
+        </block>
+        <div wx:else class="btn icon-tip btn-only iconfont icon-error" bindtap="slideRight">完善个人信息，即可开始交换</div>
     </section>
 </div>
 <section class="match-bg" wx:if="{{followSuccess}}">

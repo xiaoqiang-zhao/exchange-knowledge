@@ -8,7 +8,6 @@ import commonUtil from '../../utils/common';
 
 let animation;
 let token;
-let translateNum = 0;
 let user;
 let originMatchNum = 0;
 let newMatchNum = 0;
@@ -34,7 +33,7 @@ Page({
         avatar: '',
         // 匹配的自己头像
         myavatar: '',
-        // 联系对方的参数 
+        // 联系对方的参数
         user: '',
         // 联系对方的名字
         name: '',
@@ -241,26 +240,6 @@ Page({
         this.setData({
             [`slideList[${this.data.slideList.length - 1}].animationData`]: animation.export()
         });
-        translateNum++;
-
-        // 滑动到第三张后， 信息不完整需要填写
-        if (translateNum > 6 && !this.data.isFinishedInput) {
-            wx.showModal({
-                title: '请完善个人信息',
-                content: '没有个人信息，无法和别人交换知识',
-                showCancel: false,
-                confirmText: '完善信息',
-                success() {
-                    wx.redirectTo({
-                        // 此处先暂时写这样，后续RES 返回
-                        url: '/pages/personal-info/personal-info'
-                    });
-                    wx.reportAnalytics('edit_info_click', {
-                        editinfo: 0
-                    });
-                }
-            });
-        }
     },
 
     /**

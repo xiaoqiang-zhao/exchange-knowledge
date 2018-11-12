@@ -8,6 +8,7 @@
     /* background: #f37737; */
     /* border-bottom: 1px solid #333; */
 }
+
 /* ==== 布局说明 ====
  * 1、卡片区和按钮区在一个弹性盒中，主轴是竖直方向
  * 2、按钮区占 129px 固定高度，剩下的留给卡片区
@@ -79,12 +80,14 @@
     font-weight: 600;
     background: rgba(120, 120, 120, .4);
 }
+
 .card .img-container .img-tag::before {
     margin-right: 5px;
     font-size: 28px;
     font-weight: 400;
     float: left;
 }
+
 .card .img-container .img-tag-left {
     position: absolute;
     top: 10px;
@@ -93,16 +96,18 @@
     border-radius: 5px;
     text-align: center;
     font-size: 14px;
-    z-index:99;
+    z-index: 99;
     font-weight: 700;
     color: rgba(243, 119, 55, .8);
     background: rgba(255, 255, 255, .6);
 }
-.card .img-container .img-tag-left .icon-handshake  {
+
+.card .img-container .img-tag-left .icon-handshake {
     line-height: 28px;
     font-weight: 600;
     font-size: 40px;
 }
+
 .card .img-container .img-tag-right {
     position: absolute;
     top: 10px;
@@ -111,7 +116,7 @@
     border-radius: 5px;
     text-align: center;
     font-size: 14px;
-    z-index:99;
+    z-index: 99;
     font-weight: 700;
     color: rgba(255, 255, 255, .8);
     background: rgba(120, 120, 120, .4);
@@ -147,14 +152,17 @@
     padding: 0 10px;
     margin: 10px 0 20px;
 }
+
 /* :nth-of-type(n + 2) */
 .card .img-container .user-info-container .info span {
     display: inline-block;
     font-size: 16px;
 }
+
 .name {
-  text-shadow: 1px 1px 2px #666;
+    text-shadow: 1px 1px 2px #666;
 }
+
 .card .img-container .user-info-container .info span:nth-of-type(n + 2)::before {
     content: "\200B";
     display: inline-block;
@@ -165,7 +173,7 @@
 }
 
 .card .text-container {
-    padding: 20px ;
+    padding: 20px;
     flex: 0 0 140px;
     overflow: hidden;
 }
@@ -208,48 +216,59 @@
     justify-content: center;
     box-sizing: content-box;
     vertical-align: top;
+    box-shadow: 1px 2px 5px #d8d8d8;
     height: 34px;
     line-height: 34px;
     background: #fff;
+    text-align: center;
 }
 
 .btn-container .icon-close2 {
     display: inline-block;
-    text-align: center;
-    width: 28%;
+    width: 26%;
+    margin-right: 2%;
     background: #fff;
     color: #f27f46;
     border-radius: 40px 0 0 40px;
     font-size: 30px;
-    border-right: 1px solid #eee;
-
 }
 
-
-.btn-container .icon-handshake {
-    display: inline-block;
-    width: 20%;
-    text-align: right;
-    color: #f27f46;
-    font-size: 38px;
-}
 .btn-container .icon-tip {
-  display: inline-block;
-  border-radius: 0 40px 40px 0;
-  font-size: 16px;
-  font-weight: 400;
-  color: #f27f46;
-  width: 46%;
-  padding-left: 10px;
+    display: inline-block;
+    border-radius: 0 40px 40px 0;
+    font-size: 16px;
+    font-weight: 400;
+    color: #f27f46;
+    width: 66%;
+    padding-left: 10px;
+}
+
+.btn-container .icon-tip:before {
+    font-size: 38px;
+    vertical-align: middle;
+    margin-right: 9px;
+}
+
+.btn-container .btn-only {
+    border-radius: 40px;
+    width: auto;
+    padding: 14px 30px;
+    color: #000;
+}
+
+.btn-container .icon-error:before {
+    color: red;
+    margin-right: 9px;
 }
 
 .match-bg {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  z-index: 10;
-  background-color: rgba(0, 0, 0, .7)
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, .7)
 }
+
 .match-back {
     background: #fff;
     margin: 0 17px;
@@ -257,8 +276,9 @@
     position: relative;
     top: 40px;
     border-radius: 4px;
-  
+
 }
+
 .match-back .icon-handshake::before {
     box-sizing: border-box;
     font-size: 48px;
@@ -269,27 +289,29 @@
     width: 100%;
 
 }
+
 .match-bg .match-photos {
-    dis: 0 0 0 100px;
     justify-content: center;
     text-align: center;
     overflow: hidden;
     flex-direction: row;
-  
-}
-.match-bg .match-img {
-  display:inline-flex;
-  justify-content:center;
-  box-sizing:content-box;
-  vertical-align:top;
-  width:80px;
-  height:80px;
-  border:0.5px solid #e4e4e6;
-  border-radius:80px;
-  font-size:25px;
-  background:#f1f1f1;
 
 }
+
+.match-bg .match-img {
+    display: inline-flex;
+    justify-content: center;
+    box-sizing: content-box;
+    vertical-align: top;
+    width: 80px;
+    height: 80px;
+    border: 0.5px solid #e4e4e6;
+    border-radius: 80px;
+    font-size: 25px;
+    background: #f1f1f1;
+
+}
+
 .match-bg .title {
     display: block;
     padding: 34px 0 18px;
@@ -299,6 +321,7 @@
     color: #f37737;
     font-weight: 700;
 }
+
 .match-bg .content {
     display: block;
     font-size: 16px;
@@ -310,7 +333,7 @@
 
 
 .match-left-img {
-   margin-right: 80px;
+    margin-right: 80px;
 }
 
 .submit-btn {
@@ -319,32 +342,36 @@
     border: 0;
     background: #f37737;
 }
+
 .submit-btn-continue {
     margin: 20px 45px;
     color: #fff;
     border: 0;
     background: #f37737;
 }
+
 .tip {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 34px;
-  z-index: 9999;
-  background:  rgba(254, 236, 201, .9);
-  width: 100%;
-  padding: 0 37px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 34px;
+    z-index: 9999;
+    background: rgba(254, 236, 201, .9);
+    width: 100%;
+    padding: 0 37px;
 }
+
 .tip-text {
-  display: inline-block;
-  width: 80%;
-  color: #555;
-  line-height: 34px;
-  font-size: 14px;
+    display: inline-block;
+    width: 80%;
+    color: #555;
+    line-height: 34px;
+    font-size: 14px;
 }
+
 .tip .icon-close1 {
-  color: #555;
-  font-weight: 400;
-  font-size: 16px;
+    color: #555;
+    font-weight: 400;
+    font-size: 16px;
 
 }
