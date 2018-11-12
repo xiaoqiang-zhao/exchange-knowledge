@@ -1,0 +1,22 @@
+<!--pages/guide-page/guide-page.wxml-->
+<div class="container">
+    <image class="img"  mode ="widthFix" src="https://mmbiz.qpic.cn/mmbiz_jpg/PYuPblARCpfhWB0U8RpSkVgCJpe7fibbaB4fhega2JT7ae5RUl2SO8nfDLL9EB0qP4EHbw4YPWb3OeaVf4phYHQ/0?wx_fmt=jpeg"></image>
+    <div class="contain-box">
+      <!-- <div class="title">
+          和附近的人喝杯咖啡， 互相学习
+      </div>
+      <div class="content">
+          相互学习对方的经验
+      </div>
+     
+      <div class="content">
+          知识换换——一个交换知识， 认识朋友的平台
+      </div> -->
+      <button 
+          class="submit-btn"
+          bindgetphonenumber="submit"
+          bindtap="submit">
+          开启知识换换
+      </button>
+    </div>
+</div>

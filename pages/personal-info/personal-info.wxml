@@ -1,36 +1,47 @@
 <!-- 个人信息 -->
 <div class="container real-name">
     <text class="title">完善个人信息</text>
-    <text class="content">更好的推荐适合你的知识</text>
-    <div class="head-img-placeholder iconfont icon-camera"
-        wx:if="{{headerImgSrc === ''}}"
-        catchtap="chooseImageTap">
+    <text class="content">填写真实信息，方便和人交换知识</text>
+    <div class="head-img-placeholder"    wx:if="{{headerImgSrc === ''}}"
+          catchtap="chooseImageTap">
+      <div class="iconfont icon-camera" >
+      </div>
+      <span class="img-upload-tip">请上传真实正脸照片</span>
     </div>
-    <image
-        wx:else
-        class="head-img"
-        catchtap="chooseImageTap"
-        src="{{headerImgSrc}}">
-    </image>
-    <input class="input"
-        placeholder="输入你的真实姓名"
-        bindinput="nameInput"
-        value="{{realname}}"
-        auto-focus/>
-    <input class="input"
-        placeholder="公司职业"
-        bindinput="careerInput"
-        value="{{career}}"/>
-    <input
-        class="input"
-        placeholder="微信号"
-        bindinput="wxaccountInput"
-        value="{{wxaccount}}"/>
-    <button
-        class="submit-btn"
-        bindgetphonenumber="submit"
-        disabled="{{disabled}}"
-        bindtap="submit">
-        下一步
-    </button>
+    <div class="head-img" wx:else>
+       <image
+          catchtap="chooseImageTap"
+          src="{{headerImgSrc}}"
+          mode="aspectFill">
+      </image>
+    </div>
+    <div class="send-content">
+      <input class="input"
+          placeholder="真实姓名"
+          bindinput="nameInput"
+          value="{{realname}}"
+          focus="{{focus}}"
+          auto-focus/>
+      <input class="input"
+          placeholder="公司职业（百度产品经理)"
+          bindinput="careerInput"
+          focus="{{focus}}"
+          value="{{career}}"/>
+      <input
+          class="input"
+          placeholder="微信号（用于配对后联系)"
+          bindinput="wxaccountInput"
+          focus="{{focus}}"
+          value="{{wxaccount}}"/>
+      <button
+          class="submit-btn"
+          id="editNext"
+          bindgetphonenumber="submit"
+          disabled="{{disabled}}"
+          bindtap="submit">
+          {{submitBtn}}
+      </button>
+    </div>
+   
+     
 </div>

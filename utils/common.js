@@ -31,5 +31,17 @@ export default {
                 });
             });
         });
+    },
+    getMatchList(data) {
+        return new Promise((resolve, reject) => {
+            wx.request({
+                method: 'GET',
+                url: 'https://www.liuliuke.com/huanhuan/matchList',
+                data,
+                success(res) {
+                    resolve(res.data.data)
+                }
+            });
+        });
     }
 };

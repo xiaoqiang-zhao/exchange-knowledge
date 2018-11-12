@@ -16,7 +16,7 @@ Page({
     },
     onLoad() {
         // 从本地获取
-        commonUtil.getStorageData('realName', 'idcard').then(res => {
+      commonUtil.getStorageData('realname', 'idcard').then(res => {
             realname = res.realName || '';
             idcard = res.idcard || '';
             this.setData({
@@ -56,30 +56,30 @@ Page({
         });
 
     },
-  request(token) {
-    wx.request({
-      method: 'GET',
-      url: 'https://www.liuliuke.com/huanhuan/realname',
-      data: {
-        token,
-        realname,
-        idcard
-      },
-      success(res) {
-        wx.navigateTo({
-          url: '/pages/personal-info/personal-info'
-        });
+    request(token) {
+        wx.request({
+            method: 'GET',
+            url: 'https://www.liuliuke.com/huanhuan/realname',
+            data: {
+                token,
+                realname,
+                idcard
+            },
+            success(res) {
+                wx.navigateTo({
+                    url: '/pages/personal-info/personal-info'
+                });
 
-        // 存储信息
-        wx.setStorage({
-          key: 'realName',
-          data: realname
+                // 存储信息
+                wx.setStorage({
+                    key: 'realName',
+                    data: realname
+                });
+                wx.setStorage({
+                    key: 'idcard',
+                    data: idcard
+                });
+            }
         });
-        wx.setStorage({
-          key: 'idcard',
-          data: idcard
-        });
-      }
-    });
-  }
+    }
 });

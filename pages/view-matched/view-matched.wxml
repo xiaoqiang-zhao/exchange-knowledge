@@ -1,0 +1,28 @@
+<!--pages/view-matched/view-matched.wxml-->
+<div class="container">
+   <image class='head-img' src="{{info.avatar}}"></image>
+   <div class="tip-title">{{info.nick}}</div>
+   <div wx:if="{{info.career}}" class="tip-content">{{info.career}}</div>
+   <div class="sanjiao_tip">
+       <p class="sanjiao_up"></p>
+   </div>
+   <section class="info-card">
+        <div class="info-content">我对你的知识也蛮感兴趣， 有时间的话我们见面聊聊， 相互学习一下</div>
+        <div wx:if="{{info.wxaccount}}">
+           <label class="font-bold">我的微信号: </label>
+           <span class="orange-title">{{info.wxaccount}}</span>
+        </div>
+        <div>
+            <label>我的知识: </label>
+            <span class="info-detail-title">{{info.know.title}}</span>
+        </div>
+        <div class="info-content">{{info.know.content}}</div>
+       
+   </section>
+    <button
+        class="submit-btn"
+        id="copyWx"
+        bindtap="copyAccount">
+        复制微信号
+    </button>
+</div>

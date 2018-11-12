@@ -8,6 +8,11 @@ import commonUtil from '../../utils/common';
 
 let animation;
 let token;
+let translateNum = 0;
+let user;
+let originMatchNum = 0;
+let newMatchNum = 0;
+let timer;
 Page({
     data: {
         slideList: [
@@ -22,7 +27,20 @@ Page({
         slideStardEvent: {},
         // 是否完成了必要的输入
         isFinishedInput: true,
-        inputStep: null
+        inputStep: null,
+        // 是否配对成功
+        followSuccess: false,
+        // 匹配的对方头像
+        avatar: '',
+        // 匹配的自己头像
+        myavatar: '',
+        // 联系对方的参数 
+        user: '',
+        // 联系对方的名字
+        name: '',
+        cardTitle: '请滑动选择',
+        showTip: true
+
     },
     onLoad() {
         commonUtil.getStorageData('location', 'token').then(res => {
@@ -32,8 +50,14 @@ Page({
                 longitude: res.location.longitude,
                 latitude: res.location.latitude
             });
-        });
+            commonUtil.getMatchList({
+                token
+            }).then(res => {
+                originMatchNum = res.number;
+            });
 
+
+        });
         // 判断是否完成了信息填写
         businessUtil.getCurrentInputStep().then(res => {
             if (!res.isEnd) {
@@ -45,7 +69,25 @@ Page({
             }
         });
     },
+    onShow() {
+        timer = setInterval(() => {
+            commonUtil.getMatchList({
+                token
+            }).then(res => {
+                newMatchNum = res.number;
+            });
 
+            if (newMatchNum - originMatchNum > 0) {
+                wx.showTabBarRedDot({
+                    index: 1
+                });
+            }
+        }, 5000);
+    },
+    onHide() {
+        clearInterval(timer);
+    },
+    // 获取附近的人
     loadList(data) {
         const me = this;
         wx.request({
@@ -100,6 +142,21 @@ Page({
 
         // 左右滑动时给点倾斜角度
         animation.rotate(translate.x * 0.09).translate(translate.x, translate.y).step();
+        if (translate.x > 0) {
+            // 右滑同意
+            this.setData({
+                [`slideList[${this.data.slideList.length - 1}].rightIconShow`]: true,
+                [`slideList[${this.data.slideList.length - 1}].leftIconShow`]: false
+            });
+        }
+        else if (translate.x < 0) {
+            // 左滑不同意
+            this.setData({
+                [`slideList[${this.data.slideList.length - 1}].leftIconShow`]: true,
+                [`slideList[${this.data.slideList.length - 1}].rightIconShow`]: false
+
+            });
+        }
         this.setData({
             [`slideList[${this.data.slideList.length - 1}].animationData`]: animation.export()
         });
@@ -132,24 +189,46 @@ Page({
                 // 移除数据
                 this.data.slideList.pop();
                 this.setData({
-                    slideList: this.data.slideList
+                    slideList: this.data.slideList,
+                    cardTitle: '附近没有更多人了'
                 });
             }, 280);
 
             const url = translate.type === 1 ? 'unfollow' : 'follow';
             if (translate) {
-                const token = this.data.slideList[this.data.slideList.length - 1].token;
+                const otherToken = this.data.slideList[this.data.slideList.length - 1].token;
                 wx.request({
                     method: 'GET',
                     url: 'https://www.liuliuke.com/huanhuan/' + url,
                     data: {
                         token,
-                        user: token
+                        user: otherToken
                     },
                     success(res) {
-                        me.setData({
-                            slideList: res.data.data.cardList
-                        });
+                        if (res.data.data.avatar) {
+                            me.setData({
+                                followSuccess: true,
+                                avatar: res.data.data.avatar,
+                                myavatar: res.data.data.myavatar,
+                                user: res.data.data.user,
+                                name: res.data.data.name
+
+                            });
+                            user = res.data.data.user;
+                        }
+                        if (translate.type === 1) {
+                            wx.reportAnalytics('touche_left', {
+                                slideleft: 0
+                            });
+                        }
+                        else {
+                            wx.reportAnalytics('touch_right', {
+                                slideright: 0,
+                            });
+                        }
+
+
+
                     }
                 });
             }
@@ -162,9 +241,10 @@ Page({
         this.setData({
             [`slideList[${this.data.slideList.length - 1}].animationData`]: animation.export()
         });
+        translateNum++;
 
-        // 信息不完整需要填写
-        if (!this.data.isFinishedInput) {
+        // 滑动到第三张后， 信息不完整需要填写
+        if (translateNum > 6 && !this.data.isFinishedInput) {
             wx.showModal({
                 title: '请完善个人信息',
                 content: '没有个人信息，无法和别人交换知识',
@@ -172,8 +252,11 @@ Page({
                 confirmText: '完善信息',
                 success() {
                     wx.redirectTo({
-                      // 此处先暂时写这样，后续RES 返回
-                      url: '/pages/personal-info/personal-info'
+                        // 此处先暂时写这样，后续RES 返回
+                        url: '/pages/personal-info/personal-info'
+                    });
+                    wx.reportAnalytics('edit_info_click', {
+                        editinfo: 0
                     });
                 }
             });
@@ -213,21 +296,68 @@ Page({
      * 左滑
      */
     slideLeft() {
+        animation = wx.createAnimation({
+            duration: 4,
+            timingFunction: 'ease',
+            delay: 0
+        });
+        this.setData({
+            [`slideList[${this.data.slideList.length - 1}].leftIconShow`]: true
+        });
         this.touchend(null, {
             type: 1,
             x: -100,
             y: 0
         });
+        this.setData({
+            [`slideList[${this.data.slideList.length - 1}].leftIconShow`]: false
+        });
+
     },
 
     /**
      * 右滑
      */
     slideRight() {
+        animation = wx.createAnimation({
+            duration: 4,
+            timingFunction: 'ease',
+            delay: 0
+        });
+        this.setData({
+            [`slideList[${this.data.slideList.length - 1}].rightIconShow`]: true
+        });
         this.touchend(null, {
             type: 2,
             x: 100,
             y: 0
+        });
+        this.setData({
+            [`slideList[${this.data.slideList.length - 1}].rightIconShow`]: false
+        });
+    },
+    // 继续探索
+    continueExplore() {
+        this.setData({
+            followSuccess: false
+        });
+    },
+    // 联系配对者
+    contactMatcher() {
+        wx.navigateTo({
+            url: '/pages/view-matched/view-matched?user=' + user + '&token=' + token
+        });
+    },
+    // 关闭提示
+    closeTip() {
+        this.setData({
+            showTip: false
+        });
+    },
+    // 重新探索
+    reload() {
+        wx.reLaunch({
+            url: ''
         });
     }
 });

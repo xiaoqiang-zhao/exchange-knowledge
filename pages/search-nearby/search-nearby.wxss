@@ -8,21 +8,18 @@
     padding: 42px 0 18px;
     font-size: 24px;
     line-height: 1em;
-}
-map {
-  width: 1000px;
-  height: 1000px;
+    font-weight: 700;
 }
 .map {
-    margin: 20px 5px 0 5px;
-    height: 0;
-    line-height: 0;
-    overflow: hidden;
-    padding-bottom: 100%;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    border-radius: 2000px;
-    background-image: url(https://mmbiz.qpic.cn/mmbiz_png/PYuPblARCpeEFuKPVtg3ickQmIw6eMlZQxRooNqxrDrv3EfSZPGZTertVKBUB2IRSVfgRtVTOBNGfZzO7T2yN2A/0?wx_fmt=png);
+      margin: 20px 5px 0 5px;
+      height: 0;
+      line-height: 0;
+      overflow: hidden;
+      padding-bottom: 100%;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      border-radius: 2000px;
+      background-image: url(https://mmbiz.qpic.cn/mmbiz_png/PYuPblARCpeEFuKPVtg3ickQmIw6eMlZQxRooNqxrDrv3EfSZPGZTertVKBUB2IRSVfgRtVTOBNGfZzO7T2yN2A/0?wx_fmt=png);
 }
 .content {
     display: block;

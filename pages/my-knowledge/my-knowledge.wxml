@@ -1,21 +1,22 @@
 <!-- 我的知识 -->
 <div class="container real-name">
     <text class="title">我的知识</text>
-    <text class="content">更好的推荐适合你的知识</text>
+    <text class="tip-content">用于和别人配对交换，互相学习</text>
     <input class="input"
-        placeholder="标题"
+        placeholder="我的知识(工作经验/爱好/擅长等)"
         bindinput="titleInput"
         value="{{title}}"
         auto-focus/>
     <div class="textarea-container">
-        <textarea class="textarea content" value="{{content}}" bindinput="contentInput" placeholder="想成为哪方面过来人，写出你的经历"/>
+        <textarea class="textarea content" value="{{content}}" bindinput="contentInput" placeholder="我对这个知识有一些经验，期待与你分享感受，互相交换，一起学习进步。"/>
         <span class="count">{{count}}/200</span>
     </div>
     <button
         class="submit-btn"
+        id="submitKnowledge"
         bindgetphonenumber="submit"
         disabled="{{disabled}}"
         bindtap="submit">
-        下一步
+        {{submitBtn}}
     </button>
 </div>

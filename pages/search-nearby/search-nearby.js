@@ -14,7 +14,6 @@ Page({
     getLocation() {
         const me = this;
         wx.getLocation({
-            type: 'gcj02',
             success(res) {
                 me.setData({
                     content: '正在查找附近的人...',
@@ -25,7 +24,7 @@ Page({
                     wx.switchTab({
                         url: '/pages/index/index'
                     });
-                }, 2000);
+                }, 3000);
 
                 wx.setStorage({
                     key: 'location',
@@ -41,5 +40,8 @@ Page({
                 });
             }
         });
+    },
+    handlerReset() {
+        this.getLocation();
     }
 });

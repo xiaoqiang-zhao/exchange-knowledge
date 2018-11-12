@@ -1,0 +1,40 @@
+/* pages/guide-page/guide-page.wxss */
+
+.container {
+    background: #fff;
+}
+
+.contain-box {
+    padding: 20px;
+    overflow: hidden;
+    height: 100%;
+}
+
+.title {
+    display: block;
+    padding: 22px 0 12px;
+    font-size: 24px;
+    text-align: center;
+    font-weight: ，， ， ， 呼啸z7， 互相00;
+}
+
+.content {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 10px;
+    line-height: 20px;
+    color: #333;
+    text-align: center;
+}
+
+.img {
+    width: 100%;
+}
+
+/*==== 按钮 ====*/
+.submit-btn {
+    margin: 54px 45px 0 45px;
+    color: #fff;
+    border: 0;
+    background: #f37737;
+}

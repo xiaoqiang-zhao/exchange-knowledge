@@ -5,7 +5,6 @@ App({
             key: 'mobile',
             // 已验证手机 -> 搜附近的人
             success() {
-              getLocationInfo()
                 // console.log(res.data);
                 // 没找到怎么不闪一下的情况下 根据逻辑进入不同页面的方法
                 // wx.navigateTo({
@@ -23,9 +22,7 @@ App({
             wx.login({
                 success(res) {
                     if (res.code) {
-                        
                         thirdLogin(res.code);
-                        // console.log('wxLogin res:', res);
                     }
                     else {
                         wx.showToast({
@@ -37,22 +34,6 @@ App({
                 }
             });
         }
-
-      function getLocationInfo(cb) {
-        wx.getLocation({
-          type: 'gcj02', // 默认为 wgs84 返回 gps 坐标，gcj02 返回可用于 wx.openLocation 的坐标
-          success: function (res) {
-           console.log(res)
-          },
-          fail: function () {
-            // fail
-          },
-          complete: function () {
-            // complete
-          }
-        })
-      }
-
 
         /**
          * 第三方登录(我们自己的服务器登录)
@@ -69,12 +50,11 @@ App({
                     code: code
                 },
                 success(res) {
+                    let token = res.data.data.token;
                     wx.setStorage({
                         key: 'token',
-                        data: res.data.data.token
+                        data: token
                     });
-                    // console.log('our login:', res);
-                    // console.log('our login token:', res.data.data.token);
                 }
             });
         }

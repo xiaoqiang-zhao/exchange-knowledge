@@ -1,24 +1,19 @@
 <!--index.wxml-->
 <div class="container mine">
-    <image class="image" mode="widthFix" src="{{userInfo.headerImgSrc}}" bindtap="navigateToPersonalInfo"></image>
+   <a class="head-img-modify"  bindtap="navigateToPersonalInfo">
+    <span class=" iconfont icon-camera "></span>
+    <span class="head-img-modify-tip">修改封面</span>
+    </a>
+    <image class="head-img" mode="aspectFill" src="{{userInfo.headerImgSrc}}" bindtap="navigateToPersonalInfo"></image>
     
-    <section class="card-section content-section" bindtap="navigateToRealName">
-        <div class="title">
-            实名认证
+    <section class="card-section content-section" >
+        <div class="title"> 
+            个人信息
+            <label class="modifi-btn" id="modifyInfo" bindtap="navigateToPersonalInfo">修改</label>
         </div>
         <div class="content">
             <label>姓名</label>
-            {{userInfo.realName}}
-        </div>
-        <div class="content">
-            <label>身份证号</label>
-            {{userInfo.idcard}}
-        </div>
-    </section>
-
-    <section class="card-section content-section" bindtap="navigateToPersonalInfo">
-        <div class="title">
-            个人信息
+            {{userInfo.realname}}
         </div>
         <div class="content">
             <label>职业</label>
@@ -30,9 +25,10 @@
         </div>
     </section>
 
-    <section class="card-section content-section"  bindtap="navigateToMyKnowledge">
+    <section class="card-section content-section"  >
         <div class="title">
             我的知识
+            <label class="modifi-btn" id="modifyKnowledge" bindtap="navigateToMyKnowledge">修改</label>
         </div>
         <div class="content">
             <label>标题</label>

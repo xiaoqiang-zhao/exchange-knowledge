@@ -54,9 +54,10 @@ Page({
             }
         });
     },
+    
     navigateTo() {
         wx.navigateTo({
-            url: '/pages/search-nearby/search-nearby'
+          url: '/pages/pre-page/pre-page'
         });
     }
 });

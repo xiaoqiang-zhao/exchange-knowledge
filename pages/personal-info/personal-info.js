@@ -7,62 +7,66 @@ import commonUtil from '../../utils/common';
 let career = '';
 let wxaccount = '';
 let realname = '';
-let headerImgSrc = '';
+let type='';
 
 Page({
     data: {
         disabled: true,
         career: '',
+        realname: '',
         wxaccount: '',
         headerImgSrc: '',
-        realname: ''
+        submitBtn: '',
+        focus: false
     },
-    onLoad() {
-        // 从本地获取
+    onLoad(option) {
+     
+      // 从本地获取
       commonUtil.getStorageData('realname', 'career', 'wxaccount', 'headerImgSrc').then(res => {
-            career = res.career || '';
-            realname = res.realname || '';
-            wxaccount = res.wxaccount || '';
-            this.setData({
-                career,
-                realname,
-                wxaccount,
-                headerImgSrc: res.headerImgSrc || ''
-            });
-            this.validate();
-        });
+          career = res.career || '';
+          wxaccount = res.wxaccount || '';
+          realname = res.realname || '';
+              this.setData({
+                  career,
+                  wxaccount,
+                  realname,
+                  headerImgSrc: res.headerImgSrc || '',
+                  submitBtn: +option.type === 1 ? '保存' : '下一步'
+              });
+          this.validate();
+          type = +option.type;
+      });
     },
     chooseImageTap() {
-        let me = this;
-        wx.showActionSheet({
-            itemList: ['从相册中选择', '拍照'],
-            itemColor: '#f7982a',
-            success(res) {
-                if (!res.cancel) {
-                    if (res.tapIndex === 0) {
-                        me.chooseWxImage('album');
-                    }
-                    else if (res.tapIndex === 1) {
-                        me.chooseWxImage('camera');
-                    }
-                }
-            }
-        });
+      let me = this;
+      wx.showActionSheet({
+          itemList: ['从相册中选择', '拍照'],
+          itemColor: '#f7982a',
+          success(res) {
+              if (!res.cancel) {
+                  if (res.tapIndex === 0) {
+                      me.chooseWxImage('album');
+                  }
+                  else if (res.tapIndex === 1) {
+                      me.chooseWxImage('camera');
+                  }
+              }
+          }
+      });
     },
     chooseWxImage(type) {
-        const me = this;
-        wx.chooseImage({
-            sizeType: ['original', 'compressed'],
-            sourceType: [type],
-            success(res) {
-                me.setData({
-                    headerImgSrc: res.tempFilePaths[0]
-                });
-                me.validate();
-            }
-        });
+      const me = this;
+      wx.chooseImage({
+          sizeType: ['original', 'compressed'],
+          sourceType: [type],
+          success(res) {
+              me.setData({
+                  headerImgSrc: res.tempFilePaths[0]
+              });
+              me.validate();
+          }
+      });
     },
-
     nameInput(e) {
       realname = e.detail.value;
       this.validate();
@@ -78,10 +82,10 @@ Page({
     validate() {
         let disabled;
         if (
-            realname.length > 1
-            && wxaccount.length > 1
-            && career.length > 1
-            && this.data.headerImgSrc.length > 1) {
+            wxaccount.length > 0
+            && career.length > 0
+            && realname.length > 0
+            && this.data.headerImgSrc.length > 0) {
             disabled = false;
         }
         else {
@@ -93,6 +97,11 @@ Page({
     },
     submit() {
         const me = this;
+        let formData = {
+          wxaccount,
+          career,
+          realname
+        }
         wx.getStorage({
             key: 'token',
             success(res) {
@@ -100,11 +109,12 @@ Page({
             }
         });
     },
+    
     request(token) {
         const me = this;
         wx.uploadFile({
             url: 'https://www.liuliuke.com/huanhuan/submitdetail',
-            filePath: this.data.headerImgSrc,
+            filePath: me.data.headerImgSrc,
             name: 'headerImgSrc',
             header: {
                 'content-type': 'multipart/form-data'
@@ -114,23 +124,22 @@ Page({
                 token,
                 wxaccount,
                 career,
-                realname,
+                realname
             },
             success(res) {
                 me.navigateTo();
-
                 if (typeof res.data === 'string') {
                     res.data = JSON.parse(res.data);
                 }
 
                 // 存储信息
                 wx.setStorage({
-                    key: 'realname',
-                    data: realname
+                  key: 'realname',
+                  data: realname
                 });
                 wx.setStorage({
-                    key: 'headerImgSrc',
-                    data: res.data.data.showpics.headerImgSrc
+                  key: 'headerImgSrc',
+                  data: me.data.headerImgSrc
                 });
                 wx.setStorage({
                     key: 'wxaccount',
@@ -140,12 +149,21 @@ Page({
                     key: 'career',
                     data: career
                 });
+              
             }
         });
     },
     navigateTo() {
-        wx.navigateTo({
+        if (type === 1) {
+          wx.switchTab({
+            url: '/pages/mine/mine'
+          });
+        }
+        else {
+          wx.navigateTo({
             url: '/pages/my-knowledge/my-knowledge'
-        });
+          });
+        }
+        
     }
 });

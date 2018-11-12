@@ -4,12 +4,13 @@
         class="item"
         wx:for="{{list}}"
         wx:key="{{item.token}}"
-        bindtap="setClipboard"
+        bindtap="goDetail"
+        data-user="{{item.user}}"
         data-wxaccount="{{item.wxaccount}}">
         <image class="avatar" src="{{item.avatar}}"/>
         <section class="text-container">
-            <header>{{item.nick}} {{item.career}}</header>
-            <footer>匹配于 {{item.date}}</footer>
+            <header>{{item.nick}}</header>
+            <footer>匹配于 {{item.time}}</footer>
         </section>
     </article>
 </div>

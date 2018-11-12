@@ -4,51 +4,49 @@
  */
 import commonUtil from '../../utils/common';
 
+let user;
+let token;
+let timer;
+
 Page({
     data: {
-        list: [
-            {
-                avatar: 'https://liuliuke.com/headPics/04082018/5b65224e76085.jpg',
-                career: '软件工程师',
-                time: '08/02',
-                nick: '杨官龙',
-                title: '软件工程师'
-            }
-        ]
+        list: []
     },
     onLoad() {
-        commonUtil.getStorageData('token').then(res => {
-            this.loadList({
-                token: res.token
+      commonUtil.getStorageData('token').then(res => {
+        token = res.token;
+          commonUtil.getMatchList({
+            token: token
+          }).then(res => {
+            this.setData({
+              list: res.userList
             });
+          });
+       
+        wx.hideTabBarRedDot({
+          index: 1
+        })
+      });
+    
+    },
+    onShow() {
+      timer = setInterval(() => {
+        commonUtil.getMatchList({
+          token: token
+        }).then(res => {
+          this.setData({
+            list: res.userList
+          });
         });
+      }, 5000)
     },
 
-    loadList(data) {
-        const me = this;
-        wx.request({
-            method: 'GET',
-            url: 'https://www.liuliuke.com/huanhuan/matchList',
-            data,
-            success(res) {
-                me.setData({
-                    list: res.data.data.userList
-                });
-            }
-        });
-    },
-
-    setClipboard(event) {
-        const data = event.currentTarget.dataset.wxaccount;
-        wx.setClipboardData({
-            data,
-            success() {
-                wx.showToast({
-                    title: `已复制对方微信${data}`,
-                    icon: 'success',
-                    duration: 2000
-                });
-            }
+    goDetail(event) {
+         const data = event.currentTarget.dataset.wxaccount;
+         const user = event.currentTarget.dataset.user;
+        wx.navigateTo({
+          url: '/pages/view-matched/view-matched?token=' + token + '&user=' + user
         });
     }
+
 });

@@ -19,7 +19,7 @@ export default {
             },
             {
                 name: '个人信息',
-                keys: ['headerImgSrc', 'career', 'wxaccount'],
+                keys: ['realName', 'headerImgSrc', 'career', 'wxaccount'],
                 path: '/pages/personal-info/personal-info'
             },
             {

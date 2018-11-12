@@ -1,10 +1,23 @@
 <!--index.wxml-->
 <div class="container">
+   <div class="tip"  wx:if="{{showTip === true}}">
+        <span class="tip-text">左右滑动即可配对交换知识</span>
+        <i bindtap="closeTip" class="iconfont icon-close1 "></i>
+       
+   </div>
     <section class="card-container">
         <article class="card card-place-holder">
-          卡片已见底
+          {{cardTitle}}
+
         </article>
-      
+         <button
+              wx:if="{{cardTitle === '附近没有更多人了'}}"
+              class="submit-btn-continue"
+              bindtap="onLoad">
+              重新探索
+          </button>  
+       
+        
         <article class="card"
             wx:for="{{slideList}}"
             wx:key="{{item.id}}"
@@ -13,13 +26,24 @@
             bindtouchend="touchend"
             data-token="{{item.token}}"
             bindtouchstart="touchstart">
+
             <header class="img-container">
                 <image class="img" mode="aspectFill" src="{{item.avatar}}"></image>
-               <!--  <span class="img-tag iconfont icon-img">1</span> -->
+                <div class="trans-icon">
+                    <div wx:if="{{item.rightIconShow}}" class="img-tag-left">
+                        <span class=" iconfont icon-handshake "></span>
+                        <div >同意交换</div>
+                    </div>
+                     <div  wx:if="{{item.leftIconShow}}" class="img-tag-right">
+                        <span class=" iconfont icon-close "></span>
+                        <div >看看其他</div>
+                    </div>
+                </div>
+                <!-- <span class="img-tag iconfont icon-img">1</span> -->
                 <div class="user-info-container">
                     <div class="name">{{item.nick}}</div>
                     <div class="info">
-                        <span class="name">{{item.career}}</span>
+                        <span>{{item.career}}</span>
                         <span>{{item.distance}}</span>
                     </div>
                 </div>
@@ -32,7 +56,34 @@
         </article>
     </section>
     <section wx:if="{{slideList.length > 0}}" class="btn-container">
-        <div class="btn iconfont icon-close" bindtap="slideLeft"></div>
-        <div class="btn iconfont icon-handshake" bindtap="slideRight"></div>
+        <div class="btn iconfont icon-close2" id="clickLeft" bindtap="slideLeft"></div>
+        <div class="btn iconfont icon-handshake" id="clickRight" bindtap="slideRight">
+        </div>
+        <div class="btn icon-tip"  bindtap="slideRight">愿意见面交换知识</div>
     </section>
 </div>
+<section class="match-bg" wx:if="{{followSuccess}}">
+        <div class="match-back" >
+            <div class="match-photos">
+              <image class='match-left-img match-img' src='{{myavatar}}'></image>
+              <image class='match-right-img match-img' src='{{avatar}}'></image>
+            </div>
+            <div class="iconfont icon-handshake "></div>
+
+            <div class="title success-title">恭喜配对成功!</div>
+            <div class="content">你们已经愿意见面交换知识了</div>
+            <button
+                id="contactMatcher"
+                class="submit-btn"
+                bindtap="contactMatcher">
+                联系{{name}}
+            </button>
+            <button
+                id="continueExplore"
+                class="submit-btn-continue"
+                bindtap="continueExplore">
+                继续探索
+            </button>
+        </div>
+
+  </section>
