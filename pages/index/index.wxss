@@ -233,7 +233,7 @@
     font-size: 30px;
 }
 
-.btn-container .icon-tip {
+.btn-container .icon-exchange {
     display: inline-block;
     border-radius: 0 40px 40px 0;
     font-size: 16px;
@@ -243,7 +243,7 @@
     padding-left: 10px;
 }
 
-.btn-container .icon-tip:before {
+.btn-container .icon-exchange:before {
     font-size: 38px;
     vertical-align: middle;
     margin-right: 9px;

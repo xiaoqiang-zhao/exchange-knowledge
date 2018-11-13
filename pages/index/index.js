@@ -222,12 +222,9 @@ Page({
                         }
                         else {
                             wx.reportAnalytics('touch_right', {
-                                slideright: 0,
+                                slideright: 0
                             });
                         }
-
-
-
                     }
                 });
             }
@@ -337,6 +334,15 @@ Page({
     reload() {
         wx.reLaunch({
             url: ''
+        });
+    },
+    // 去完善个人信息
+    toInputPage() {
+        wx.redirectTo({
+            url: '/pages/personal-info/personal-info'
+        });
+        wx.reportAnalytics('edit_info_click', {
+            editinfo: 0
         });
     }
 });
