@@ -12,6 +12,10 @@ Page({
      * 点击按钮
      */
     submit() {
+        wx.setStorage({
+            key: 'guide',
+            data: 1
+        });
         wx.navigateTo({
             url: '/pages/search-nearby/search-nearby'
         });

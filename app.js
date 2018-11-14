@@ -1,4 +1,7 @@
-// app.js
+/**
+ * @file 小程序入口
+ */
+
 App({
     onLaunch() {
         wx.getStorage({
@@ -47,7 +50,7 @@ App({
                 },
                 url: 'https://www.liuliuke.com/huanhuan/login',
                 data: {
-                    code: code
+                    code
                 },
                 success(res) {
                     let token = res.data.data.token;

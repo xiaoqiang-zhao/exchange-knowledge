@@ -3,7 +3,7 @@
  * @author 小强赵
  */
 
-import businessUtil from '../../utils/business';
+import stepHelp from '../../utils/step-help';
 import commonUtil from '../../utils/common';
 
 let animation;
@@ -54,13 +54,15 @@ Page({
             }).then(res => {
                 originMatchNum = res.number;
             });
-
-
         });
+
         // 判断是否完成了信息填写
-        businessUtil.getCurrentInputStep().then(res => {
+        stepHelp.getCurrentInputStep().then(res => {
+            // 若信息填写未完成
             if (!res.isEnd) {
+                // 隐藏底部 Bar
                 wx.hideTabBar();
+                // 设置相关数据状态
                 this.setData({
                     isFinishedInput: false,
                     inputStep: res
@@ -338,11 +340,10 @@ Page({
     },
     // 去完善个人信息
     toInputPage() {
-        wx.redirectTo({
-            url: '/pages/personal-info/personal-info'
-        });
+        // 会自动跳转到上次填写中断的步骤
         wx.reportAnalytics('edit_info_click', {
             editinfo: 0
         });
+        stepHelp.jumpToCurrentStepPage();
     }
 });
