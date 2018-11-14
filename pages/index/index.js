@@ -37,7 +37,7 @@ Page({
         user: '',
         // 联系对方的名字
         name: '',
-        cardTitle: '请滑动选择',
+        cardTitle: '卡片加载中...',
         showTip: true
 
     },

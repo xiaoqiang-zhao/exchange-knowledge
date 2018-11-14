@@ -32,12 +32,18 @@ export default {
             // =================  上面三步是必须通过的，否则不能到后面的页面，代码逻辑强制  =================== //
             {
                 index: 4,
-                name: '个人信息',
-                keys: ['realName', 'headerImgSrc', 'career', 'wxaccount'],
-                path: '/pages/personal-info/personal-info'
+                name: '实名认证',
+                keys: ['realName', 'career'],
+                path: '/pages/real-name/real-name'
             },
             {
                 index: 5,
+                name: '个人照片',
+                keys: ['realName', 'headerImgSrc', 'career', 'wxaccount'],
+                path: '/pages/personal-photo/personal-photo'
+            },
+            {
+                index: 6,
                 name: '我的知识',
                 keys: ['title', 'content'],
                 path: '/pages/my-knowledge/my-knowledge',

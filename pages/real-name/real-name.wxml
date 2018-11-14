@@ -1,24 +1,18 @@
-<!--index.wxml-->
-<div class="container real-name">
-    <text class="title">实名认证</text>
-    <text class="content">更好的推荐适合你的知识</text>
+<!-- 个人信息 -->
+<div class="container personal-info">
     <input class="input"
-        placeholder="输入你的真实姓名"
+        placeholder="真实姓名"
         bindinput="nameInput"
         value="{{realname}}"
         auto-focus/>
-    <input
-        class="input"
-        placeholder="输入身份证号码"
-        type="idcard"
-        bindinput="idcardInput"
-        value="{{idcard}}"/>
-    <text class="error" wx:if="{{isShow}}">请填写真实信息</text>
-    <button
-        class="submit-btn"
+    <input class="input"
+        placeholder="公司职业（百度产品经理)"
+        bindinput="careerInput"
+        value="{{career}}"/>
+    <div
+        class="submit-btn {{disabled ? 'disabled' : ''}}"
         bindgetphonenumber="submit"
-        disabled="{{disabled}}"
         bindtap="submit">
-        下一步
-    </button>
+            {{submitBtn}}
+    </div>
 </div>

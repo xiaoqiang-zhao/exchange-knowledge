@@ -1,38 +1,36 @@
-/** 实名认证 **/
-.real-name {
-    background: #fff;
-    text-align: center;
-}
-.title {
-    display: block;
-    padding: 42px 0 18px;
-    font-size: 24px;
-    line-height: 1em;
-}
-.content {
-    display: block;
-    padding: 0 45px 55px;
-    font-size: 16px;
-    line-height: 16px;
-    color: #999;
+/** 个人信息 **/
+.personal-info {
+    padding: 17px;
+    font-size: 18px;
 }
 .input {
-    padding-bottom: 14px;
-    margin: 0 50px 24px;
-    border-bottom: 1px solid #e0e0e0;
-    text-align: left;
-    /* background: #51a938; */
+    display: block;
+    height: 58px;
+    padding: 0 17px;
+    margin: 0 0 10px;
+    border: none;
+    border-radius: 5px;
+    line-height: 58px;
+    background: #fff;
 }
 .input-placeholder {
     text-align: left;
-    color: #999;
-    font-size: 18px;
+    color: #ccc;
     line-height: 1em;
-    /* background: #999; */
 }
 .submit-btn {
-    margin: 45px;
-    color: #fff;
+    display: block;
+    height: 48px;
+    margin-top: 100px;
     border: 0;
+    border-radius: 5px;
+    text-align: center;
+    color: #fff;
+    line-height: 48px;
     background: #51a938;
+}
+.submit-btn[disabled],
+.submit-btn.disabled {
+    color: #fff;
+    background: #e0e0e0;
 }
