@@ -32,6 +32,7 @@ export default {
             });
         });
     },
+    // 获取配对列表
     getMatchList(data) {
         return new Promise((resolve, reject) => {
             wx.request({
@@ -39,7 +40,7 @@ export default {
                 url: 'https://www.liuliuke.com/huanhuan/matchList',
                 data,
                 success(res) {
-                    resolve(res.data.data)
+                    resolve(res.data.data);
                 }
             });
         });

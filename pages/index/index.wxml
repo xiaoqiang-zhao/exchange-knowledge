@@ -46,7 +46,7 @@
             <footer class="text-container">
                 <div class="sub">我的知识</div>
                 <div class="title ellipsis">{{item.title}}</div>
-                <div class="content line-clamp">{{item.content}} {{isFinishedInput}}</div>
+                <div class="content line-clamp">{{item.content}}</div>
             </footer>
         </article>
     </section>
