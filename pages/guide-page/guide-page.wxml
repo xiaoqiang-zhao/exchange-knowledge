@@ -16,7 +16,7 @@
           class="submit-btn"
           bindgetphonenumber="submit"
           bindtap="submit">
-          开启知识换换
+          开启知交
       </button>
     </div>
 </div>

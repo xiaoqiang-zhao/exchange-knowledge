@@ -7,7 +7,7 @@
        <p class="sanjiao_up"></p>
    </div>
    <section class="info-card">
-        <div class="info-content">我对你的知识也蛮感兴趣， 有时间的话我们见面聊聊， 相互学习一下</div>
+        <div class="info-content">我对你的经验也蛮感兴趣，有时间的话我们见面交流一下，相互学习</div>
         <div wx:if="{{info.wxaccount}}">
            <label class="font-bold">我的微信号: </label>
            <span class="orange-title">{{info.wxaccount}}</span>

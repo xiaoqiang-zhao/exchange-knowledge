@@ -44,7 +44,7 @@
                 </div>
             </header>
             <footer class="text-container">
-                <div class="sub">我的知识</div>
+                <div class="sub">TA的经验</div>
                 <div class="title ellipsis">{{item.title}}</div>
                 <div class="content line-clamp">{{item.content}}</div>
             </footer>
@@ -53,7 +53,7 @@
     <section wx:if="{{slideList.length > 0}}" class="btn-container">
         <block wx:if="{{isFinishedInput}}">
             <div class="btn iconfont icon-close2" id="clickLeft" bindtap="slideLeft"></div>
-            <div class="btn iconfont icon-handshake icon-exchange"  bindtap="slideRight">愿意交流经验</div>
+            <div class="btn iconfont icon-handshake icon-exchange"  bindtap="slideRight">愿意见面交流经验</div>
         </block>
         <div wx:else class="btn btn-only iconfont icon-error" bindtap="toInputPage">完善个人信息，即可开始交换</div>
     </section>
