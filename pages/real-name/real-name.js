@@ -4,39 +4,53 @@
  */
 import commonUtil from '../../utils/common';
 
-let realname = '';
-let idcard = '';
+// let career = '';
+// let realname = '';
+// let type = '';
 
 Page({
     data: {
         disabled: true,
+        career: '',
         realname: '',
-        idcard: '',
-        isShow: false
+        submitBtn: ''
     },
-    onLoad() {
+    onLoad(option) {
+
+        wx.setNavigationBarTitle({
+            title: '实名认证'
+        });
+
         // 从本地获取
-      commonUtil.getStorageData('realname', 'idcard').then(res => {
-            realname = res.realName || '';
-            idcard = res.idcard || '';
+        commonUtil.getStorageData('realname', 'career').then(res => {
+            // realname = res.realname || '';
+            // career = res.career || '';
             this.setData({
-                realname,
-                idcard
+                realname: res.realname || '',
+                career: res.career || '',
+                type: +option.type,
+                submitBtn: +option.type === 1 ? '保存' : '下一步'
             });
             this.validate();
         });
     },
     nameInput(e) {
-        realname = e.detail.value;
+        // realname = e.detail.value;
+        this.setData({
+            realname: e.detail.value
+        });
         this.validate();
     },
-    idcardInput(e) {
-        idcard = e.detail.value;
+    careerInput(e) {
+        // career = e.detail.value;
+        this.setData({
+            career: e.detail.value
+        });
         this.validate();
     },
     validate() {
         let disabled;
-        if (idcard.length === 18 && realname.length > 1) {
+        if (this.data.career.length > 0 && this.data.realname.length > 0) {
             disabled = false;
         }
         else {
@@ -46,40 +60,79 @@ Page({
             disabled
         });
     },
+
+    // 提交事件
     submit() {
         const me = this;
+
         wx.getStorage({
             key: 'token',
             success(res) {
-                me.request(res.data);
-            }
-        });
-
-    },
-    request(token) {
-        wx.request({
-            method: 'GET',
-            url: 'https://www.liuliuke.com/huanhuan/realname',
-            data: {
-                token,
-                realname,
-                idcard
-            },
-            success(res) {
-                wx.navigateTo({
-                    url: '/pages/personal-info/personal-info'
-                });
+                // 由于业务变更后台端接口没有单独提供 API，到下一步再提交
+                // me.request(res.data);
 
                 // 存储信息
                 wx.setStorage({
-                    key: 'realName',
-                    data: realname
+                    key: 'realname',
+                    data: me.data.realname
                 });
                 wx.setStorage({
-                    key: 'idcard',
-                    data: idcard
+                    key: 'career',
+                    data: me.data.career
                 });
+
+                me.navigateTo();
             }
         });
+    },
+
+    // 向后台发起数据提交请求
+    // request(token) {
+    //     const me = this;
+    //     wx.uploadFile({
+    //         url: 'https://www.liuliuke.com/huanhuan/submitdetail',
+    //         filePath: me.data.headerImgSrc,
+    //         name: 'headerImgSrc',
+    //         header: {
+    //             'content-type': 'multipart/form-data'
+    //         },
+    //         // HTTP 请求中其他额外的 form data
+    //         formData: {
+    //             token,
+    //             career,
+    //             realname
+    //         },
+    //         success(res) {
+    //             me.navigateTo();
+    //             if (typeof res.data === 'string') {
+    //                 res.data = JSON.parse(res.data);
+    //             }
+
+    //             // 存储信息
+    //             wx.setStorage({
+    //                 key: 'realname',
+    //                 data: realname
+    //             });
+    //             wx.setStorage({
+    //                 key: 'career',
+    //                 data: career
+    //             });
+    //         }
+    //     });
+    // },
+    navigateTo() {
+        // 编辑
+        if (this.data.type === 1) {
+            wx.switchTab({
+                url: '/pages/mine/mine'
+            });
+        }
+        // 新加
+        else {
+            wx.navigateTo({
+                url: '/pages/personal-photo/personal-photo'
+            });
+        }
+
     }
 });
