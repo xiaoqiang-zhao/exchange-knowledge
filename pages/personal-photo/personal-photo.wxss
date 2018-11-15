@@ -1,0 +1,83 @@
+/** 个人信息 **/
+.container {
+    padding: 17px;
+    font-size: 18px;
+}
+
+.head-img-placeholder {
+    position: relative;
+    border-radius: 5px;
+    background: #aaa;
+}
+
+.head-img-placeholder .icon-photo {
+    display: block;
+    height: 400px;
+    width: 100%;
+    text-align: center;
+    font-size: 200px;
+    line-height: 318px;
+    color: #fefefe;
+}
+
+.head-img-placeholder .icon-photo:before {
+    color: #dfdfdf;
+}
+
+.head-img-placeholder .img-upload-tip {
+    position: absolute;
+    top: 300px;
+    width: 100%;
+    height: 48px;
+    font-size: 18px;
+    line-height: 48px;
+    text-align: center;
+    color: #fff;
+}
+
+.head-img-placeholder .img-upload-tip span {
+    position: relative;
+    z-index: 2;
+}
+
+.head-img-placeholder .img-upload-tip:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 15%;
+    width: 70%;
+    height: 100%;
+    border-radius: 48px;
+    background: #000;
+    opacity: .7;
+    z-index: 1;
+}
+
+.head-img-placeholder .text {
+    padding: 12px 21px;
+    font-size: 14px;
+    line-height: 24px;
+    color: #999;
+    background: #fff;
+}
+
+.head-img-placeholder .text span {
+    color: #333;
+    font-size: 21px;
+    line-height: 32px;
+}
+
+.head-img {
+    overflow: hidden;
+}
+
+.head-img image {
+    width: 100%;
+}
+
+.submit-btn {
+    margin-top: 40px;
+    color: #fff;
+    border: 0;
+    background: #51a938;
+}

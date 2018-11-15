@@ -1,0 +1,31 @@
+<!-- 个人信息 -->
+<div class="container personal-photo">
+    <div class="head-img-placeholder" wx:if="{{headerImgSrc === ''}}"
+        catchtap="chooseImageTap">
+        <div class="iconfont icon-photo"></div>
+        <div class="img-upload-tip">
+            <span>添加本人照片</span>
+        </div>
+        <div class="text">
+            <span>你好</span>
+            <div>
+                选择自己最好看的一张照片，面部清晰更可能配对成果哦
+            </div>
+        </div>
+    </div>
+    <div class="head-img" wx:else>
+        <image
+            catchtap="chooseImageTap"
+            src="{{headerImgSrc}}"
+            mode="widthFix">
+        </image>
+    </div>
+    <button
+        class="submit-btn"
+        id="editNext"
+        bindgetphonenumber="submit"
+        disabled="{{disabled}}"
+        bindtap="submit">
+            {{submitBtn}}
+    </button>
+</div>

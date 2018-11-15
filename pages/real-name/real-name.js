@@ -4,10 +4,6 @@
  */
 import commonUtil from '../../utils/common';
 
-// let career = '';
-// let realname = '';
-// let type = '';
-
 Page({
     data: {
         disabled: true,
@@ -133,6 +129,5 @@ Page({
                 url: '/pages/personal-photo/personal-photo'
             });
         }
-
     }
 });

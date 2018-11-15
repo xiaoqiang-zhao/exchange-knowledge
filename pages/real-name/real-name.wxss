@@ -1,5 +1,5 @@
-/** 个人信息 **/
-.personal-info {
+/** 真实姓名 **/
+.real-name {
     padding: 17px;
     font-size: 18px;
 }
