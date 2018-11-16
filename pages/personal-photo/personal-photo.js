@@ -98,7 +98,7 @@ Page({
         });
     },
     navigateTo() {
-        if (type === 1) {
+        if (this.data.type === 1) {
             wx.switchTab({
                 url: '/pages/mine/mine'
             });

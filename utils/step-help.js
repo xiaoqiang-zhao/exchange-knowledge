@@ -33,19 +33,19 @@ export default {
             {
                 index: 4,
                 name: '实名认证',
-                keys: ['realName', 'career'],
+                keys: ['realname', 'career'],
                 path: '/pages/real-name/real-name'
             },
             {
                 index: 5,
                 name: '个人照片',
-                keys: ['realName', 'headerImgSrc', 'career', 'wxaccount'],
+                keys: ['headerImgSrc'],
                 path: '/pages/personal-photo/personal-photo'
             },
             {
                 index: 6,
                 name: '我的知识',
-                keys: ['title', 'content'],
+                keys: ['title', 'wxaccount'],
                 path: '/pages/my-knowledge/my-knowledge',
                 // 最后一步的标识，当返回当前所在步的对象时，外部调用方法不知道是否填写完成
                 isEnd: true
@@ -56,7 +56,7 @@ export default {
             wx.getStorageInfo({
                 success(res) {
                     map.some(item => {
-                        if (res.keys.indexOf(item.keys[0]) === -1) {
+                        if (res.keys.indexOf(item.keys[0]) === -1 || item.isEnd) {
                             resolve(item);
                             return true;
                         }

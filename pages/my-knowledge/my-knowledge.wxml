@@ -1,22 +1,21 @@
 <!-- 我的知识 -->
-<div class="container real-name">
-    <text class="title">我的知识</text>
-    <text class="tip-content">用于和别人配对交换，互相学习</text>
+<div class="container my-knowledge">
+    <div class="text">你和别人交换的经历</div>
+    <!-- <text class="tip-content">用于和别人配对交换，互相学习</text> -->
     <input class="input"
-        placeholder="我的知识(工作经验/爱好/擅长等)"
+        placeholder="我的经历分享"
         bindinput="titleInput"
         value="{{title}}"
         auto-focus/>
-    <div class="textarea-container">
-        <textarea class="textarea content" value="{{content}}" bindinput="contentInput" placeholder="我对这个知识有一些经验，期待与你分享感受，互相交换，一起学习进步。"/>
-        <span class="count">{{count}}/200</span>
-    </div>
-    <button
-        class="submit-btn"
-        id="submitKnowledge"
+    <div class="text text-multi-line">别人的经历：分享在德国摄影的经历，信息流广告行业经历分享，我养猫3年的经历，线上销售的经历，移民加拿大的经历，在北京买房经历，手机版吃鸡技巧，做自媒体2年的经历...</div>
+    <input class="input"
+        placeholder="微信号(配对后对方联系你)"
+        bindinput="wxaccountInput"
+        value="{{wxaccount}}"/>
+    <div
+        class="submit-btn {{disabled ? 'disabled' : ''}}"
         bindgetphonenumber="submit"
-        disabled="{{disabled}}"
         bindtap="submit">
         {{submitBtn}}
-    </button>
+    </div>
 </div>
