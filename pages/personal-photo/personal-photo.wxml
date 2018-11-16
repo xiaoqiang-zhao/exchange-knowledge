@@ -20,12 +20,11 @@
             mode="widthFix">
         </image>
     </div>
-    <button
-        class="submit-btn"
-        id="editNext"
+    <div
+        class="submit-btn {{disabled ? 'disabled' : ''}}"
         bindgetphonenumber="submit"
         disabled="{{disabled}}"
         bindtap="submit">
             {{submitBtn}}
-    </button>
+    </div>
 </div>

@@ -68,16 +68,13 @@
 }
 
 .head-img {
+    max-height: 500px;
     overflow: hidden;
 }
 
 .head-img image {
     width: 100%;
 }
-
 .submit-btn {
     margin-top: 40px;
-    color: #fff;
-    border: 0;
-    background: #51a938;
 }

@@ -3,6 +3,7 @@
     padding: 17px;
     font-size: 18px;
 }
+
 .input {
     display: block;
     height: 58px;
@@ -13,24 +14,13 @@
     line-height: 58px;
     background: #fff;
 }
+
 .input-placeholder {
     text-align: left;
     color: #ccc;
     line-height: 1em;
 }
+
 .submit-btn {
-    display: block;
-    height: 48px;
     margin-top: 100px;
-    border: 0;
-    border-radius: 5px;
-    text-align: center;
-    color: #fff;
-    line-height: 48px;
-    background: #51a938;
-}
-.submit-btn[disabled],
-.submit-btn.disabled {
-    color: #fff;
-    background: #e0e0e0;
 }

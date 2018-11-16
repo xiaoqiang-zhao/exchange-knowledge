@@ -32,6 +32,23 @@ div {
     -webkit-line-clamp: 3;
 }
 
+
+.submit-btn {
+    display: block;
+    height: 48px;
+    border: 0;
+    border-radius: 5px;
+    text-align: center;
+    color: #fff;
+    line-height: 48px;
+    background: #51a938;
+}
+
+.submit-btn.disabled {
+    color: #fff;
+    background: #e0e0e0;
+}
+
 /* ==== 图标 ==== */
 @font-face {
     font-family: "iconfont";
