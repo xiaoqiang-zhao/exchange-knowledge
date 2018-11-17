@@ -39,7 +39,7 @@
                     <div class="name">{{item.nick}}</div>
                     <div class="info">
                         <span>{{item.career}}</span>
-                        <span>{{item.distance}}</span>
+                        <!-- <span>{{item.distance}}</span> -->
                     </div>
                 </div>
             </header>

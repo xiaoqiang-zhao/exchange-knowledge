@@ -80,16 +80,21 @@ Page({
         });
     },
     onHide() {
-        clearInterval(timer)
+        clearInterval(timer);
     },
     navigateToRealName() {
         wx.navigateTo({
-            url: '/pages/real-name/real-name'
+            url: '/pages/real-name/real-name?type=1'
         });
     },
     navigateToMyKnowledge() {
         wx.navigateTo({
             url: '/pages/my-knowledge/my-knowledge?type=1'
+        });
+    },
+    navigateToPersonalPhoto() {
+        wx.navigateTo({
+            url: '/pages/personal-photo/personal-photo?type=1'
         });
     }
 });

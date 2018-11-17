@@ -1,15 +1,15 @@
 <!--index.wxml-->
 <div class="container mine">
-   <a class="head-img-modify"  bindtap="navigateToPersonalInfo">
-    <span class=" iconfont icon-camera "></span>
-    <span class="head-img-modify-tip">修改封面</span>
+    <a class="head-img-modify" bindtap="navigateToPersonalPhoto">
+        <span class=" iconfont icon-camera "></span>
+        <span class="head-img-modify-tip">修改封面</span>
     </a>
-    <image class="head-img" mode="aspectFill" src="{{userInfo.headerImgSrc}}" bindtap="navigateToPersonalInfo"></image>
-    
-    <section class="card-section content-section" >
-        <div class="title"> 
+    <image class="head-img" mode="aspectFill" src="{{userInfo.headerImgSrc}}" bindtap="navigateToPersonalPhoto"></image>
+
+    <section class="card-section content-section">
+        <div class="title">
             个人信息
-            <label class="modifi-btn" id="modifyInfo" bindtap="navigateToPersonalInfo">修改</label>
+            <label class="modifi-btn" id="modifyInfo" bindtap="navigateToRealName">修改</label>
         </div>
         <div class="content">
             <label>姓名</label>
@@ -19,15 +19,11 @@
             <label>职业</label>
             {{userInfo.career}}
         </div>
-        <div class="content">
-            <label>微信号</label>
-            {{userInfo.wxaccount}}
-        </div>
     </section>
 
-    <section class="card-section content-section"  >
+    <section class="card-section content-section">
         <div class="title">
-            我的知识
+            我的经验和微信
             <label class="modifi-btn" id="modifyKnowledge" bindtap="navigateToMyKnowledge">修改</label>
         </div>
         <div class="content">
@@ -35,8 +31,8 @@
             {{userInfo.title}}
         </div>
         <div class="content">
-            <label>内容</label>
-            {{userInfo.content}}
+            <label>微信号</label>
+            {{userInfo.wxaccount}}
         </div>
     </section>
 </div>
