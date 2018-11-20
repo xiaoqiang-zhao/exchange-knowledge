@@ -1,8 +1,8 @@
 <!--index.wxml-->
 <div class="container">
    <div class="tip"  wx:if="{{showTip === true}}">
-        <span class="tip-text">左右滑动即可配对交换知识</span>
-        <i bindtap="closeTip" class="iconfont icon-close1 "></i>
+        <span class="tip-text">右滑愿意，左滑不愿意。互相愿意才能交流经验</span>
+        <i bindtap="closeTip" class="iconfont icon-close1"></i>
    </div>
     <section class="card-container">
         <article class="card card-place-holder">
@@ -26,12 +26,12 @@
                 <image class="img" mode="aspectFill" src="{{item.avatar}}"></image>
                 <div class="trans-icon">
                     <div wx:if="{{item.rightIconShow}}" class="img-tag-left">
-                        <span class=" iconfont icon-handshake "></span>
-                        <div >同意交换</div>
+                        <span class="iconfont icon-handshake"></span>
+                        <div>愿意交流</div>
                     </div>
                      <div  wx:if="{{item.leftIconShow}}" class="img-tag-right">
-                        <span class=" iconfont icon-close "></span>
-                        <div >看看其他</div>
+                        <span class="iconfont icon-close "></span>
+                        <div>不愿交流</div>
                     </div>
                 </div>
                 <!-- <span class="img-tag iconfont icon-img">1</span> -->
@@ -54,7 +54,7 @@
         <block wx:if="{{isFinishedInput}}">
             <div class="btn iconfont icon-close2" id="clickLeft" bindtap="slideLeft"></div>
             <div class="btn iconfont icon-handshake icon-exchange"  bindtap="slideRight">
-                愿意见面交流经验
+                愿意交流经验
             </div>
         </block>
         <div wx:else class="btn btn-only iconfont icon-error" bindtap="toInputPage">

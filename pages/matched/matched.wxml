@@ -9,7 +9,10 @@
         data-wxaccount="{{item.wxaccount}}">
         <image class="avatar" src="{{item.avatar}}"/>
         <section class="text-container">
-            <header>{{item.nick}}</header>
+            <header>
+                {{item.nick}}
+                <span>占位</span>
+            </header>
             <footer>匹配于 {{item.time}}</footer>
         </section>
     </article>

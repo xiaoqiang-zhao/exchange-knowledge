@@ -38,7 +38,7 @@ Page({
         // 联系对方的名字
         name: '',
         cardTitle: '卡片加载中...',
-        showTip: true
+        showTip: false
 
     },
     onLoad() {
@@ -55,20 +55,6 @@ Page({
                 originMatchNum = res.number;
             });
         });
-
-        // 判断是否完成了信息填写
-        stepHelp.getCurrentInputStep().then(res => {
-            // 若信息填写未完成
-            if (!res.isEnd) {
-                // 隐藏底部 Bar
-                wx.hideTabBar();
-                // 设置相关数据状态
-                this.setData({
-                    isFinishedInput: false,
-                    inputStep: res
-                });
-            }
-        });
     },
     onShow() {
         timer = setInterval(() => {
@@ -84,6 +70,25 @@ Page({
                 });
             }
         }, 5000);
+
+        // 判断是否完成了信息填写
+        stepHelp.getCurrentInputStep().then(res => {
+            // 若信息填写未完成
+            if (!res.isEnd) {
+                // 隐藏底部 Bar
+                wx.hideTabBar();
+            }
+            else {
+                wx.showTabBar();
+            }
+
+            // 设置相关数据状态
+            this.setData({
+                isFinishedInput: !!res.isEnd,
+                inputStep: res,
+                showTip: !res.isEnd
+            });
+        });
     },
     onHide() {
         clearInterval(timer);
@@ -106,13 +111,6 @@ Page({
                 me.setData({
                     slideList: res.data.data.cardList
                 });
-
-                // 冷启动入口
-                // if (res.data.data.cardList.length === 0) {
-                //     wx.redirectTo({
-                //         url: '/pages/real-name/real-name'
-                //     });
-                // }
             }
         });
     },
@@ -213,7 +211,6 @@ Page({
                                 myavatar: res.data.data.myavatar,
                                 user: res.data.data.user,
                                 name: res.data.data.name
-
                             });
                             user = res.data.data.user;
                         }
@@ -229,6 +226,7 @@ Page({
                         }
                     }
                 });
+                this.hideTip();
             }
         }
         translate.x = [0, -400, 400][translate.type];
@@ -290,7 +288,6 @@ Page({
         this.setData({
             [`slideList[${this.data.slideList.length - 1}].leftIconShow`]: false
         });
-
     },
 
     /**
@@ -314,6 +311,22 @@ Page({
             [`slideList[${this.data.slideList.length - 1}].rightIconShow`]: false
         });
     },
+
+    hideTip() {
+        if (this.data.showTip) {
+            this.setData({
+                showTip: false
+            });
+
+            wx.showToast({
+                title: '右滑愿意和Ta交流经，Ta会收到消息，如果对方也愿意，即可配对交流经验',
+                icon: 'none',
+                mask: true,
+                duration: 4000
+            });
+        }
+    },
+
     // 继续探索
     continueExplore() {
         this.setData({

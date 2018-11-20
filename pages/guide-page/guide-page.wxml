@@ -1,6 +1,6 @@
 <!--pages/guide-page/guide-page.wxml-->
 <div class="container">
-    <image class="img"  mode ="widthFix" src="https://mmbiz.qpic.cn/mmbiz_jpg/PYuPblARCpfhWB0U8RpSkVgCJpe7fibbaB4fhega2JT7ae5RUl2SO8nfDLL9EB0qP4EHbw4YPWb3OeaVf4phYHQ/0?wx_fmt=jpeg"></image>
+    <image class="img"  mode ="widthFix" src="https://mmbiz.qpic.cn/mmbiz_jpg/oZLZe4SBN0e5YLVT9bOJb57CbUZiablra0x29GmFXCSwJahNsaJ7DSpaXrNC6CkicSXYdeGB1UJPcowAOBqPXBKw/0?wx_fmt=jpeg"></image>
     <div class="contain-box">
       <!-- <div class="title">
           和附近的人喝杯咖啡， 互相学习

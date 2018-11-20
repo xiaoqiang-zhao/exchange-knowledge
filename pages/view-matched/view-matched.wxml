@@ -1,6 +1,6 @@
 <!--pages/view-matched/view-matched.wxml-->
 <div class="container">
-   <image class='head-img' src="{{info.avatar}}"></image>
+   <image class='head-img' src="{{info.avatar}}" bindtap="previewImage"></image>
    <div class="tip-title">{{info.nick}}</div>
    <div wx:if="{{info.career}}" class="tip-content">{{info.career}}</div>
    <div class="sanjiao_tip">

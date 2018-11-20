@@ -1,10 +1,5 @@
 // pages/view-matched/view-matched.js
 
-let user;
-let token;
-let wxaccount;
-let fromUrl;
-
 Page({
 
     /**
@@ -13,19 +8,16 @@ Page({
     data: {
         info: {},
         wxaccount: ''
-
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        let data = {};
-
-        data = {
+        const data = {
             user: options.user,
             token: options.token
-        }
+        };
         this.viewUser(data);
     },
     viewUser(data) {
@@ -37,27 +29,32 @@ Page({
             success(res) {
                 if (res.data.data) {
                     me.setData({
-                        info: res.data.data
-
-                    })
-                    wxaccount = res.data.data.wxaccount
+                        info: res.data.data,
+                        wxaccount: res.data.data.wxaccount,
+                        avatar: res.data.data.avatar
+                    });
                 }
-
-
             }
         });
     },
 
     copyAccount() {
         wx.setClipboardData({
-            data: wxaccount,
-            success: function(res) {
+            data: this.data.wxaccount,
+            success() {
                 wx.showToast({
-                    title: `已复制对方微信${wxaccount}`,
+                    title: `已复制对方微信${this.data.wxaccount}`,
                     icon: 'success',
                     duration: 2000
                 });
             }
+        });
+    },
+
+    previewImage() {
+        wx.previewImage({
+            current: this.data.info.avatar, // 当前显示图片的http链接
+            urls: [this.data.info.avatar] // 需要预览的图片http链接列表
         });
     }
 });

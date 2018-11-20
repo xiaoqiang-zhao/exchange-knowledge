@@ -29,6 +29,11 @@
     line-height: 1.75em;
 }
 
+.text-container header span {
+    font-size: 14px;
+    color: #555;
+}
+
 .text-container footer {
     font-size: 14px;
     color: #999;

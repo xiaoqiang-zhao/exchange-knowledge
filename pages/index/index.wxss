@@ -88,18 +88,22 @@
     float: left;
 }
 
-.card .img-container .img-tag-left {
+.card .img-container .img-tag-left,
+.card .img-container .img-tag-right {
     position: absolute;
     top: 10px;
-    left: 10px;
     padding: 5px 7px;
     border-radius: 5px;
     text-align: center;
-    font-size: 14px;
+    font-size: 18px;
     z-index: 99;
     font-weight: 700;
-    color: rgba(243, 119, 55, .8);
-    background: rgba(255, 255, 255, .6);
+}
+
+.card .img-container .img-tag-left {
+    left: 10px;
+    color: #f27f46;
+    background: rgba(255, 255, 255, 1);
 }
 
 .card .img-container .img-tag-left .icon-handshake {
@@ -109,17 +113,9 @@
 }
 
 .card .img-container .img-tag-right {
-    position: absolute;
-    top: 10px;
     right: 10px;
-    padding: 5px 7px;
-    border-radius: 5px;
-    text-align: center;
-    font-size: 14px;
-    z-index: 99;
-    font-weight: 700;
-    color: rgba(255, 255, 255, .8);
-    background: rgba(120, 120, 120, .4);
+    color: rgba(255, 255, 255, 1);
+    background: rgba(120, 120, 120, 1);
 }
 
 .card .img-container .img-tag-right .icon-close {

@@ -93,16 +93,14 @@ export default {
      */
     jumpForPre() {
         this.getCurrentInputStep().then(stepOption => {
-            if (stepOption.index < 4) {
-                wx.redirectTo({
-                    url: stepOption.path
-                });
+            let url = stepOption.path;
+            if (stepOption.index > 3) {
+                url = '/pages/search-nearby/search-nearby';
             }
-            else {
-                wx.switchTab({
-                    url: '/pages/index/index'
-                });
-            }
+
+            wx.redirectTo({
+                url: url
+            });
         });
     }
 };
