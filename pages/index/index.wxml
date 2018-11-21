@@ -61,7 +61,7 @@
             </div>
         </block>
         <div wx:else class="btn btn-only iconfont icon-error" bindtap="toInputPage">
-            完善个人信息，即可开始交换
+            完善个人信息，即可开始交流
         </div>
     </section>
 </div>
@@ -73,7 +73,7 @@
         </div>
         <div class="iconfont icon-handshake "></div>
         <div class="title success-title">恭喜配对成功!</div>
-        <div class="content">你们已经愿意见面交换经验了</div>
+        <div class="content">你们已经愿意见面交流经验了</div>
         <button
             id="contactMatcher"
             class="submit-btn"

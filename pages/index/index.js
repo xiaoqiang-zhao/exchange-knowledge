@@ -226,7 +226,7 @@ Page({
                         }
                     }
                 });
-                this.hideTip();
+                this.hideTip(translate.type);
             }
         }
         translate.x = [0, -400, 400][translate.type];
@@ -312,18 +312,23 @@ Page({
         });
     },
 
-    hideTip() {
+    /**
+     * 隐藏 tip
+     * @param {number} translateType 1:左滑, 2:右划
+     */
+    hideTip(translateType) {
         if (this.data.showTip) {
             this.setData({
                 showTip: false
             });
-
-            wx.showToast({
-                title: '右滑愿意和Ta交流经，Ta会收到消息，如果对方也愿意，即可配对交流经验',
-                icon: 'none',
-                mask: true,
-                duration: 4000
-            });
+            if (translateType === 2) {
+                wx.showToast({
+                    title: '右滑愿意交流，两人都愿意即可配对聊天',
+                    icon: 'none',
+                    mask: true,
+                    duration: 4000
+                });
+            }
         }
     },
 

@@ -2,14 +2,18 @@
 <div class="container personal-photo">
     <div class="head-img-placeholder" wx:if="{{headerImgSrc === ''}}"
         catchtap="chooseImageTap">
-        <div class="iconfont icon-photo"></div>
+        <!-- <div class="iconfont icon-photo"></div> -->
+        <image
+            src="https://mmbiz.qpic.cn/mmbiz_png/oZLZe4SBN0fX9xpeZjsW8MDmGCHkia8yvzLGSpoGQONDLbicdOMHgTVDALCQ3OLba5XvAI8iah4fmYP1jeSZftN2g/0?wx_fmt=png"
+            mode="widthFix">
+        </image>
         <div class="img-upload-tip">
             <span>添加本人照片</span>
         </div>
         <div class="text">
             <span>你好</span>
             <div>
-                选择自己最好看的一张照片，面部清晰更可能配对成果哦
+                选择自己最好的一张照片，带有清晰脸部照片可将配对成功率提升10倍哦！
             </div>
         </div>
     </div>

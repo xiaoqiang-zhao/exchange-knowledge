@@ -10,7 +10,7 @@
     background: #aaa;
 }
 
-.head-img-placeholder .icon-photo {
+/* .head-img-placeholder .icon-photo {
     display: block;
     height: 400px;
     width: 100%;
@@ -18,10 +18,15 @@
     font-size: 200px;
     line-height: 318px;
     color: #fefefe;
-}
+} */
 
-.head-img-placeholder .icon-photo:before {
+/* .head-img-placeholder .icon-photo:before {
     color: #dfdfdf;
+} */
+
+.head-img-placeholder image {
+    width: 100%;
+    vertical-align: middle;
 }
 
 .head-img-placeholder .img-upload-tip {

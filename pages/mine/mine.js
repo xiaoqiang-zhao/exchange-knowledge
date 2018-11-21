@@ -43,9 +43,6 @@ Page({
             'wxaccount',
             'token'
         ).then(res => {
-            if (!res.content) {
-                res.content = '我对这个知识有一些经验，期待与你分享感受，互相交换，一起学习进步。';
-            }
             token = res.token;
             this.setData({
                 userInfo: res

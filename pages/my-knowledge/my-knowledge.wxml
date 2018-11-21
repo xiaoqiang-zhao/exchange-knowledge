@@ -1,6 +1,6 @@
 <!-- 我的知识 -->
 <div class="container my-knowledge">
-    <div class="text">你和别人交换的经验</div>
+    <div class="text">你和别人交流的经验</div>
     <!-- <text class="tip-content">用于和别人配对交换，互相学习</text> -->
     <input class="input"
         placeholder="我的经验分享"
