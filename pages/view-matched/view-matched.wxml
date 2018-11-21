@@ -13,7 +13,7 @@
            <span class="orange-title">{{info.wxaccount}}</span>
         </div>
         <div>
-            <label>我的知识: </label>
+            <label>我的经验: </label>
             <span class="info-detail-title">{{info.know.title}}</span>
         </div>
         <div class="info-content">{{info.know.content}}</div>

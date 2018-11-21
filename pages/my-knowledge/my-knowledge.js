@@ -13,7 +13,6 @@ Page({
         submitBtn: ''
     },
     onLoad(option) {
-
         // 从本地获取
         commonUtil.getStorageData('title', 'wxaccount', 'career').then(res => {
             this.setData({

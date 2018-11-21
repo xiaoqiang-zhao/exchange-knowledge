@@ -44,7 +44,7 @@ export default {
             },
             {
                 index: 6,
-                name: '我的知识',
+                name: '我的经验',
                 keys: ['title', 'wxaccount'],
                 path: '/pages/my-knowledge/my-knowledge',
                 // 最后一步的标识，当返回当前所在步的对象时，外部调用方法不知道是否填写完成

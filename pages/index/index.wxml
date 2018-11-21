@@ -46,7 +46,10 @@
             <footer class="text-container">
                 <div class="sub">TA的经验</div>
                 <div class="title ellipsis">{{item.title}}</div>
-                <div class="content line-clamp">{{item.content}}</div>
+                <div class="content line-clamp">
+                    知交是一个交流经验的平台，你可以左右滑动选择是否愿意和他交流，
+                    两人互相愿意才可配对聊天，互相学习，交个朋友
+                </div>
             </footer>
         </article>
     </section>
@@ -70,7 +73,7 @@
         </div>
         <div class="iconfont icon-handshake "></div>
         <div class="title success-title">恭喜配对成功!</div>
-        <div class="content">你们已经愿意见面交换知识了</div>
+        <div class="content">你们已经愿意见面交换经验了</div>
         <button
             id="contactMatcher"
             class="submit-btn"

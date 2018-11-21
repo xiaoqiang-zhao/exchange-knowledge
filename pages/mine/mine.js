@@ -15,31 +15,6 @@ Page({
         token
     },
 
-    // onLoad() {
-    //     commonUtil.getStorageData(
-    //         'headerImgSrc',
-    //         // 实名认证
-    //         'realname',
-    //         'idcard',
-
-    //         // 个人信息
-    //         'career',
-    //         'wxaccount',
-
-    //         // 我的知识
-    //         'title',
-    //         'content',
-    //         'token'
-    //     ).then(res => {
-    //         if (!res.content) {
-    //           res.content = '我对这个知识有一些经验，期待与你分享感受，互相交换，一起学习进步。'
-    //         }
-    //         token = res.token;
-    //         this.setData({
-    //             userInfo: res
-    //         });
-    //     });
-    // },
     onShow() {
         timer = setInterval(() => {
             commonUtil.getMatchList({
@@ -56,22 +31,20 @@ Page({
             }
         }, 5000);
         commonUtil.getStorageData(
+            // 头像
             'headerImgSrc',
+
             // 实名认证
             'realname',
-            'idcard',
-
-            // 个人信息
             'career',
-            'wxaccount',
-
-            // 我的知识
+            
+            // 我的经验
             'title',
-            'content',
+            'wxaccount',
             'token'
         ).then(res => {
             if (!res.content) {
-                res.content = '我对这个知识有一些经验，期待与你分享感受，互相交换，一起学习进步。'
+                res.content = '我对这个知识有一些经验，期待与你分享感受，互相交换，一起学习进步。';
             }
             token = res.token;
             this.setData({
