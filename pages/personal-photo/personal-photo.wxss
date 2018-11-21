@@ -10,20 +10,6 @@
     background: #aaa;
 }
 
-/* .head-img-placeholder .icon-photo {
-    display: block;
-    height: 400px;
-    width: 100%;
-    text-align: center;
-    font-size: 200px;
-    line-height: 318px;
-    color: #fefefe;
-} */
-
-/* .head-img-placeholder .icon-photo:before {
-    color: #dfdfdf;
-} */
-
 .head-img-placeholder image {
     width: 100%;
     vertical-align: middle;
@@ -31,7 +17,7 @@
 
 .head-img-placeholder .img-upload-tip {
     position: absolute;
-    top: 300px;
+    top: 60%;
     width: 100%;
     height: 48px;
     font-size: 18px;
@@ -80,6 +66,7 @@
 .head-img image {
     width: 100%;
 }
+
 .submit-btn {
     margin-top: 40px;
 }
