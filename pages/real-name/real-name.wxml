@@ -6,7 +6,7 @@
         value="{{realname}}"
         auto-focus/>
     <input class="input"
-        placeholder="公司职业（百度产品经理)"
+        placeholder="公司职业（产品经理)"
         bindinput="careerInput"
         value="{{career}}"/>
     <div

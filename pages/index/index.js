@@ -38,11 +38,13 @@ Page({
         // 联系对方的名字
         name: '',
         cardTitle: '卡片加载中...',
-        showTip: false
+        showTip: false,
+        // 是否完成了 第一次右划 提示
+        isFinishedFirstSlideRightRemind: true
 
     },
     onLoad() {
-        commonUtil.getStorageData('location', 'token').then(res => {
+        commonUtil.getStorageData('location', 'token', 'isFinishedFirstSlideRightRemind').then(res => {
             token = res.token;
             this.loadList({
                 token: res.token,
@@ -53,6 +55,9 @@ Page({
                 token
             }).then(res => {
                 originMatchNum = res.number;
+            });
+            this.setData({
+                isFinishedFirstSlideRightRemind: res.isFinishedFirstSlideRightRemind
             });
         });
     },
@@ -73,13 +78,13 @@ Page({
 
         // 判断是否完成了信息填写
         stepHelp.getCurrentInputStep().then(res => {
-            // 若信息填写未完成
-            if (!res.isEnd) {
-                // 隐藏底部 Bar
-                wx.hideTabBar();
+            // 若信息填写已完成
+            if (res.isEnd) {
+                wx.showTabBar();
             }
             else {
-                wx.showTabBar();
+                // 隐藏底部 Bar
+                wx.hideTabBar();
             }
 
             // 设置相关数据状态
@@ -226,7 +231,22 @@ Page({
                         }
                     }
                 });
-                this.hideTip(translate.type);
+                this.hideTip();
+                if (translate.type === 2 && !this.data.isFinishedFirstSlideRightRemind) {
+                    wx.showToast({
+                        title: '右滑愿意交流，两人都愿意即可配对聊天',
+                        icon: 'none',
+                        mask: true,
+                        duration: 4000
+                    });
+                    this.setData({
+                        isFinishedFirstSlideRightRemind: true
+                    });
+                    wx.setStorage({
+                        key: 'isFinishedFirstSlideRightRemind',
+                        data: true
+                    });
+                }
             }
         }
         translate.x = [0, -400, 400][translate.type];
@@ -314,21 +334,12 @@ Page({
 
     /**
      * 隐藏 tip
-     * @param {number} translateType 1:左滑, 2:右划
      */
-    hideTip(translateType) {
+    hideTip() {
         if (this.data.showTip) {
             this.setData({
                 showTip: false
             });
-            if (translateType === 2) {
-                wx.showToast({
-                    title: '右滑愿意交流，两人都愿意即可配对聊天',
-                    icon: 'none',
-                    mask: true,
-                    duration: 4000
-                });
-            }
         }
     },
 
