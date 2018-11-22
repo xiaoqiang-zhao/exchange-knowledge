@@ -49,7 +49,7 @@ Page({
             success(res) {
                 wx.setStorage({
                     key: 'mobile',
-                    data: res.data.mobile
+                    data: res.data.data.mobile
                 });
                 me.navigateTo();
             }
