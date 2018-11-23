@@ -41,7 +41,7 @@ Page({
             }
         });
     },
-    handlerReset() {
-        this.getLocation();
+    openSetting() {
+        wx.openSetting();
     }
 });

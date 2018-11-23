@@ -11,7 +11,7 @@
         <section class="text-container">
             <header>
                 {{item.nick}}
-                <span>占位</span>
+                <span>{{item.career}}</span>
             </header>
             <footer>匹配于 {{item.time}}</footer>
         </section>

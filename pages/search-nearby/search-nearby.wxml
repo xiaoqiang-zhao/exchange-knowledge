@@ -6,12 +6,12 @@
     </view>
     <text wx:if="{{status === 1}}" class="content">正在查找附近的人...</text>
     <text wx:if="{{status === 2}}" class="content fail-btn">
-          定位授权未成功
-      </text>
-      <button wx:if="{{status === 2}}"
-          class="submit-btn"
-          open-type="openSetting"
-          bindopensetting='handlerReset'>
-          授权地理位置
-      </button>
+        定位授权未成功
+    </text>
+    <button
+        wx:if="{{status === 2}}"
+        class="submit-btn"
+        bindtap="openSetting">
+        授权地理位置
+    </button>
 </div>

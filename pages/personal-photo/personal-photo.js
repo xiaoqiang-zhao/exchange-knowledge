@@ -66,7 +66,7 @@ Page({
     },
     submit() {
         const me = this;
-        commonUtil.getStorageData('realname', 'career').then(res => {
+        commonUtil.getStorageData('token', 'realname', 'career').then(res => {
             me.request(res);
         });
     },
