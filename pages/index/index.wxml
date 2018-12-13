@@ -13,7 +13,7 @@
             class="submit-btn-continue"
             bindtap="onLoad">
             重新探索
-        </button>  
+        </button>
         <article class="card"
             wx:for="{{slideList}}"
             wx:key="{{item.id}}"
@@ -22,47 +22,43 @@
             bindtouchend="touchend"
             data-token="{{item.token}}"
             bindtouchstart="touchstart">
-            <header class="img-container">
-                <image class="img" mode="aspectFill" src="{{item.avatar}}"></image>
-                <div class="trans-icon">
+            <header class="text-container">
+                <div class="sub">{{item.career}}</div>
+                <div class="title ellipsis">{{item.title}}</div>
+            </header>
+            <div class="img-container">
+                <div  class="img">
+                    <image mode="aspectFill" src="{{item.avatar}}"></image>
                     <div wx:if="{{item.rightIconShow}}" class="img-tag-left">
                         <span class="iconfont icon-handshake"></span>
                         <div>愿意交流</div>
                     </div>
-                     <div  wx:if="{{item.leftIconShow}}" class="img-tag-right">
+                    <div  wx:if="{{item.leftIconShow}}" class="img-tag-right">
                         <span class="iconfont icon-close "></span>
                         <div>不愿交流</div>
                     </div>
                 </div>
                 <!-- <span class="img-tag iconfont icon-img">1</span> -->
                 <div class="user-info-container">
-                    <div class="name">{{item.nick}}</div>
-                    <div class="info">
-                        <span>{{item.career}}</span>
-                        <!-- <span>{{item.distance}}</span> -->
-                    </div>
+                    <span class="name">{{item.nick}}</span>
+                    <span  wx:if="{{item.gender}}" class="iconfont icon-nv"></span>
+                    <span  wx:else class="iconfont icon-iconfontnan"></span>
                 </div>
-            </header>
-            <footer class="text-container">
-                <div class="sub">TA的经验</div>
-                <div class="title ellipsis">{{item.title}}</div>
-                <div class="content line-clamp">
-                    知交是一个交流经验的平台，你可以左右滑动选择是否愿意和他交流，
-                    两人互相愿意才可配对聊天，互相学习，交个朋友
+                <div class="identification">
+                   <span>手机号已认证 |</span>
+                   <span> 微信已认证</span>
                 </div>
-            </footer>
+            </div>
         </article>
     </section>
     <section wx:if="{{slideList.length > 0}}" class="btn-container">
-        <block wx:if="{{isFinishedInput}}">
-            <div class="btn iconfont icon-close2" id="clickLeft" bindtap="slideLeft"></div>
-            <div class="btn iconfont icon-handshake icon-exchange"  bindtap="slideRight">
-                愿意交流经验
+        <block>
+            <div class="btn iconfont icon-close" id="clickLeft" bindtap="slideLeft"></div>
+            <div class="btn icon-exchange"  bindtap="slideRight">
+                <span class=" iconfont icon-handshake"></span>
+                <span >愿意交流经验</span>
             </div>
         </block>
-        <div wx:else class="btn btn-only iconfont icon-error" bindtap="toInputPage">
-            完善个人信息，即可开始交流
-        </div>
     </section>
 </div>
 <section class="match-bg" wx:if="{{followSuccess}}">

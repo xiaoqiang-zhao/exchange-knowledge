@@ -3,7 +3,7 @@
 .container {
     display: flex;
     flex-direction: column;
-    padding: 15px 17px 0;
+    padding: 35px 42px 0;
     position: fixed;
     /* background: #f37737; */
     /* border-bottom: 1px solid #333; */
@@ -36,12 +36,12 @@
 
 /* 第二和第三张卡缩小 */
 .card:nth-last-of-type(2) {
-    transform: scale(0.9, 1);
+    transform: scale(0.95, 0.95);
     top: 5px;
 }
 
 .card:nth-last-of-type(3) {
-    transform: scale(0.8, 1);
+    transform: scale(0.9, 0.9);
     top: 10px;
 }
 
@@ -57,41 +57,26 @@
 }
 
 .card .img-container {
-    position: relative;
+    display:flex;
+    flex-direction:column;
     flex: 1;
-    border-radius: 10px 10px 0 0;
     overflow: hidden;
-    background: #999;
     color: #fff;
+    padding-right: 60px;
 }
 
 .card .img-container .img {
-    width: 100%;
-    height: 100%;
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    border-radius: 0  10px 10px 0;
 }
 
-.card .img-container .img-tag {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    padding: 1px 7px;
-    border-radius: 5px;
-    line-height: 28px;
-    font-weight: 600;
-    background: rgba(120, 120, 120, .4);
-}
-
-.card .img-container .img-tag::before {
-    margin-right: 5px;
-    font-size: 28px;
-    font-weight: 400;
-    float: left;
-}
 
 .card .img-container .img-tag-left,
 .card .img-container .img-tag-right {
     position: absolute;
-    top: 10px;
+    top: 20px;
     padding: 5px 7px;
     border-radius: 5px;
     text-align: center;
@@ -101,7 +86,7 @@
 }
 
 .card .img-container .img-tag-left {
-    left: 10px;
+    left: 20px;
     color: #f27f46;
     background: rgba(255, 255, 255, 1);
 }
@@ -113,7 +98,7 @@
 }
 
 .card .img-container .img-tag-right {
-    right: 10px;
+    right: 20px;
     color: rgba(255, 255, 255, 1);
     background: rgba(120, 120, 120, 1);
 }
@@ -125,73 +110,33 @@
 }
 
 .card .img-container .user-info-container {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    /* background: #999; */
-}
-
-.card .img-container .user-info-container .name {
-    font-size: 32px;
-    line-height: 1em;
-    font-weight: 700;
-    text-align: center;
-}
-
-.card .img-container .user-info-container .info {
-    border-radius: 2px;
-    background: rgba(51, 51, 51, .8);
-    display: inline-block;
-    font-size: 18px;
-    line-height: 24px;
-    padding: 0 10px;
-    margin: 10px 0 20px;
-}
-
-/* :nth-of-type(n + 2) */
-.card .img-container .user-info-container .info span {
-    display: inline-block;
+    padding: 14px 33px;
     font-size: 16px;
-}
-
-.name {
-    text-shadow: 1px 1px 2px #666;
-}
-
-.card .img-container .user-info-container .info span:nth-of-type(n + 2)::before {
-    content: "\200B";
-    display: inline-block;
-    height: 0.35em;
-    width: 1px;
-    border-bottom: 0.7em solid rgba(255, 255, 255, .6);
-    margin: 0 0.5em;
+    color: #848484;
 }
 
 .card .text-container {
-    padding: 20px;
-    flex: 0 0 140px;
+    padding: 23px 33px;
     overflow: hidden;
 }
 
 .card .text-container .sub {
-    color: #7d7d7d;
-    font-size: 14px;
-    font-weight: 600;
+    color: #B4B4B4;
+    font-size: 16px;
 }
 
 .card .text-container .title {
     color: #000;
     font-weight: 700;
-    font-size: 22px;
+    font-size: 26px;
     margin: 3px 0;
 }
-
-.card .text-container .content {
-    color: #8d8d8d;
-    font-size: 16px;
-    line-height: 28px;
+.card .identification {
+    color: #AFAFAF;
+    font-size: 12px;
+    padding: 0 33px 23px 33px;
 }
+
 
 /* ==== 按钮部分 ==== */
 .btn-container {
@@ -207,50 +152,45 @@
 }
 
 .btn-container .btn {
-    padding: 14px 0;
+    padding: 14px;
     display: inline-flex;
     justify-content: center;
     box-sizing: content-box;
     vertical-align: top;
-    box-shadow: 1px 2px 5px #d8d8d8;
+    box-shadow: 1px 3px 8px rgba(0, 0, 0, .16);
     height: 34px;
     line-height: 34px;
     background: #fff;
     text-align: center;
 }
 
-.btn-container .icon-close2 {
+.btn-container .icon-close {
     display: inline-block;
-    width: 26%;
-    margin-right: 2%;
+    width: 34px;
+    margin-right: 3%;
     background: #fff;
-    color: #f27f46;
-    border-radius: 40px 0 0 40px;
-    font-size: 30px;
+    color:  #ee2442;
+    border-radius: 100%;
+    font-weight: 600;
+    font-size: 24px;
 }
 
 .btn-container .icon-exchange {
     display: inline-block;
-    border-radius: 0 40px 40px 0;
+    border-radius: 40px;
     font-size: 16px;
     font-weight: 400;
-    color: #f27f46;
-    width: 66%;
+    color: #000;
+    width: 64%;
     padding-left: 10px;
 }
-
-.btn-container .icon-exchange:before {
+.btn-container .icon-exchange .icon-handshake {
     font-size: 38px;
     vertical-align: middle;
     margin-right: 9px;
+    color: #39da74;
 }
 
-.btn-container .btn-only {
-    border-radius: 40px;
-    width: auto;
-    padding: 14px 30px;
-    color: #000;
-}
 
 .btn-container .icon-error:before {
     color: red;
@@ -278,13 +218,14 @@
 .match-back .icon-handshake::before {
     box-sizing: border-box;
     font-size: 48px;
-    color: #f37737;
+    color: #39da74;
     text-align: center;
     position: absolute;
     top: 45px;
     width: 100%;
 
 }
+
 
 .match-bg .match-photos {
     justify-content: center;
@@ -350,7 +291,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    height: 34px;
+    height: 34px; 
     z-index: 9999;
     background: rgba(254, 236, 201, .9);
     width: 100%;
@@ -359,7 +300,6 @@
 
 .tip-text {
     display: inline-block;
-    width: 80%;
     color: #555;
     line-height: 34px;
     font-size: 14px;
