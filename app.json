@@ -2,6 +2,9 @@
   "pages": [
     "pages/pre-page/pre-page",
     "pages/login/login",
+    "pages/career/career",
+    "pages/title/title",
+    "pages/nick/nick",
     "pages/search-nearby/search-nearby",
     "pages/real-name/real-name",
     "pages/personal-photo/personal-photo",
