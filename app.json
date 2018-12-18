@@ -17,9 +17,9 @@
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#f77738",
+    "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "知交",
-    "navigationBarTextStyle": "#fff"
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "backgroundColor": "#fff",

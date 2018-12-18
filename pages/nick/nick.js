@@ -13,6 +13,16 @@ Page({
     getUserInfo(e) {
         if (e.detail.rawData) {
             const userInfo = JSON.parse(e.detail.rawData);
+            // todo
+            // wx.request({
+            //     method: 'GET',
+            //     url: 'https://www.liuliuke.com/huanhuan/submitknow',
+            //     data: {
+            //         token: res.data,
+            //         career: me.data.career
+            //     }
+            // });
+
             // 存储信息
             wx.setStorage({
                 key: 'realname',

@@ -38,3 +38,18 @@
     font-size: 14px;
     color: #999;
 }
+
+.data-empty {
+    padding: 71px 20px;
+}
+.data-empty div {
+    color: #a3a3a3;
+    font-size: 24px;
+    text-align: center;
+}
+
+.data-empty .text {
+    padding-top: 15px;
+    color: #b4b4b4;
+    font-size: 16px;
+}

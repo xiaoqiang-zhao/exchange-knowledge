@@ -37,8 +37,14 @@ Page({
         wx.getStorage({
             key: 'token',
             success(res) {
-                // 由于业务变更后台端接口没有单独提供 API，到下一步再提交
-                // me.request(res.data);
+                wx.request({
+                    method: 'GET',
+                    url: 'https://www.liuliuke.com/huanhuan/submitknow',
+                    data: {
+                        token: res.data,
+                        career: me.data.career
+                    }
+                });
 
                 wx.setStorage({
                     key: 'career',
