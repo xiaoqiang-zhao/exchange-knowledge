@@ -1,0 +1,23 @@
+<!--pages/career-page/career-page.wxml-->
+<div class="container">
+    <header>
+        <div>我有什么</div>
+        <div>个人心得：</div>
+    </header>
+    <input class="input"
+        placeholder="比如：对易经有些研究/养波斯猫经验"
+        bindinput="titleInput"
+        value="{{title}}"/>
+    <details class="reminder">
+        <summary>灵感启发</summary>
+        <section>
+            易经研究心得，美国留学两年的体会，《影响力》读后感分享，看《某电影》有感，美食烹饪心得，越南旅游的体会，工作心得，中美贸易战看法，唱歌技巧心得...
+        </section>
+    </details>
+    <div
+        class="submit-btn {{disabled ? 'disabled' : ''}}"
+        bindgetphonenumber="submit"
+        bindtap="submit">
+            继续
+    </div>
+</div>

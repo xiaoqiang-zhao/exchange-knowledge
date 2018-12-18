@@ -57,7 +57,7 @@ Page({
                 originMatchNum = res.number;
             });
             this.setData({
-                isFinishedFirstSlideRightRemind: res.isFinishedFirstSlideRightRemind
+                isFinishedFirstSlideRightRemind: res.isFinishedFirstSlideRightRemind || false
             });
         });
     },

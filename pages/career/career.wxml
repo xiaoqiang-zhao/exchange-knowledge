@@ -1,0 +1,16 @@
+<div class="container">
+    <header>
+        <div>我的</div>
+        <div>职业/身份是：</div>
+    </header>
+    <input class="input"
+        placeholder="比如：综艺节目编导/养猫达人"
+        bindinput="careerInput"
+        value="{{career}}"/>
+    <div
+        class="submit-btn {{disabled ? 'disabled' : ''}}"
+        bindgetphonenumber="submit"
+        bindtap="submit">
+            继续
+    </div>
+</div>

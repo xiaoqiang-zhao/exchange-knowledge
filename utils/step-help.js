@@ -19,34 +19,27 @@ export default {
             },
             {
                 index: 2,
-                name: '开启“知交”引导页',
-                keys: ['guide'],
-                path: '/pages/guide-page/guide-page'
+                name: '职业填写页',
+                keys: ['career'],
+                path: '/pages/career/career'
             },
             {
                 index: 3,
-                name: '授权地理位置 / 查找附近的人',
-                keys: ['location'],
-                path: '/pages/search-nearby/search-nearby'
+                name: '心得填写页',
+                keys: ['title'],
+                path: '/pages/title/title'
             },
-            // =================  上面三步是必须通过的，否则不能到后面的页面，代码逻辑强制  =================== //
             {
                 index: 4,
-                name: '实名认证',
-                keys: ['realname', 'career'],
-                path: '/pages/real-name/real-name'
+                name: '昵称头像授权页',
+                keys: ['realname', 'headerImgSrc'],
+                path: '/pages/nick/nick'
             },
             {
                 index: 5,
-                name: '个人照片',
-                keys: ['headerImgSrc'],
-                path: '/pages/personal-photo/personal-photo'
-            },
-            {
-                index: 6,
-                name: '我的经验',
-                keys: ['title', 'wxaccount'],
-                path: '/pages/my-knowledge/my-knowledge',
+                name: '授权地理位置 / 查找附近的人',
+                keys: ['location'],
+                path: '/pages/search-nearby/search-nearby',
                 // 最后一步的标识，当返回当前所在步的对象时，外部调用方法不知道是否填写完成
                 isEnd: true
             }
@@ -86,21 +79,21 @@ export default {
                 });
             }
         });
-    },
+    }
 
     /**
-     * 分流跳转，
+     * 分流跳转，pre-page 的下一个页面是哪一个
      */
-    jumpForPre() {
-        this.getCurrentInputStep().then(stepOption => {
-            let url = stepOption.path;
-            if (stepOption.index > 3) {
-                url = '/pages/search-nearby/search-nearby';
-            }
+    // jumpForPre() {
+    //     this.getCurrentInputStep().then(stepOption => {
+    //         let url = stepOption.path;
+    //         if (stepOption.index > 3) {
+    //             url = '/pages/search-nearby/search-nearby';
+    //         }
 
-            wx.redirectTo({
-                url: url
-            });
-        });
-    }
+    //         wx.redirectTo({
+    //             url
+    //         });
+    //     });
+    // }
 };

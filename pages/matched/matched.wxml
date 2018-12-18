@@ -16,4 +16,12 @@
             <footer>匹配于 {{item.time}}</footer>
         </section>
     </article>
+    <div class="data-empty" wx:if="{{list.length === 0}}">
+        <div>
+            暂无配对
+        </div>
+        <div class="text">
+            你可以去右滑别人，如果对方也右滑你，则可配对交换经验
+        </div>
+    </div>
 </div>

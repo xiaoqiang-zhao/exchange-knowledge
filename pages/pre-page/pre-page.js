@@ -6,6 +6,6 @@ import stepHelp from '../../utils/step-help';
 Page({
     data: {},
     onLoad() {
-        stepHelp.jumpForPre();
+        stepHelp.jumpToCurrentStepPage(true);
     }
 });

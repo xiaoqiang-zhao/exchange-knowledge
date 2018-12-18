@@ -22,6 +22,9 @@ export default {
                     success(res) {
                         result[item] = res.data;
                     },
+                    fail() {
+                        result[item] = undefined;
+                    },
                     complete() {
                         count++;
                         if (count === keys.length) {

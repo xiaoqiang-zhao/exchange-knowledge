@@ -1,0 +1,38 @@
+/* pages/career-page/career-page.wxss */
+
+.container {
+    background: #fff;
+    padding: 55px 45px;
+}
+
+.container > header {
+    color: #000;
+    font-size: 40px;
+    line-height: 1.4em;
+    font-weight: 600;
+}
+
+.input {
+    border-bottom: 2px solid #979797;
+    margin: 80px 0 15px;
+    font-size: 18px;
+}
+
+.input-placeholder {
+    color: #d8d8d8;
+}
+
+.reminder {
+    display: block;
+    margin-bottom: 30px;
+}
+
+.reminder > summary {
+    color: #555;
+    font-size: 16px;
+}
+
+.reminder > section {
+    color: #9f9f9f;
+    font-size: 16px;
+}
