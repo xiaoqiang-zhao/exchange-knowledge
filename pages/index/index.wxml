@@ -28,7 +28,7 @@
             </header>
             <div class="img-container">
                 <div  class="img">
-                    <image mode="aspectFill" src="{{item.avatar}}"></image>
+                    <image  src="{{item.avatar}}"></image>
                     <div wx:if="{{item.rightIconShow}}" class="img-tag-left">
                         <span class="iconfont icon-handshake"></span>
                         <div>愿意交流</div>
@@ -38,7 +38,6 @@
                         <div>不愿交流</div>
                     </div>
                 </div>
-                <!-- <span class="img-tag iconfont icon-img">1</span> -->
                 <div class="user-info-container">
                     <span class="name">{{item.nick}}</span>
                     <span  wx:if="{{item.gender}}" class="iconfont icon-nv"></span>

@@ -62,13 +62,13 @@
     flex: 1;
     overflow: hidden;
     color: #fff;
-    padding-right: 60px;
+    padding-right: 20%;
 }
 
 .card .img-container .img {
-    flex: 1;
     overflow: hidden;
     position: relative;
+    height: 240px;
     border-radius: 0  10px 10px 0;
 }
 
@@ -76,43 +76,44 @@
 .card .img-container .img-tag-left,
 .card .img-container .img-tag-right {
     position: absolute;
-    top: 20px;
-    padding: 5px 7px;
+    top: 63px;
+    padding: 23px;
+    background: #fff;
     border-radius: 5px;
     text-align: center;
     font-size: 18px;
     z-index: 99;
     font-weight: 700;
+    color: #000;
 }
 
 .card .img-container .img-tag-left {
-    left: 20px;
-    color: #f27f46;
-    background: rgba(255, 255, 255, 1);
+    right: 50px;
 }
 
 .card .img-container .img-tag-left .icon-handshake {
-    line-height: 28px;
     font-weight: 600;
     font-size: 40px;
+    margin-bottom: 11px;
+    color: #3BCC6B;
 }
 
 .card .img-container .img-tag-right {
-    right: 20px;
-    color: rgba(255, 255, 255, 1);
-    background: rgba(120, 120, 120, 1);
+    left: 50px;
 }
 
 .card .img-container .img-tag-right .icon-close {
-    line-height: 28px;
     font-weight: 600;
     font-size: 22px;
+    margin-bottom: 11px;
+    color: #F13F40;
 }
 
 .card .img-container .user-info-container {
     padding: 14px 33px;
     font-size: 16px;
     color: #848484;
+    flex: 1;
 }
 
 .card .text-container {
@@ -169,7 +170,7 @@
     width: 34px;
     margin-right: 3%;
     background: #fff;
-    color:  #ee2442;
+    color:  #F13F40;
     border-radius: 100%;
     font-weight: 600;
     font-size: 24px;
@@ -218,7 +219,7 @@
 .match-back .icon-handshake::before {
     box-sizing: border-box;
     font-size: 48px;
-    color: #39da74;
+    color: #3BCC6B;
     text-align: center;
     position: absolute;
     top: 45px;
