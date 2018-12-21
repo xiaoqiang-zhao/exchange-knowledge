@@ -24,11 +24,11 @@
             bindtouchstart="touchstart">
             <header class="text-container">
                 <div class="sub">{{item.career}}</div>
-                <div class="title ellipsis">{{item.title}}</div>
+                <div class="title line-clamp2">{{item.title}}</div>
             </header>
             <div class="img-container">
                 <div  class="img">
-                    <image  src="{{item.avatar}}"></image>
+                    <image mode="aspectFill"  src="{{item.avatar}}"></image>
                     <div wx:if="{{item.rightIconShow}}" class="img-tag-left">
                         <span class="iconfont icon-handshake"></span>
                         <div>愿意交流</div>
