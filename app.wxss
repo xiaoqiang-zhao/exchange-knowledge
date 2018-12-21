@@ -36,7 +36,7 @@ div {
     overflow: hidden;
     margin-bottom: .05rem;
     white-space: normal;
-    text-overflow: ellipsis
+    text-overflow: ellipsis;
     -webkit-line-clamp: 2;
 }
 
