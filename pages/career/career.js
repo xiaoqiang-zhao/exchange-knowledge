@@ -19,7 +19,7 @@ Page({
 
     validate() {
         let disabled;
-        if (this.data.career.length > 0) {
+        if (this.data.career.length > 2) {
             disabled = false;
         }
         else {
@@ -33,13 +33,15 @@ Page({
     // 提交事件
     submit() {
         const me = this;
-
+        if(this.data.disabled){
+            return false
+        }
         wx.getStorage({
             key: 'token',
             success(res) {
                 wx.request({
                     method: 'GET',
-                    url: 'https://www.liuliuke.com/huanhuan/submitknow',
+                    url: 'https://www.liuliuke.com/huanhuan/submitdetail',
                     data: {
                         token: res.data,
                         career: me.data.career

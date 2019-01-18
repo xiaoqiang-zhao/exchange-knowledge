@@ -1,8 +1,7 @@
 <!--index.wxml-->
 <div class="container mine">
     <a class="head-img-modify" bindtap="navigateToPersonalPhoto">
-        <span class=" iconfont icon-camera "></span>
-        <span class="head-img-modify-tip">修改封面</span>
+        <span class="head-img-modify-tip">修改头像</span>
     </a>
     <image class="head-img" mode="aspectFill" src="{{userInfo.headerImgSrc}}" bindtap="navigateToPersonalPhoto"></image>
 
@@ -12,26 +11,26 @@
             <label class="modifi-btn" id="modifyInfo" bindtap="navigateToRealName">修改</label>
         </div>
         <div class="content">
-            <label>姓名</label>
+            <label>昵称：</label>
             {{userInfo.realname}}
         </div>
         <div class="content">
-            <label>职业</label>
+            <label>身份：</label>
             {{userInfo.career}}
         </div>
     </section>
 
     <section class="card-section content-section">
         <div class="title">
-            我的经验和微信
+            经验和联系
             <label class="modifi-btn" id="modifyKnowledge" bindtap="navigateToMyKnowledge">修改</label>
         </div>
         <div class="content">
-            <label>标题</label>
+            <label>我的经验：</label>
             {{userInfo.title}}
         </div>
         <div class="content">
-            <label>微信号</label>
+            <label>微信/手机号：</label>
             {{userInfo.wxaccount}}
         </div>
     </section>

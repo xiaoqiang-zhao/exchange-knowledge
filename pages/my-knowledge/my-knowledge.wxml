@@ -1,13 +1,13 @@
 <!-- 我的知识 -->
 <div class="container my-knowledge">
-    <div class="text">你和别人交流的经验</div>
+    <div class="text">你的知识（用于和别人配对交换）</div>
     <!-- <text class="tip-content">用于和别人配对交换，互相学习</text> -->
     <input class="input"
         placeholder="我的经验分享"
         bindinput="titleInput"
         value="{{title}}"
         auto-focus/>
-    <div class="text text-multi-line">别人的经验：分享在德国摄影的经验，信息流广告行业经验分享，我养猫3年的经验，线上销售的经验，移民加拿大的经验，在北京买房经验，手机版吃鸡技巧，做自媒体2年的经验...</div>
+    <div class="text text-multi-line">灵感启发：分享在德国摄影的经验，信息流广告行业经验分享，我养猫3年的经验，线上销售的经验，移民加拿大的经验，在北京买房经验，手机版吃鸡技巧，做自媒体2年的经验...</div>
     <input class="input"
         placeholder="微信号(配对后对方联系你)"
         bindinput="wxaccountInput"

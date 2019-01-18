@@ -11,9 +11,10 @@ Page({
      * @param {Object} e 事件参数
      */
     getCellPhoneNumber(e) {
+        debugger
         // 用户不授权获取手机号 (点击“不允许”)
+        const me = this;
         if (e.detail.iv) {
-            const me = this;
             // 获取微信 code
             // 一个 code 只能用一次，登录的 code 不可以再使用
             wx.login({
@@ -25,10 +26,24 @@ Page({
                         iv: e.detail.iv,
                         encryptedData: e.detail.encryptedData
                     };
-    
+
                     me.decodeCellPhoneNumber(data);
+                },
+                fail() {
+                    me.navigateTo();
                 }
             });
+        }
+        else {
+            wx.setStorage({
+                key: 'mobile',
+                data: '未授权获取'
+            });
+            wx.setStorage({
+                key: 'wxaccount',
+                data: '未授权获取'
+            });
+            me.navigateTo();
         }
     },
 
@@ -49,6 +64,10 @@ Page({
             success(res) {
                 wx.setStorage({
                     key: 'mobile',
+                    data: res.data.data.mobile
+                });
+                wx.setStorage({
+                    key: 'wxaccount',
                     data: res.data.data.mobile
                 });
                 me.navigateTo();

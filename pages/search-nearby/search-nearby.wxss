@@ -21,11 +21,28 @@
       border-radius: 2000px;
       background-image: url(https://mmbiz.qpic.cn/mmbiz_png/PYuPblARCpeEFuKPVtg3ickQmIw6eMlZQxRooNqxrDrv3EfSZPGZTertVKBUB2IRSVfgRtVTOBNGfZzO7T2yN2A/0?wx_fmt=png);
 }
+
+.fubiaoti{
+   display: block;
+    font-size: 16px;
+    line-height: 1;
+    color: #999;
+}
+
 .content {
     display: block;
     font-size: 16px;
     line-height: 1;
     color: #999;
+    animation-name: breath;                         /* 动画名称 */
+    animation-duration: 1.8s;                         /* 动画时长3秒 */
+    animation-timing-function: ease-in-out;         /* 动画速度曲线：以低速开始和结束 */
+    animation-iteration-count: infinite;            /* 播放次数：无限 */
+}
+@keyframes breath {
+    from { opacity: 1; }                          /* 动画开始时的不透明度 */
+    50%  { opacity:   0; }                          /* 动画50% 时的不透明度 */
+    to   { opacity: 1; }                          /* 动画结束时的不透明度 */    
 }
 .submit-btn {
     margin: 20px 45px;

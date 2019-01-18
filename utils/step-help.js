@@ -16,7 +16,7 @@ export default {
                 name: '登录-授权手机号',
                 keys: ['mobile'],
                 path: '/pages/login/login'
-            },
+            },       
             {
                 index: 2,
                 name: '职业填写页',
@@ -29,12 +29,12 @@ export default {
                 keys: ['title'],
                 path: '/pages/title/title'
             },
-            {
-                index: 4,
-                name: '昵称头像授权页',
-                keys: ['realname', 'headerImgSrc'],
-                path: '/pages/nick/nick'
-            },
+          {
+            index: 4,
+            name: '昵称头像授权页',
+            keys: ['realname', 'headerImgSrc'],
+            path: '/pages/nick/nick'
+          },
             {
                 index: 5,
                 name: '授权地理位置 / 查找附近的人',

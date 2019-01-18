@@ -5,17 +5,33 @@
 
 header {
     color: #000;
-    font-size: 40px;
+    font-size: 38px;
     line-height: 1.4em;
     font-weight: 600;
 }
 
 .input {
-    border-bottom: 2px solid #979797;
-    margin: 80px 0 75px;
+    border-bottom: 2px solid #b3b3b3;
+    margin: 80px 0 0px;
     font-size: 18px;
 }
 
 .input-placeholder {
     color: #d8d8d8;
+}
+
+.reminder {
+    display: block;
+   padding-bottom: 70px;
+}
+
+.reminder > summary {
+    color: rgb(161, 161, 161);
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.reminder > section {
+    color: #9f9f9f;
+    font-size: 16px;
 }

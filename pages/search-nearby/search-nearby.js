@@ -24,7 +24,7 @@ Page({
                     wx.switchTab({
                         url: '/pages/index/index'
                     });
-                }, 3000);
+                }, 4000);
 
                 wx.setStorage({
                     key: 'location',

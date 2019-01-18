@@ -4,25 +4,24 @@
    <div class="tip-title">{{info.nick}}</div>
    <div wx:if="{{info.career}}" class="tip-content">{{info.career}}</div>
    <div class="sanjiao_tip">
-       <p class="sanjiao_up"></p>
    </div>
    <section class="info-card">
-        <div class="info-content">我对你的经验也蛮感兴趣，有时间的话我们见面交流一下，相互学习</div>
+   <div class="peiduichenggong">配对成功！可联系TA交换经验</div> <div class="info-content">TA对你的经验也很感兴趣，想和你交换。你可联系对方，约时间喝杯咖啡，互相交换学习一下  也交个朋友：）</div>
+         <div class="hengxian">—</div>
         <div wx:if="{{info.wxaccount}}">
-           <label class="font-bold">我的微信号: </label>
+           <label class="font-bold">TA的微信/手机号: </label>
            <span class="orange-title">{{info.wxaccount}}</span>
         </div>
         <div>
-            <label>我的经验: </label>
+            <label class="font-bold">TA的经验: </label>
             <span class="info-detail-title">{{info.know.title}}</span>
         </div>
-        <div class="info-content">{{info.know.content}}</div>
        
    </section>
     <button
         class="submit-btn"
         id="copyWx"
         bindtap="copyAccount">
-        复制微信号
+        复制微信/手机号
     </button>
 </div>

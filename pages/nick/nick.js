@@ -17,7 +17,7 @@ Page({
                 key: 'token',
                 success(res) {
                     wx.request({
-                        method: 'POST',
+                        method: 'GET',
                         url: 'https://www.liuliuke.com/huanhuan/upnickpic',
                         data: {
                             token: res.data,
@@ -38,13 +38,18 @@ Page({
                 key: 'headerImgSrc',
                 data: userInfo.avatarUrl
             });
+
+            wx.setStorage({
+                key: 'gender',
+                data: userInfo.gender
+            });
             this.navigateTo();
         }
     },
 
     navigateTo() {
         wx.navigateTo({
-            url: '/pages/search-nearby/search-nearby'
+          url: '/pages/search-nearby/search-nearby'
         });
     }
 });

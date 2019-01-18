@@ -1,9 +1,5 @@
 <!--index.wxml-->
 <div class="container">
-   <div class="tip"  wx:if="{{showTip === true}}">
-        <span class="tip-text">右滑愿意，左滑不愿意。互相愿意才能交流经验</span>
-        <i bindtap="closeTip" class="iconfont icon-close1"></i>
-   </div>
     <section class="card-container">
         <article class="card card-place-holder">
             {{cardTitle}}
@@ -29,19 +25,19 @@
             <div class="img-container">
                 <div  class="img">
                     <image mode="aspectFill"  src="{{item.avatar}}"></image>
-                    <div wx:if="{{item.rightIconShow}}" class="img-tag-left">
+                    <div  wx:if="{{item.rightIconShow}}" class="img-tag-left">
                         <span class="iconfont icon-handshake"></span>
-                        <div>愿意交流</div>
+                        <div class="yuanyijiaohuan">愿意交换</div>
                     </div>
                     <div  wx:if="{{item.leftIconShow}}" class="img-tag-right">
                         <span class="iconfont icon-close "></span>
-                        <div>不愿交流</div>
+                        <div class="buyuanjiaohuan">不愿交换</div>
                     </div>
                 </div>
                 <div class="user-info-container">
                     <span class="name">{{item.nick}}</span>
-                    <span  wx:if="{{item.gender}}" class="iconfont icon-nv"></span>
-                    <span  wx:else class="iconfont icon-iconfontnan"></span>
+                    <span wx:if="{{item.gender == 2}}" class="iconfont icon-nv"></span>
+                    <span wx:if="{{item.gender == 1}}" class="iconfont icon-iconfontnan"></span>
                 </div>
                 <div class="identification">
                    <span>手机号已认证 |</span>
@@ -55,7 +51,7 @@
             <div class="btn iconfont icon-close" id="clickLeft" bindtap="slideLeft"></div>
             <div class="btn icon-exchange"  bindtap="slideRight">
                 <span class=" iconfont icon-handshake"></span>
-                <span >愿意交流经验</span>
+                <span >愿意交换经验</span>
             </div>
         </block>
     </section>
@@ -68,7 +64,7 @@
         </div>
         <div class="iconfont icon-handshake "></div>
         <div class="title success-title">恭喜配对成功!</div>
-        <div class="content">你们已经愿意见面交流经验了</div>
+        <div class="content">你们已经愿意交换经验了</div>
         <button
             id="contactMatcher"
             class="submit-btn"

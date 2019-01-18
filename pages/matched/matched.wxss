@@ -7,7 +7,6 @@
     display: flex;
     margin: 0 15px;
     padding: 20px 0;
-    border-bottom: 1px solid #f0f0f0;
 }
 
 .avatar {
@@ -25,6 +24,7 @@
 
 .text-container header {
     font-size: 16px;
+    font-weight: 500;
     color: #000;
     line-height: 1.75em;
 }

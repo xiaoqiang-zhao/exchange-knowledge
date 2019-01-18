@@ -233,12 +233,11 @@ Page({
                 });
                 this.hideTip();
                 if (translate.type === 2 && !this.data.isFinishedFirstSlideRightRemind) {
-                    wx.showToast({
-                        title: '右滑愿意交流，两人都愿意即可配对聊天',
-                        icon: 'none',
-                        mask: true,
-                        duration: 4000
-                    });
+                    wx.showModal({
+                        title: '右滑代表愿意和他交换经验',
+                        content: '若两人互相愿意，则配对成功，可以约见互相学习，交个朋友',
+                        success: function (res) {}
+                  });
                     this.setData({
                         isFinishedFirstSlideRightRemind: true
                     });

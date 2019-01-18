@@ -1,7 +1,7 @@
 <!-- 搜索附近 -->
 <div class="container search-nearby">
-    <text class="title">与附近的人交流经验</text>
-    <text class="content">互相学习，交个朋友</text>
+    <text class="title">互相分享经验，顺便交个朋友</text>
+    <text class="fubiaoti">配对后可互相交换学习经验</text>
     <view class="map">
     </view>
     <text wx:if="{{status === 1}}" class="content">正在查找附近的人...</text>

@@ -13,9 +13,7 @@ Page({
     },
     onLoad(option) {
 
-        wx.setNavigationBarTitle({
-            title: '实名认证'
-        });
+        
 
         // 从本地获取
         commonUtil.getStorageData('realname', 'career').then(res => {
@@ -32,7 +30,7 @@ Page({
     },
     nameInput(e) {
         // realname = e.detail.value;
-        this.setData({
+        this.setData({  
             realname: e.detail.value
         });
         this.validate();
@@ -65,7 +63,7 @@ Page({
             key: 'token',
             success(res) {
                 // 由于业务变更后台端接口没有单独提供 API，到下一步再提交
-                // me.request(res.data);
+                me.request(res.data);
 
                 // 存储信息
                 wx.setStorage({
@@ -83,39 +81,34 @@ Page({
     },
 
     // 向后台发起数据提交请求
-    // request(token) {
-    //     const me = this;
-    //     wx.uploadFile({
-    //         url: 'https://www.liuliuke.com/huanhuan/submitdetail',
-    //         filePath: me.data.headerImgSrc,
-    //         name: 'headerImgSrc',
-    //         header: {
-    //             'content-type': 'multipart/form-data'
-    //         },
-    //         // HTTP 请求中其他额外的 form data
-    //         formData: {
-    //             token,
-    //             career,
-    //             realname
-    //         },
-    //         success(res) {
-    //             me.navigateTo();
-    //             if (typeof res.data === 'string') {
-    //                 res.data = JSON.parse(res.data);
-    //             }
+    request(token) {
+        const me = this;
+        wx.request({
+            url: 'https://www.liuliuke.com/huanhuan/submitdetail',
+            // HTTP 请求中其他额外的 form data
+            data: {
+                token,
+                career: this.data.career,
+                realname: this.data.realname
+            },
+            success(res) {
+                me.navigateTo();
+                if (typeof res.data === 'string') {
+                    res.data = JSON.parse(res.data);
+                }
 
-    //             // 存储信息
-    //             wx.setStorage({
-    //                 key: 'realname',
-    //                 data: realname
-    //             });
-    //             wx.setStorage({
-    //                 key: 'career',
-    //                 data: career
-    //             });
-    //         }
-    //     });
-    // },
+                // 存储信息
+                wx.setStorage({
+                    key: 'realname',
+                    data: realname
+                });
+                wx.setStorage({
+                    key: 'career',
+                    data: career
+                });
+            }
+        });
+    },
     navigateTo() {
         // 编辑
         if (this.data.type === 1) {

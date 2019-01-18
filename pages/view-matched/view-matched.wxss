@@ -49,10 +49,16 @@
 .info-card {
     background: #fff;
     margin: 12px;
-    margin-top: 0;
+    margin-top: 30px;
     text-align: left;
     padding: 20px 17px;
     border-radius: 4px;
+}
+
+.peiduichenggong{
+    font-size: 16px;
+    color: #f37737;
+    font-weight: 500;
 }
 
 .orange-title {
@@ -60,11 +66,11 @@
 }
 
 .info-content {
-    color: #666;
+    color: #000000;
+    font-weight: 500;
 }
-
-.font-bold {
-    font-weight: 700;
+.hengxian{
+    color: #c4c4c4;
 }
 
 .submit-btn {

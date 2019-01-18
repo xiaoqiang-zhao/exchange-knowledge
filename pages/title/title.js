@@ -32,6 +32,9 @@ Page({
     // 提交事件
     submit() {
         const me = this;
+        if (this.data.disabled) {
+            return false
+        }
         wx.getStorage({
             key: 'token',
             success(res) {
@@ -58,7 +61,7 @@ Page({
 
                 // 到下一步
                 wx.navigateTo({
-                    url: '/pages/nick/nick'
+                  url: '/pages/nick/nick'
                 });
             }
         });
